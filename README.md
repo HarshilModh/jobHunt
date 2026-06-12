@@ -588,6 +588,190 @@ companies:
 
 ---
 
+## 🧑‍💻 Customize for Your Profile
+
+This tool is designed to be forked and personalized. **No code changes needed** — everything is driven by config files.
+
+### Step 1 · Fork & Clone
+
+```bash
+# Fork this repo on GitHub, then:
+git clone https://github.com/<your-username>/jobHunt.git
+cd jobHunt
+npm install
+```
+
+### Step 2 · Replace the Profile
+
+Open `config.yml` and replace the entire `profile:` section with your details:
+
+```yaml
+profile:
+  name: Your Name
+  email: you@university.edu
+  location: Your City, State
+  linkedin: https://www.linkedin.com/in/you
+  github: https://github.com/you
+
+  education:
+    current: MS Computer Science, Your University (2024 – 2026)
+    gpa: 3.8 / 4.00
+
+  work_authorization:
+    status: F-1 student, OPT eligible May 2026   # or: US Citizen, Green Card, etc.
+    sponsorship_required: true                     # set false if you don't need sponsorship
+
+  target_roles:
+    primary:
+      - Backend Engineer (New Grad)
+      - Full-Stack Engineer (New Grad)
+    secondary:
+      - AI/ML Engineer (entry-level)
+
+  core_stack:
+    expert: [Python, Django, PostgreSQL]           # your strongest skills
+    strong: [Docker, AWS, Redis]                   # confident with
+    working: [Go, Kubernetes, GraphQL]             # familiar, learning
+
+  comp_expectations:
+    base_min: 100000
+    base_target: 130000
+```
+
+> **If you don't need sponsorship:** set `sponsorship_required: false`. The ⚠️ no-sponsor flag will still show (useful info), but the -35 heuristic penalty won't matter to you.
+
+### Step 3 · Replace Your Résumé
+
+Overwrite `cv.md` with your résumé in markdown. The scorer compares JD skills against this file word-by-word, so:
+
+- ✅ List every technology you can honestly claim (even minor ones)
+- ✅ Use canonical names (`PostgreSQL` not just `Postgres`, `Kubernetes` not just `k8s`)
+- ❌ Don't pad — the AI scorer reads the JD and will judge real fit
+
+### Step 4 · Customize Companies
+
+Edit the `companies:` list in `config.yml`. For each company you care about:
+
+```yaml
+companies:
+  - name: Stripe
+    careers_url: https://job-boards.greenhouse.io/stripe   # provider auto-detected from URL
+    tier: 1          # 1 = dream, 2 = strong, 3 = apply if role fits
+    notes: NYC office, sponsors H-1B
+
+  # To add a company: find their careers page URL.
+  # Supported patterns:
+  #   Greenhouse  → https://job-boards.greenhouse.io/{slug}
+  #   Ashby       → https://jobs.ashbyhq.com/{slug}
+  #   Lever       → https://jobs.lever.co/{slug}
+  #   Workable    → https://apply.workable.com/{slug}
+  #   Workday     → https://{tenant}.wd{N}.myworkdayjobs.com/{site}
+
+  # Companies with custom ATS (Google, Meta, etc.):
+  - name: Google
+    enabled: false                    # won't be scanned, but bookmarked
+    careers_url: https://www.google.com/about/careers/...
+    tier: 1
+```
+
+### Step 5 · Tune Filters
+
+Adjust `title_filter` and `location_filter` to match your targets:
+
+```yaml
+title_filter:
+  positive:                    # at least one must match
+    - Software Engineer
+    - Backend
+    - New Grad
+    - Intern
+  negative:                    # any match = skip
+    - Senior
+    - Staff
+    - Lead
+    - Manager
+
+location_filter:
+  always_allow:                # always pass, even if nothing else matches
+    - United States
+    - Remote
+  block:                       # always reject
+    - India
+    - United Kingdom
+    # Remove countries you'd consider working in
+```
+
+### Step 6 · Write Your Story Bank
+
+Replace `data/story-bank.md` with your own STAR+R stories. Keep ~6-8 stories grounded in **real projects**:
+
+```markdown
+### [Impact / Ownership] Your Project Name
+**Source:** Project or Internship name
+**S:** The situation...
+**T:** What you needed to do...
+**A:** What you actually did (specific tech, specific decisions)...
+**R:** The measurable result...
+**Reflection:** What you learned...
+**Best for questions about:** ownership, system design, ...
+```
+
+> The `prep.mjs` scaffold maps these stories to interview question buckets — it uses the `**Best for questions about:**` line to match.
+
+### Step 7 · Update LinkedIn Queries
+
+Customize `linkedin.queries` for your target roles and locations:
+
+```yaml
+linkedin:
+  max_new_per_run: 150
+  pages: 6
+  queries:
+    - { keywords: Software Engineer, location: United States }
+    - { keywords: Data Engineer, location: San Francisco }     # your roles
+    - { keywords: ML Engineer New Grad, location: United States }
+```
+
+### Step 8 · Update Agent Instructions (Optional)
+
+If you use Claude Code or Gemini CLI, edit `AGENTS.md` to reflect your profile — the AI agent reads this file for context when you say `evaluate top 3` or `prep me for Notion`.
+
+### Step 9 · Clear Existing Data & Run
+
+```bash
+# Remove the previous user's scan data
+rm -rf data/*.json data/*.tsv data/*.md
+mkdir -p data
+
+# Initialize empty trackers
+echo '# Applications Tracker\n\n| # | Date | Company | Role | Score | Status | Notes |\n|---|------|---------|------|-------|--------|-------|' > data/applications.md
+echo '# Referral Outreach Tracker\n\n| Date | Company | Person | Role | Channel | Status | Follow-up due |\n|------|---------|--------|------|---------|--------|---------------|' > data/referrals.md
+
+# Write your story bank
+# (edit data/story-bank.md with your own stories)
+
+# First run!
+node jobhunt.mjs
+```
+
+### Quick Checklist
+
+| Step | File | What to Change |
+|:----:|------|---------------|
+| 1 | — | Fork & clone |
+| 2 | `config.yml` → `profile:` | Name, contact, education, skills, target roles, comp |
+| 3 | `cv.md` | Your full résumé in markdown |
+| 4 | `config.yml` → `companies:` | Add/remove companies, set tiers |
+| 5 | `config.yml` → `title_filter:` / `location_filter:` | Your role keywords, blocked locations |
+| 6 | `data/story-bank.md` | Your STAR+R interview stories |
+| 7 | `config.yml` → `linkedin:` | Your search queries and locations |
+| 8 | `AGENTS.md` | Your profile context for AI agents (optional) |
+| 9 | `data/*` | Clear previous data, run fresh |
+
+> **Zero code changes.** If something doesn't fit, it's probably in `config.yml`.
+
+---
+
 ## 🧰 Tech Stack
 
 | Component | Technology |
@@ -602,7 +786,7 @@ companies:
 
 <div align="center">
 
-**Built for one person's job search. Shared for reference.**
+**Built for one person's job search. Fork it, make it yours.**
 
 Made with ☕ and too many `node_modules` regrets
 
