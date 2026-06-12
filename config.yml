@@ -2,6 +2,16 @@
 # Sections: profile, referral_networks, title_filter, location_filter, linkedin, companies.
 # Companies: careers_url drives the provider (greenhouse/ashby/lever/workable/workday).
 
+# AI scoring engine. Two CLIs supported:
+#   ai_cli: agy     → Antigravity. Has the newest models (Gemini 3.5 Flash).
+#                     Models: "Gemini 3.5 Flash (High|Medium|Low)",
+#                             "Gemini 3.1 Pro (High|Low)", "Claude Sonnet 4.6 (Thinking)", ...
+#   ai_cli: gemini  → gemini CLI. Models: gemini-3.1-pro-preview, gemini-3-flash-preview,
+#                     gemini-2.5-pro, gemini-2.5-flash, ...
+# rank.mjs adds a "no tools, use only this prompt" guard so agy returns clean JSON fast (~3s).
+ai_cli: agy
+ai_model: Gemini 3.5 Flash (High)
+
 profile:
   name: Harshil Modh
   email: hmodh@stevens.edu

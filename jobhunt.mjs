@@ -16,6 +16,16 @@
 import readline from 'node:readline/promises';
 import { stdin, stdout } from 'node:process';
 import { spawnSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
+import yaml from 'js-yaml';
+
+// Read the AI engine from config so the prompt reflects what actually runs.
+let AI_CLI = 'gemini', AI_MODEL = '';
+try {
+  const cfg = yaml.load(readFileSync('config.yml', 'utf-8'));
+  AI_CLI = cfg.ai_cli || 'gemini';
+  AI_MODEL = cfg.ai_model || (AI_CLI === 'gemini' ? 'CLI default' : '');
+} catch { /* fall back to defaults */ }
 
 const rl = readline.createInterface({ input: stdin, output: stdout });
 const stdinClosed = new Promise((res) => rl.once('close', () => res(null)));
@@ -47,10 +57,10 @@ const DAYS = { 1: 1, 2: 4, 3: 7, 4: 14, 5: 0 }[fresh] ?? 0;
 const liAns = (await ask('🔗  Also scan LinkedIn? ~3-8 min, separate list (Y/n): ', 'y')).toLowerCase();
 const USE_LINKEDIN = liAns !== 'n' && liAns !== 'no';
 
-const aiAns = (await ask('✨  Add Gemini AI-fit scores? Free tier, cached (Y/n): ', 'y')).toLowerCase();
+const aiAns = (await ask(`✨  Add AI-fit scores? (${AI_MODEL || AI_CLI}, cached) (Y/n): `, 'y')).toLowerCase();
 let USE_AI = aiAns !== 'n' && aiAns !== 'no';
-if (USE_AI && !has('gemini')) {
-  console.log('   (gemini CLI not found — skipping AI scores. Install: npm i -g @google/gemini-cli)');
+if (USE_AI && !has(AI_CLI)) {
+  console.log(`   ('${AI_CLI}' CLI not found — skipping AI scores. Set ai_cli/ai_model in config.yml.)`);
   USE_AI = false;
 }
 

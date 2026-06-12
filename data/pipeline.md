@@ -2,23 +2,6 @@
 
 ## Pendientes
 
-- [ ] https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/Bucharest/Software-Engineer---Frontend_R168855 | Adobe | Software Engineer - Frontend
-- [ ] https://jobs.ashbyhq.com/openai/5ebd5f66-75db-4a96-8d39-babc14f1c582 | OpenAI | Full Stack Software Engineer, Codex
-- [ ] https://job-boards.greenhouse.io/doordashusa/jobs/8001494 | DoorDash | Software Engineer, Fullstack
-- [ ] https://job-boards.greenhouse.io/doordashusa/jobs/7994290 | DoorDash | Software Engineer, Reliability Platforms
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7429873 | Waymo | Software Engineer, Vehicle Platforms C++
-- [ ] https://boards.greenhouse.io/figma/jobs/5691886004?gh_jid=5691886004 | Figma | Software Engineer, AI Platforms
-- [ ] https://boards.greenhouse.io/figma/jobs/5551730004?gh_jid=5551730004 | Figma | Software Engineer, AI Product
-- [ ] https://boards.greenhouse.io/figma/jobs/5552530004?gh_jid=5552530004 | Figma | Software Engineer, C++
-- [ ] https://boards.greenhouse.io/figma/jobs/5759501004?gh_jid=5759501004 | Figma | Software Engineer, Code Platform
-- [ ] https://boards.greenhouse.io/figma/jobs/5551686004?gh_jid=5551686004 | Figma | Software Engineer, Data Infrastructure
-- [ ] https://boards.greenhouse.io/figma/jobs/5790627004?gh_jid=5790627004 | Figma | Software Engineer, Developer Experience
-- [ ] https://boards.greenhouse.io/figma/jobs/5552549004?gh_jid=5552549004 | Figma | Software Engineer, Distributed Systems
-- [ ] https://boards.greenhouse.io/figma/jobs/5691911004?gh_jid=5691911004 | Figma | Software Engineer, Full Stack
-- [ ] https://boards.greenhouse.io/figma/jobs/5552522004?gh_jid=5552522004 | Figma | Software Engineer, Graphics & Media
-- [ ] https://boards.greenhouse.io/figma/jobs/5552560004?gh_jid=5552560004 | Figma | Software Engineer, Growth & Monetization
-- [ ] https://boards.greenhouse.io/figma/jobs/5551532004?gh_jid=5551532004 | Figma | Software Engineer, Machine Learning
-- [ ] https://boards.greenhouse.io/figma/jobs/5551649004?gh_jid=5551649004 | Figma | Software Engineer, Production Engineering
 - [ ] https://job-boards.greenhouse.io/anthropic/jobs/5186067008 | Anthropic | Full-Stack Software Engineer, Reinforcement Learning
 - [ ] https://job-boards.greenhouse.io/anthropic/jobs/5098025008 | Anthropic | Model Performance Software Engineer, Claude Code
 - [ ] https://job-boards.greenhouse.io/anthropic/jobs/4595463008 | Anthropic | Security Software Engineer, Detection & Response Platform
@@ -33,12 +16,24 @@
 - [ ] https://job-boards.greenhouse.io/anthropic/jobs/5251671008 | Anthropic | Software Engineer, Safeguards Evals 
 - [ ] https://job-boards.greenhouse.io/anthropic/jobs/5025591008 | Anthropic | Software Engineer, Sandboxing (Systems)
 - [ ] https://job-boards.greenhouse.io/anthropic/jobs/5218395008 | Anthropic | Software Engineer, Systems - Claude Code
+- [ ] https://boards.greenhouse.io/figma/jobs/5691886004?gh_jid=5691886004 | Figma | Software Engineer, AI Platforms
+- [ ] https://boards.greenhouse.io/figma/jobs/5551730004?gh_jid=5551730004 | Figma | Software Engineer, AI Product
+- [ ] https://boards.greenhouse.io/figma/jobs/5552530004?gh_jid=5552530004 | Figma | Software Engineer, C++
+- [ ] https://boards.greenhouse.io/figma/jobs/5759501004?gh_jid=5759501004 | Figma | Software Engineer, Code Platform
+- [ ] https://boards.greenhouse.io/figma/jobs/5551686004?gh_jid=5551686004 | Figma | Software Engineer, Data Infrastructure
+- [ ] https://boards.greenhouse.io/figma/jobs/5790627004?gh_jid=5790627004 | Figma | Software Engineer, Developer Experience
+- [ ] https://boards.greenhouse.io/figma/jobs/5552549004?gh_jid=5552549004 | Figma | Software Engineer, Distributed Systems
+- [ ] https://boards.greenhouse.io/figma/jobs/5691911004?gh_jid=5691911004 | Figma | Software Engineer, Full Stack
+- [ ] https://boards.greenhouse.io/figma/jobs/5552522004?gh_jid=5552522004 | Figma | Software Engineer, Graphics & Media
+- [ ] https://boards.greenhouse.io/figma/jobs/5552560004?gh_jid=5552560004 | Figma | Software Engineer, Growth & Monetization
+- [ ] https://boards.greenhouse.io/figma/jobs/5551532004?gh_jid=5551532004 | Figma | Software Engineer, Machine Learning
+- [ ] https://boards.greenhouse.io/figma/jobs/5551649004?gh_jid=5551649004 | Figma | Software Engineer, Production Engineering
 - [ ] https://stripe.com/jobs/search?gh_jid=7826765 | Stripe | Backend Engineer, AI Security
 - [ ] https://stripe.com/jobs/search?gh_jid=7217048 | Stripe | Backend Engineer, Billing/Tax
 - [ ] https://stripe.com/jobs/search?gh_jid=6042172 | Stripe | Backend Engineer, Core Technology
 - [ ] https://stripe.com/jobs/search?gh_jid=7775622 | Stripe | Backend Engineer, Expansion
-- [ ] https://stripe.com/jobs/search?gh_jid=6163230 | Stripe | Backend Engineer, Payments and Risk
 - [ ] https://stripe.com/jobs/search?gh_jid=7232592 | Stripe | Backend Engineer, Payments and Risk
+- [ ] https://stripe.com/jobs/search?gh_jid=6163230 | Stripe | Backend Engineer, Payments and Risk
 - [ ] https://stripe.com/jobs/search?gh_jid=7895287 | Stripe | Backend Engineer, Payments Experiences
 - [ ] https://stripe.com/jobs/search?gh_jid=7235875 | Stripe | Backend Engineer, Privy
 - [ ] https://stripe.com/jobs/search?gh_jid=6567104 | Stripe | Full Stack Engineer, Developer Experience & Product Platform
@@ -46,12 +41,12 @@
 - [ ] https://stripe.com/jobs/search?gh_jid=6606581 | Stripe | Full Stack Engineer, Money as a Service
 - [ ] https://stripe.com/jobs/search?gh_jid=7091959 | Stripe | Fullstack Engineer, Privy
 - [ ] https://stripe.com/jobs/search?gh_jid=7436086 | Stripe | Full Stack Engineer, Web Presence and Platform
-- [ ] https://stripe.com/jobs/search?gh_jid=7926587 | Stripe | Software Engineer
-- [ ] https://stripe.com/jobs/search?gh_jid=7991636 | Stripe | Software Engineer
-- [ ] https://stripe.com/jobs/search?gh_jid=7926966 | Stripe | Software Engineer
-- [ ] https://stripe.com/jobs/search?gh_jid=7808471 | Stripe | Software Engineer
 - [ ] https://stripe.com/jobs/search?gh_jid=7895344 | Stripe | Software Engineer
+- [ ] https://stripe.com/jobs/search?gh_jid=7808471 | Stripe | Software Engineer
+- [ ] https://stripe.com/jobs/search?gh_jid=7926587 | Stripe | Software Engineer
+- [ ] https://stripe.com/jobs/search?gh_jid=7926966 | Stripe | Software Engineer
 - [ ] https://stripe.com/jobs/search?gh_jid=7922832 | Stripe | Software Engineer
+- [ ] https://stripe.com/jobs/search?gh_jid=7991636 | Stripe | Software Engineer
 - [ ] https://stripe.com/jobs/search?gh_jid=7908923 | Stripe | Software Engineer, Balance Abstraction
 - [ ] https://stripe.com/jobs/search?gh_jid=7277110 | Stripe | Software Engineer, Bridge
 - [ ] https://stripe.com/jobs/search?gh_jid=7230670 | Stripe | Software Engineer, Data Orchestration
@@ -61,18 +56,6 @@
 - [ ] https://stripe.com/jobs/search?gh_jid=7507904 | Stripe | Software Engineer - Smart Contract, Bridge
 - [ ] https://www.mongodb.com/careers/job/?gh_jid=7523834 | MongoDB | Software Engineer, Data Migration
 - [ ] https://www.mongodb.com/careers/job/?gh_jid=7851388 | MongoDB | Software Engineer, Developer Productivity
-- [ ] https://jobs.ashbyhq.com/notion/d41b635b-c17b-4efd-89fd-fdb2ddb62e9a | Notion | Software Engineer, Product Infrastructure
-- [ ] https://jobs.ashbyhq.com/notion/a6311f97-4850-4674-a5f3-d9fe5f6f2555 | Notion | Software Engineer, New Grad
-- [ ] https://jobs.ashbyhq.com/notion/5b15697c-fa91-4511-9482-c98a6ff29f90 | Notion | Software Engineer Intern (Fall 2026)
-- [ ] https://jobs.ashbyhq.com/notion/17330e14-83db-49a4-ae31-411690d97dba | Notion | Software Engineer, AI Workflows
-- [ ] https://jobs.ashbyhq.com/notion/b31ce253-4238-4ed6-a5a2-73b63cbf1709 | Notion | Software Engineer, AI Capture
-- [ ] https://jobs.ashbyhq.com/notion/5d8c1ec6-e9ea-416b-9715-880bf5037abc | Notion | Software Engineer, Collections Experience
-- [ ] https://jobs.ashbyhq.com/notion/7e6dc7fe-7ddd-42c1-8928-13f7bddb9ec9 | Notion | Software Engineer, New Grad (AI)
-- [ ] https://jobs.ashbyhq.com/notion/66236b7e-2905-4a93-84a5-ed036a1a6581 | Notion | Software Engineer, Trust
-- [ ] https://jobs.ashbyhq.com/notion/6895adad-5031-4dce-9e8e-b9361d3a2850 | Notion | Software Engineer, Web Infrastructure
-- [ ] https://jobs.ashbyhq.com/notion/def3f337-5593-491c-b34d-e0b53f2a5cac | Notion | Software Engineer, Security
-- [ ] https://careers.airbnb.com/positions/7858135?gh_jid=7858135 | Airbnb | Software Engineer, Web Infrastructure 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8202670002 | Databricks | Software Engineer - GenAI inference 
 - [ ] https://boards.greenhouse.io/cloudflare/jobs/7799138?gh_jid=7799138 | Cloudflare | Global Trade Compliance Intern (Summer 2026)
 - [ ] https://boards.greenhouse.io/cloudflare/jobs/7577564?gh_jid=7577564 | Cloudflare | GRC Team Intern (Summer 2026) 
 - [ ] https://boards.greenhouse.io/cloudflare/jobs/7983674?gh_jid=7983674 | Cloudflare | Legal Intern – Commercial Legal (Fall 2026)
@@ -86,13 +69,90 @@
 - [ ] https://boards.greenhouse.io/cloudflare/jobs/7527453?gh_jid=7527453 | Cloudflare | Software Engineer, Data
 - [ ] https://boards.greenhouse.io/cloudflare/jobs/7912382?gh_jid=7912382 | Cloudflare | Technical Support Engineer Intern (July to December 2026)
 - [ ] https://boards.greenhouse.io/cloudflare/jobs/7577205?gh_jid=7577205 | Cloudflare | Threat Detection and Incident Response Intern (Summer 2026)
+- [ ] https://jobs.ashbyhq.com/notion/d41b635b-c17b-4efd-89fd-fdb2ddb62e9a | Notion | Software Engineer, Product Infrastructure
+- [ ] https://jobs.ashbyhq.com/notion/a6311f97-4850-4674-a5f3-d9fe5f6f2555 | Notion | Software Engineer, New Grad
+- [ ] https://jobs.ashbyhq.com/notion/5b15697c-fa91-4511-9482-c98a6ff29f90 | Notion | Software Engineer Intern (Fall 2026)
+- [ ] https://jobs.ashbyhq.com/notion/17330e14-83db-49a4-ae31-411690d97dba | Notion | Software Engineer, AI Workflows
+- [ ] https://jobs.ashbyhq.com/notion/b31ce253-4238-4ed6-a5a2-73b63cbf1709 | Notion | Software Engineer, AI Capture
+- [ ] https://jobs.ashbyhq.com/notion/5d8c1ec6-e9ea-416b-9715-880bf5037abc | Notion | Software Engineer, Collections Experience
+- [ ] https://jobs.ashbyhq.com/notion/7e6dc7fe-7ddd-42c1-8928-13f7bddb9ec9 | Notion | Software Engineer, New Grad (AI)
+- [ ] https://jobs.ashbyhq.com/notion/66236b7e-2905-4a93-84a5-ed036a1a6581 | Notion | Software Engineer, Trust
+- [ ] https://jobs.ashbyhq.com/notion/6895adad-5031-4dce-9e8e-b9361d3a2850 | Notion | Software Engineer, Web Infrastructure
+- [ ] https://jobs.ashbyhq.com/notion/def3f337-5593-491c-b34d-e0b53f2a5cac | Notion | Software Engineer, Security
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8202670002 | Databricks | Software Engineer - GenAI inference 
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7895468 | Reddit | Fullstack Software Engineer, Notifications Lifecycle
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/6469397 | Reddit | Software Engineer, Ads
+- [ ] https://job-boards.greenhouse.io/discord/jobs/8487457002 | Discord | Software Engineer- Database Infrastructure
+- [ ] https://job-boards.greenhouse.io/discord/jobs/8545663002 | Discord | Software Engineer, Distributed Systems
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4703343005 | Scale AI | AI Builder Intern
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4665557005 | Scale AI | Infrastructure Software Engineer, Enterprise GenAI
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4481921005 | Scale AI | Mission Software Engineer, Public Sector
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4673771005 | Scale AI | Software Engineer, ARC Team
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4513943005 | Scale AI | Software Engineer, Enterprise AI
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4363623005 | Scale AI | Software Engineer, Frontier AI Infrastructure
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4594879005 | Scale AI | Software Engineer, Platform
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4618065005 | Scale AI | Software Engineer, Robotics & Autonomous Systems
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4689947005 | Scale AI | SWE Fellow - Human Frontier Collective (US)
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4611533005 | Scale AI | Technical Advisor Specialist (Part-Time Internship) 
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7490049?t=gh_src=&gh_jid=7490049 | Robinhood | Full Stack Engineer, Credit Cards & Banking
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7975549?t=gh_src=&gh_jid=7975549 | Robinhood | Software Engineer
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7975558?t=gh_src=&gh_jid=7975558 | Robinhood | Software Engineer
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7960734?t=gh_src=&gh_jid=7960734 | Robinhood | Software Engineer
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7975557?t=gh_src=&gh_jid=7975557 | Robinhood | Software Engineer
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7975530?t=gh_src=&gh_jid=7975530 | Robinhood | Software Engineer
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7975531?t=gh_src=&gh_jid=7975531 | Robinhood | Software Engineer
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7975550?t=gh_src=&gh_jid=7975550 | Robinhood | Software Engineer
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7975480?t=gh_src=&gh_jid=7975480 | Robinhood | Software Engineer
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7975507?t=gh_src=&gh_jid=7975507 | Robinhood | Software Engineer
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7975516?t=gh_src=&gh_jid=7975516 | Robinhood | Software Engineer
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7975526?t=gh_src=&gh_jid=7975526 | Robinhood | Software Engineer
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7975529?t=gh_src=&gh_jid=7975529 | Robinhood | Software Engineer
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7975477?t=gh_src=&gh_jid=7975477 | Robinhood | Software Engineer, Agentic AI
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7263592?t=gh_src=&gh_jid=7263592 | Robinhood | Software Engineer, Backend
+- [ ] https://jobs.ashbyhq.com/ramp/4e64ab86-4e30-403b-b1b9-41dc052570ce | Ramp | Software Engineer, Frontend
+- [ ] https://jobs.ashbyhq.com/ramp/bca0346c-b843-4795-96df-6091f51e421b | Ramp | Software Engineer, Data Platform 
+- [ ] https://jobs.ashbyhq.com/ramp/d1183b00-6590-4fe4-a585-28d84e578fe3 | Ramp | Software Engineer, Stablecoin
+- [ ] https://jobs.ashbyhq.com/ramp/d818443f-d4c5-4eab-892d-3715a935c165 | Ramp | Software Engineer, Banking
+- [ ] https://jobs.ashbyhq.com/ramp/f5b60cf1-c0ec-42c1-89db-ece853e998ab | Ramp | Software Engineer, Growth Platform
+- [ ] https://jobs.ashbyhq.com/ramp/5fe4c64e-9336-4384-9e6f-ff32eeb3fdae | Ramp | Software Engineer, Core Product
+- [ ] https://jobs.ashbyhq.com/ramp/8fa367de-71ba-409e-befd-175a163acb1b | Ramp | Software Engineer, Fraud & Identity
+- [ ] https://jobs.ashbyhq.com/ramp/5598f7b8-4ae2-4105-a2b4-2d0f55c54c40 | Ramp | Software Engineer, Credit
+- [ ] https://jobs.ashbyhq.com/ramp/ed2e9a94-f58e-4ff8-8853-afd977850d43 | Ramp | Software Engineer, Accounting
+- [ ] https://jobs.ashbyhq.com/ramp/2a4968ae-220c-471b-b890-a011de570bbb | Ramp | Software Engineer, Bill Pay & Procurement
+- [ ] https://jobs.ashbyhq.com/ramp/b42cce4b-8fa9-4e8d-892d-3a29a7afb909 | Ramp | Software Engineer, AI DevX
+- [ ] https://jobs.ashbyhq.com/ramp/42527ca9-03b9-499e-a5c4-18e4245af138 | Ramp | Software Engineer, Agent Developer Platform
+- [ ] https://jobs.ashbyhq.com/ramp/7bfa613e-151c-469b-9973-c89ee3d14838 | Ramp | Backend Engineer, Ops
+- [ ] https://jobs.ashbyhq.com/ramp/f2d10bdf-0906-47eb-96fb-0efe6f81d8a3 | Ramp | Software Engineer, Guest Travel
+- [ ] https://jobs.ashbyhq.com/ramp/198150d6-789a-4ef8-999f-93a49656d4f1 | Ramp | Software Engineer, Engineering Platform
+- [ ] https://jobs.ashbyhq.com/ramp/be496b52-cfbf-494e-b862-61fb4a188b24 | Ramp | Software Engineer, Production Engineering
+- [ ] https://jobs.ashbyhq.com/ramp/f1b3ca8d-d55f-4159-9a3b-f69ad0d981bc | Ramp | Software Engineer, Onboarding
+- [ ] http://block.xyz/careers/jobs/5196181008?gh_jid=5196181008 | Block | Software Engineer, Cash App Banking
+- [ ] http://block.xyz/careers/jobs/5207106008?gh_jid=5207106008 | Block | Software Engineer, Cash App Banking
+- [ ] http://block.xyz/careers/jobs/5069261008?gh_jid=5069261008 | Block | Software Engineer, Cash App - Controls
+- [ ] http://block.xyz/careers/jobs/5198719008?gh_jid=5198719008 | Block | Software Engineer, Cash App - Controls
+- [ ] http://block.xyz/careers/jobs/5201726008?gh_jid=5201726008 | Block | Software Engineer, Cash App - Lending Products
+- [ ] http://block.xyz/careers/jobs/5196173008?gh_jid=5196173008 | Block | Software Engineer, Cash App - Lending Products
+- [ ] http://block.xyz/careers/jobs/4888459008?gh_jid=4888459008 | Block | Software Engineer, Finance Applications
 - [ ] https://job-boards.greenhouse.io/doordashusa/jobs/7733002 | DoorDash | Applications Engineer, Full Stack - People 
-- [ ] https://job-boards.greenhouse.io/doordashusa/jobs/7811799 | DoorDash | Associate, Internal Communications
 - [ ] https://job-boards.greenhouse.io/doordashusa/jobs/6682078 | DoorDash | Robotics Software Engineer - Labs
 - [ ] https://job-boards.greenhouse.io/doordashusa/jobs/5630445 | DoorDash | Software Engineer, Backend (All Teams)
 - [ ] https://job-boards.greenhouse.io/doordashusa/jobs/7577073 | DoorDash | Software Engineer, Data Platform (All Teams)
+- [ ] https://job-boards.greenhouse.io/doordashusa/jobs/8001494 | DoorDash | Software Engineer, Fullstack
 - [ ] https://job-boards.greenhouse.io/doordashusa/jobs/6367350 | DoorDash | Software Engineer, Infrastructure - Autonomy & Robotics
 - [ ] https://job-boards.greenhouse.io/doordashusa/jobs/7932109 | DoorDash | Software Engineer, Machine Learning - Credit & Refund Optimization
+- [ ] https://job-boards.greenhouse.io/doordashusa/jobs/7994290 | DoorDash | Software Engineer, Reliability Platforms
+- [ ] https://boards.greenhouse.io/justworks/jobs/6917404?gh_jid=6917404 | Justworks | Software Engineer
+- [ ] https://jobs.ashbyhq.com/snowflake/eb704210-4c4a-4ab7-8838-8ba7abd55af3 | Snowflake | Software Engineer - Secret, Cryptographic and Identity Infrastructure
+- [ ] https://jobs.ashbyhq.com/snowflake/3eb872af-0ab1-4986-8f72-e7321fcd1538 | Snowflake | Software Engineer - Backend
+- [ ] https://jobs.ashbyhq.com/snowflake/5f4ae8d3-bf84-430d-8f9f-325f14ddf947 | Snowflake | Software Engineer - APG
+- [ ] https://jobs.ashbyhq.com/snowflake/2a928b93-a5d4-4285-a92c-032fb389faa2 | Snowflake | Software Engineer - SnowConvert AI
+- [ ] https://jobs.ashbyhq.com/snowflake/d8816f3f-89d6-4434-bc24-eaf4169c1d95 | Snowflake | Software Engineer, Data Governance
+- [ ] https://jobs.ashbyhq.com/snowflake/3c018564-63c0-4179-ba91-f42ce75a40fa | Snowflake | Software Engineer - Streamlit
+- [ ] https://jobs.ashbyhq.com/snowflake/b8c95597-b452-49bf-994c-04027b7bd6dd | Snowflake | Software Engineer – Engineering Systems Continuous Integration Team
+- [ ] https://jobs.ashbyhq.com/snowflake/19ff5740-e678-4f43-a6c6-29bab94fbc21 | Snowflake | Software Engineer - Snowflake Postgres
+- [ ] https://jobs.ashbyhq.com/snowflake/2db865d9-1b32-4f20-8091-de76c5d2b7f4 | Snowflake | Software Engineer, Cortex AI Infrastructure
+- [ ] http://www.squarespace.com/about/careers?gh_jid=7557125 | Squarespace | Backend Engineer, Domains Registrar
+- [ ] http://www.squarespace.com/about/careers?gh_jid=7789058 | Squarespace | Software Engineer - Delivery Platform 
 - [ ] https://jobs.ashbyhq.com/openai/13995549-e8cc-498f-9eaa-1869067ac35b | OpenAI | Software Engineer, RL Training Infra
 - [ ] https://jobs.ashbyhq.com/openai/3c67f712-697d-48d8-b05c-01be896e61da | OpenAI | Software Engineer, Scaled Abuse
 - [ ] https://jobs.ashbyhq.com/openai/f763c6b3-5167-4a67-b691-4c3fa2c44156 | OpenAI | Software Engineer, Data Infrastructure
@@ -200,64 +260,13 @@
 - [ ] https://jobs.ashbyhq.com/openai/87e5f8c3-3337-480a-9db2-e4cef5db909b | OpenAI | Host Systems Software Engineer
 - [ ] https://jobs.ashbyhq.com/openai/88654e7f-4e23-4e75-8e54-18c10d09b093 | OpenAI | Software Engineer, Full Stack - Cybersecurity Products
 - [ ] https://jobs.ashbyhq.com/openai/f6278b60-dd42-4aa8-a3cd-c105f75ae8ae | OpenAI | Software Engineer, Cloud Agents
-- [ ] https://jobs.ashbyhq.com/openai/4070d52e-0263-4cd5-9107-052b4ecc1209 | OpenAI | Backend Software Engineer, API Multicloud
+- [ ] https://jobs.ashbyhq.com/openai/4070d52e-0263-4cd5-9107-052b4ecc1209 | OpenAI | Software Engineer, API Multicloud
 - [ ] https://jobs.ashbyhq.com/openai/1c48f39f-60ea-4636-87ed-8b4b4f5243e5 | OpenAI | Systems Software Engineer, Security, First Party Hardware
 - [ ] https://jobs.ashbyhq.com/openai/e7a4ee23-138a-4004-916e-72a452e7d115 | OpenAI | Backend Software Engineer, ChatGPT ImageGen
 - [ ] https://jobs.ashbyhq.com/openai/6b47238e-025a-4350-b270-2f3564002fcc | OpenAI | Full Stack Software Engineer, ChatGPT ImageGen
 - [ ] https://jobs.ashbyhq.com/openai/915a325b-55f6-44e2-8314-34ec0d8bb2c9 | OpenAI | Software Engineer, Web Layer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7754143?t=gh_src=&gh_jid=7754143 | Robinhood | Backend Software Engineer, Credit Cards & Banking
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7490049?t=gh_src=&gh_jid=7490049 | Robinhood | Full Stack Engineer, Credit Cards & Banking
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7975558?t=gh_src=&gh_jid=7975558 | Robinhood | Software Engineer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7960734?t=gh_src=&gh_jid=7960734 | Robinhood | Software Engineer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7975516?t=gh_src=&gh_jid=7975516 | Robinhood | Software Engineer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7975526?t=gh_src=&gh_jid=7975526 | Robinhood | Software Engineer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7975529?t=gh_src=&gh_jid=7975529 | Robinhood | Software Engineer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7975530?t=gh_src=&gh_jid=7975530 | Robinhood | Software Engineer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7975531?t=gh_src=&gh_jid=7975531 | Robinhood | Software Engineer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7975549?t=gh_src=&gh_jid=7975549 | Robinhood | Software Engineer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7975550?t=gh_src=&gh_jid=7975550 | Robinhood | Software Engineer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7975557?t=gh_src=&gh_jid=7975557 | Robinhood | Software Engineer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7975480?t=gh_src=&gh_jid=7975480 | Robinhood | Software Engineer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7975507?t=gh_src=&gh_jid=7975507 | Robinhood | Software Engineer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7975477?t=gh_src=&gh_jid=7975477 | Robinhood | Software Engineer, Agentic AI
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7263592?t=gh_src=&gh_jid=7263592 | Robinhood | Software Engineer, Backend
-- [ ] http://block.xyz/careers/jobs/5196181008?gh_jid=5196181008 | Block | Software Engineer, Cash App Banking
-- [ ] http://block.xyz/careers/jobs/5207106008?gh_jid=5207106008 | Block | Software Engineer, Cash App Banking
-- [ ] http://block.xyz/careers/jobs/5069261008?gh_jid=5069261008 | Block | Software Engineer, Cash App - Controls
-- [ ] http://block.xyz/careers/jobs/5198719008?gh_jid=5198719008 | Block | Software Engineer, Cash App - Controls
-- [ ] http://block.xyz/careers/jobs/5201726008?gh_jid=5201726008 | Block | Software Engineer, Cash App - Lending Products
-- [ ] http://block.xyz/careers/jobs/5196173008?gh_jid=5196173008 | Block | Software Engineer, Cash App - Lending Products
-- [ ] http://block.xyz/careers/jobs/4888459008?gh_jid=4888459008 | Block | Software Engineer, Finance Applications
-- [ ] https://jobs.ashbyhq.com/ramp/4e64ab86-4e30-403b-b1b9-41dc052570ce | Ramp | Software Engineer, Frontend
-- [ ] https://jobs.ashbyhq.com/ramp/bca0346c-b843-4795-96df-6091f51e421b | Ramp | Software Engineer, Data Platform 
-- [ ] https://jobs.ashbyhq.com/ramp/d1183b00-6590-4fe4-a585-28d84e578fe3 | Ramp | Software Engineer, Stablecoin
-- [ ] https://jobs.ashbyhq.com/ramp/d818443f-d4c5-4eab-892d-3715a935c165 | Ramp | Software Engineer, Banking
-- [ ] https://jobs.ashbyhq.com/ramp/f5b60cf1-c0ec-42c1-89db-ece853e998ab | Ramp | Software Engineer, Growth Platform
-- [ ] https://jobs.ashbyhq.com/ramp/5fe4c64e-9336-4384-9e6f-ff32eeb3fdae | Ramp | Software Engineer, Core Product
-- [ ] https://jobs.ashbyhq.com/ramp/8fa367de-71ba-409e-befd-175a163acb1b | Ramp | Software Engineer, Fraud & Identity
-- [ ] https://jobs.ashbyhq.com/ramp/5598f7b8-4ae2-4105-a2b4-2d0f55c54c40 | Ramp | Software Engineer, Credit
-- [ ] https://jobs.ashbyhq.com/ramp/ed2e9a94-f58e-4ff8-8853-afd977850d43 | Ramp | Software Engineer, Accounting
-- [ ] https://jobs.ashbyhq.com/ramp/2a4968ae-220c-471b-b890-a011de570bbb | Ramp | Software Engineer, Bill Pay & Procurement
-- [ ] https://jobs.ashbyhq.com/ramp/b42cce4b-8fa9-4e8d-892d-3a29a7afb909 | Ramp | Software Engineer, AI DevX
-- [ ] https://jobs.ashbyhq.com/ramp/42527ca9-03b9-499e-a5c4-18e4245af138 | Ramp | Software Engineer, Agent Developer Platform
-- [ ] https://jobs.ashbyhq.com/ramp/7bfa613e-151c-469b-9973-c89ee3d14838 | Ramp | Backend Engineer, Ops
-- [ ] https://jobs.ashbyhq.com/ramp/f2d10bdf-0906-47eb-96fb-0efe6f81d8a3 | Ramp | Software Engineer, Guest Travel
-- [ ] https://jobs.ashbyhq.com/ramp/198150d6-789a-4ef8-999f-93a49656d4f1 | Ramp | Software Engineer, Engineering Platform
-- [ ] https://jobs.ashbyhq.com/ramp/be496b52-cfbf-494e-b862-61fb4a188b24 | Ramp | Software Engineer, Production Engineering
-- [ ] https://jobs.ashbyhq.com/ramp/f1b3ca8d-d55f-4159-9a3b-f69ad0d981bc | Ramp | Software Engineer, Onboarding
-- [ ] https://jobs.ashbyhq.com/snowflake/eb704210-4c4a-4ab7-8838-8ba7abd55af3 | Snowflake | Software Engineer - Secret, Cryptographic and Identity Infrastructure
-- [ ] https://jobs.ashbyhq.com/snowflake/3eb872af-0ab1-4986-8f72-e7321fcd1538 | Snowflake | Software Engineer - Backend
-- [ ] https://jobs.ashbyhq.com/snowflake/5f4ae8d3-bf84-430d-8f9f-325f14ddf947 | Snowflake | Software Engineer - APG
-- [ ] https://jobs.ashbyhq.com/snowflake/2a928b93-a5d4-4285-a92c-032fb389faa2 | Snowflake | Software Engineer - SnowConvert AI
-- [ ] https://jobs.ashbyhq.com/snowflake/d8816f3f-89d6-4434-bc24-eaf4169c1d95 | Snowflake | Software Engineer, Data Governance
-- [ ] https://jobs.ashbyhq.com/snowflake/3c018564-63c0-4179-ba91-f42ce75a40fa | Snowflake | Software Engineer - Streamlit
-- [ ] https://jobs.ashbyhq.com/snowflake/b8c95597-b452-49bf-994c-04027b7bd6dd | Snowflake | Software Engineer – Engineering Systems Continuous Integration Team
-- [ ] https://jobs.ashbyhq.com/snowflake/a488959b-6874-4563-acb2-af747c3dc6f7 | Snowflake | Software Engineer Intern (Security) - Fall 2026
-- [ ] https://jobs.ashbyhq.com/snowflake/19ff5740-e678-4f43-a6c6-29bab94fbc21 | Snowflake | Software Engineer - Snowflake Postgres
-- [ ] https://jobs.ashbyhq.com/snowflake/2db865d9-1b32-4f20-8091-de76c5d2b7f4 | Snowflake | Software Engineer, Cortex AI Infrastructure
-- [ ] https://boards.greenhouse.io/justworks/jobs/6917404?gh_jid=6917404 | Justworks | Software Engineer
-- [ ] http://www.squarespace.com/about/careers?gh_jid=7557125 | Squarespace | Backend Engineer, Domains Registrar
-- [ ] http://www.squarespace.com/about/careers?gh_jid=7789058 | Squarespace | Software Engineer - Delivery Platform 
+- [ ] https://jobs.ashbyhq.com/openai/5ebd5f66-75db-4a96-8d39-babc14f1c582 | OpenAI | Full Stack Software Engineer, Codex
+- [ ] https://jobs.ashbyhq.com/openai/0f887fe6-39f4-44f6-8ee5-230c3002f0d7 | OpenAI | Software Engineer, Private Computing
 - [ ] https://job-boards.greenhouse.io/mercury/jobs/5267749004 | Mercury | Software Engineer - Product
 - [ ] https://www.hudsonrivertrading.com/careers/job/?gh_jid=7462541 | Hudson River Trading | Fullstack Developer
 - [ ] https://www.hudsonrivertrading.com/careers/job/?gh_jid=7116458 | Hudson River Trading | Junior Electronic Trading Support Engineer
@@ -270,6 +279,7 @@
 - [ ] https://www.hudsonrivertrading.com/careers/job/?gh_jid=7610947 | Hudson River Trading | Software Engineer - GPU reliability
 - [ ] https://www.hudsonrivertrading.com/careers/job/?gh_jid=7398013 | Hudson River Trading | Software Engineer - Python
 - [ ] https://www.hudsonrivertrading.com/careers/job/?gh_jid=7583953 | Hudson River Trading | Software Engineer - Treasury Infrastructure
+- [ ] https://job-boards.greenhouse.io/affirm/jobs/7485068003 | Affirm | Software Engineer, Early Career
 - [ ] https://job-boards.greenhouse.io/drweng/jobs/7545859 | DRW | Python Software Engineer, Trading Platform
 - [ ] https://job-boards.greenhouse.io/drweng/jobs/7713717 | DRW | Software Engineer - Cumberland/FICCO Tools Engineering
 - [ ] https://job-boards.greenhouse.io/drweng/jobs/7728094 | DRW | Software Engineer - Cumberland/FICCO Tools Engineering
@@ -280,50 +290,45 @@
 - [ ] https://job-boards.greenhouse.io/drweng/jobs/7561710 | DRW | Software Engineer, Market Data - Cumberland
 - [ ] https://job-boards.greenhouse.io/drweng/jobs/7713854 | DRW | Software Engineer - Prediction Markets (Python)
 - [ ] https://job-boards.greenhouse.io/drweng/jobs/7728142 | DRW | Software Engineer - Prediction Markets (Python)
-- [ ] https://job-boards.greenhouse.io/drweng/jobs/7743648 | DRW | Software Engineer, Research – Cumberland Systematic
 - [ ] https://job-boards.greenhouse.io/drweng/jobs/7283668 | DRW | Software Engineer, Research – Cumberland Systematic
+- [ ] https://job-boards.greenhouse.io/drweng/jobs/7743648 | DRW | Software Engineer, Research – Cumberland Systematic
 - [ ] https://job-boards.greenhouse.io/drweng/jobs/7942728 | DRW | Software Engineer - Risk
-- [ ] https://job-boards.greenhouse.io/affirm/jobs/7485068003 | Affirm | Software Engineer, Early Career
-- [ ] https://app.careerpuck.com/job-board/lyft/job/8582656002?gh_jid=8582656002 | Lyft | Software Engineer, Backend
-- [ ] https://jobs.dropbox.com/listing/6330390?gh_jid=6330390 | Dropbox | Infrastructure Software Engineer
-- [ ] https://job-boards.greenhouse.io/discord/jobs/8487457002 | Discord | Software Engineer- Database Infrastructure
-- [ ] https://job-boards.greenhouse.io/discord/jobs/8545663002 | Discord | Software Engineer, Distributed Systems
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7253017 | Pinterest | Master's Fall Machine Learning Internship (ATG - Visual Search)
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7782544 | Pinterest | SDET II, tvScientific
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6816337 | Pinterest | Software Engineer I, Backend
 - [ ] https://www.asana.com/jobs/apply/6619439?gh_jid=6619439 | Asana | Backend Software Engineer, Reykjavik
 - [ ] https://www.asana.com/jobs/apply/7766762?gh_jid=7766762 | Asana | Junior Software Engineer, Reykjavik
 - [ ] https://www.asana.com/jobs/apply/7961475?gh_jid=7961475 | Asana | Software Engineer
 - [ ] https://www.asana.com/jobs/apply/5480143?gh_jid=5480143 | Asana | Software Engineer, Reykjavik
-- [ ] https://job-boards.greenhouse.io/temporaltechnologies/jobs/5134414007 | Temporal | Software Engineer, AI Foundations
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4703343005 | Scale AI | AI Builder Intern
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4665557005 | Scale AI | Infrastructure Software Engineer, Enterprise GenAI
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4481921005 | Scale AI | Mission Software Engineer, Public Sector
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4673771005 | Scale AI | Software Engineer, ARC Team
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4513943005 | Scale AI | Software Engineer, Enterprise AI
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4363623005 | Scale AI | Software Engineer, Frontier AI Infrastructure
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4594879005 | Scale AI | Software Engineer, Platform
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4618065005 | Scale AI | Software Engineer, Robotics & Autonomous Systems
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4689947005 | Scale AI | SWE Fellow - Human Frontier Collective (US)
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4611533005 | Scale AI | Technical Advisor Specialist (Part-Time Internship) 
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7253017 | Pinterest | Master's Fall Machine Learning Internship (ATG - Visual Search)
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7782544 | Pinterest | SDET II, tvScientific
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6816337 | Pinterest | Software Engineer I, Backend
+- [ ] https://job-boards.greenhouse.io/twilio/jobs/7605743 | Twilio | Software Engineer
+- [ ] https://job-boards.greenhouse.io/twilio/jobs/7188174 | Twilio | Software Engineer (L2)
+- [ ] https://job-boards.greenhouse.io/twilio/jobs/7767263 | Twilio | Software Engineer (L2) Segment Team
+- [ ] https://job-boards.greenhouse.io/twilio/jobs/7926883 | Twilio | Software Engineer (L3)
+- [ ] https://job-boards.greenhouse.io/twilio/jobs/7954715 | Twilio | Software Engineer (L3) Data Substrate
+- [ ] https://job-boards.greenhouse.io/twilio/jobs/7661919 | Twilio | Software Engineer - Video
+- [ ] https://jobs.dropbox.com/listing/6330390?gh_jid=6330390 | Dropbox | Infrastructure Software Engineer
+- [ ] https://job-boards.greenhouse.io/xai/jobs/5063490007 | xAI | AI Tutor - Software Engineering Specialist
+- [ ] https://job-boards.greenhouse.io/xai/jobs/5090265007 | xAI | AI Tutor - Swedish
+- [ ] https://job-boards.greenhouse.io/xai/jobs/5119111007 | xAI | Backend Engineer - API
+- [ ] https://job-boards.greenhouse.io/xai/jobs/4956028007 | xAI | Exceptional Software Engineer
+- [ ] https://job-boards.greenhouse.io/xai/jobs/5052038007 | xAI | Internal Tools (Front-End)
+- [ ] https://job-boards.greenhouse.io/xai/jobs/5152408007 | xAI | Software Engineer, Ads Product 
+- [ ] https://job-boards.greenhouse.io/xai/jobs/5124616007 | xAI | Software Engineer - Data
+- [ ] https://job-boards.greenhouse.io/xai/jobs/5063929007 | xAI | Software Engineer– X Core Product
 - [ ] https://seatgeek.com/jobs/7858968?gh_jid=7858968 | SeatGeek | Software Engineer - New Grad
+- [ ] https://job-boards.greenhouse.io/temporaltechnologies/jobs/5134414007 | Temporal | Software Engineer, AI Foundations
 - [ ] https://boards.greenhouse.io/chime/jobs/8457578002?gh_jid=8457578002 | Chime | Full-Stack Engineer, Multiplayer
 - [ ] https://boards.greenhouse.io/chime/jobs/8535338002?gh_jid=8535338002 | Chime | Mobile Software Engineer, Lending
 - [ ] https://boards.greenhouse.io/chime/jobs/8219793002?gh_jid=8219793002 | Chime | Software Engineer, Credit Risk Platform
 - [ ] https://boards.greenhouse.io/chime/jobs/8523547002?gh_jid=8523547002 | Chime | Software Engineer, Deposits & Insights
 - [ ] https://boards.greenhouse.io/chime/jobs/8183064002?gh_jid=8183064002 | Chime | Software Engineer, Financial Platform
+- [ ] https://boards.greenhouse.io/chime/jobs/8573625002?gh_jid=8573625002 | Chime | Software Engineer, Infrastructure
 - [ ] https://boards.greenhouse.io/chime/jobs/8433840002?gh_jid=8433840002 | Chime | Software Engineer, Instant Loans
 - [ ] https://boards.greenhouse.io/chime/jobs/8505460002?gh_jid=8505460002 | Chime | Software Engineer, Machine Learning Platform
 - [ ] https://boards.greenhouse.io/chime/jobs/8499450002?gh_jid=8499450002 | Chime | Software Engineer, MyPay
+- [ ] https://app.careerpuck.com/job-board/lyft/job/8582656002?gh_jid=8582656002 | Lyft | Software Engineer, Backend
 - [ ] https://sofi.com/careers/job/7713729003?gh_jid=7713729003 | SoFi | Software Engineer, Loans Originations
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7895468 | Reddit | Fullstack Software Engineer, Notifications Lifecycle
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/6469397 | Reddit | Software Engineer, Ads
-- [ ] https://job-boards.greenhouse.io/airtable/jobs/8442397002 | Airtable | Software Engineer, Compute (8+ YOE)
-- [ ] https://job-boards.greenhouse.io/airtable/jobs/8124953002 | Airtable | Software Engineer, Data
-- [ ] https://job-boards.greenhouse.io/airtable/jobs/8400373002 | Airtable | Software Engineer, Infrastructure (4-8 YOE)
-- [ ] https://job-boards.greenhouse.io/airtable/jobs/8400388002 | Airtable | Software Engineer, Infrastructure (8+ YOE)
-- [ ] https://job-boards.greenhouse.io/airtable/jobs/8397618002 | Airtable | Software Engineer, Product Backend (8+ YOE)
-- [ ] https://careers.onepeloton.com/en/all-jobs/?gh_jid=7982347 | Peloton | Peloton Expert (Part Time) - International Plaza and Bay Street
+- [ ] https://careers.toasttab.com/jobs?gh_jid=7926993 | Toast | International FinTech Counsel
 - [ ] https://nuro.ai/careersitem?gh_jid=7917839 | Nuro | Full Stack Software Engineer, Fleet Platform and Operations Tooling
 - [ ] https://nuro.ai/careersitem?gh_jid=7351061 | Nuro | Software Engineer, AI Platform - Intern
 - [ ] https://nuro.ai/careersitem?gh_jid=7351066 | Nuro | Software Engineer, AI Platform - New Grad
@@ -343,7 +348,12 @@
 - [ ] https://nuro.ai/careersitem?gh_jid=7235419 | Nuro | Software Engineer, Software Update Infrastructure
 - [ ] https://nuro.ai/careersitem?gh_jid=7481634 | Nuro | Software Engineer, Video Streaming
 - [ ] https://nuro.ai/careersitem?gh_jid=7673849 | Nuro | Vehicle Reliability, Intern
-- [ ] https://careers.toasttab.com/jobs?gh_jid=7926993 | Toast | International FinTech Counsel
+- [ ] https://job-boards.greenhouse.io/airtable/jobs/8442397002 | Airtable | Software Engineer, Compute (8+ YOE)
+- [ ] https://job-boards.greenhouse.io/airtable/jobs/8124953002 | Airtable | Software Engineer, Data
+- [ ] https://job-boards.greenhouse.io/airtable/jobs/8400373002 | Airtable | Software Engineer, Infrastructure (4-8 YOE)
+- [ ] https://job-boards.greenhouse.io/airtable/jobs/8400388002 | Airtable | Software Engineer, Infrastructure (8+ YOE)
+- [ ] https://job-boards.greenhouse.io/airtable/jobs/8397618002 | Airtable | Software Engineer, Product Backend (8+ YOE)
+- [ ] https://careers.onepeloton.com/en/all-jobs/?gh_jid=7982347 | Peloton | Peloton Expert (Part Time) - International Plaza and Bay Street
 - [ ] https://job-boards.greenhouse.io/verkada/jobs/5117760007 | Verkada | AI Software Engineering Intern - Fall 2026
 - [ ] https://job-boards.greenhouse.io/verkada/jobs/4915101007 | Verkada | Backend Engineer - Access Control
 - [ ] https://job-boards.greenhouse.io/verkada/jobs/4128767007 | Verkada | Backend Engineer - Alerts and Operations
@@ -356,6 +366,24 @@
 - [ ] https://job-boards.greenhouse.io/verkada/jobs/5029725007 | Verkada | Software Engineer, Platform Infrastructure
 - [ ] https://job-boards.greenhouse.io/verkada/jobs/5017082007 | Verkada | Technical Support Engineering Intern - Fall 2026
 - [ ] https://job-boards.greenhouse.io/verkada/jobs/4715534007 | Verkada | Technical Support Engineer - University Graduate 2026
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4699772005 | Glean | Product Management Intern, Admin Console (Summer 2026)
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4616929005 | Glean | Software Engineer, Agentic Runtime 
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4501783005 | Glean | Software Engineer, AI Infrastructure
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4605446005 | Glean | Software Engineer, AI & Security
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4696752005 | Glean | Software Engineer, APIs & Context Platform
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4581643005 | Glean | Software Engineer, Backend
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4675862005 | Glean | Software Engineer, Billing & Revenue Platform
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4704106005 | Glean | Software Engineer, Compute Infrastructure
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4638008005 | Glean | Software Engineer, Context Platform
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4637208005 | Glean | Software Engineer, Data Foundations
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4614706005 | Glean | Software Engineer, Developer Productivity 
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4006733005 | Glean | Software Engineer, Frontend
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4006734005 | Glean | Software Engineer, Fullstack
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4659229005 | Glean | Software Engineer, Insights
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4636739005 | Glean | Software Engineer, Platform
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4428090005 | Glean | Software Engineer, Product Backend
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4610281005 | Glean | Software Engineer, Storage
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4592324005 | Glean | Software Engineer, University Grad (2026)
 - [ ] https://www.akunacapital.com/careers/job/7863348/?gh_jid=7863348 | Akuna Capital | Junior Quantitative Researcher - Prediction Markets
 - [ ] https://www.akunacapital.com/careers/job/7496397/?gh_jid=7496397 | Akuna Capital | Software Engineer - C++
 - [ ] https://www.akunacapital.com/careers/job/7496408/?gh_jid=7496408 | Akuna Capital | Software Engineer - C++, Trading Strategies
@@ -391,12 +419,12 @@
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7259110 | Waymo | Software Engineer, Planner Reasoning
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7141380 | Waymo | Software Engineer, Planner Vehicle Dynamics
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7466534 | Waymo | Software Engineer, Quantitative Evaluations
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7587455 | Waymo | Software Engineer, Sensor/Imaging
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7430555 | Waymo | Software Engineer, Simulation Infrastructure
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=6562547 | Waymo | Software Engineer, Simulator Evaluation
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7543520 | Waymo | Software Engineer, Statistical Evaluation and Sampling
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7622998 | Waymo | Software Engineer, Strategic SWE Reserve
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7905678 | Waymo | Software Engineer, Trip Platform
+- [ ] https://careers.withwaymo.com/jobs?gh_jid=7429873 | Waymo | Software Engineer, Vehicle Platforms C++
 - [ ] https://jobs.ashbyhq.com/cursor/0ec39ed7-a5dc-4551-bb26-b7f4f9fb4a74 | Cursor (Anysphere) | Software Engineer, Growth 
 - [ ] https://jobs.ashbyhq.com/cursor/0863d184-1b2f-42cd-9fca-37fa90efe2eb | Cursor (Anysphere) | Software Engineer, Services Platform
 - [ ] https://jobs.ashbyhq.com/cursor/6d576a09-f30d-4e5e-bb58-5d7ef56cb511 | Cursor (Anysphere) | Software Engineer, Infrastructure
@@ -418,10 +446,6 @@
 - [ ] https://jobs.ashbyhq.com/cursor/47994d20-cc6a-436b-8da0-2eceabfd413e | Cursor (Anysphere) | Software Engineer, Billing
 - [ ] https://jobs.ashbyhq.com/cursor/2bbe9f02-83a5-4173-98be-9085d1cb5693 | Cursor (Anysphere) | Software Engineer, Agent Evaluation and Quality
 - [ ] https://jobs.ashbyhq.com/cursor/1d6dbbb2-a5af-41a6-a70a-ca97690d9313 | Cursor (Anysphere) | Software Engineer, User Operations
-- [ ] https://jobs.ashbyhq.com/elevenlabs/a3097257-a07a-4a7e-b9fe-b8555c1a0fa7 | ElevenLabs | Engineering - Internal AI Transformation
-- [ ] https://www.squarepoint-capital.com/open-opportunities?id=239376&gh_jid=239376 | Squarepoint Capital | Junior Quant Researcher
-- [ ] https://www.squarepoint-capital.com/open-opportunities?id=6069464&gh_jid=6069464 | Squarepoint Capital | Junior Quant Researcher - ML Alpha Research
-- [ ] https://www.squarepoint-capital.com/open-opportunities?id=1468761&gh_jid=1468761 | Squarepoint Capital | Software Developer - Data Services (KDB+/Q)
 - [ ] https://jobs.ashbyhq.com/sierra/d77487f9-bab3-44c6-be18-744e7125c8b3 | Sierra | Software Engineer, Platform
 - [ ] https://jobs.ashbyhq.com/sierra/e9f5fdb6-91ee-4c55-9230-41ec8865650e | Sierra | Software Engineer, Agent
 - [ ] https://jobs.ashbyhq.com/sierra/f391b10c-7a4a-42b4-9887-dd32b31d6e4e | Sierra | Software Engineer, Frontend
@@ -437,35 +461,7 @@
 - [ ] https://jobs.ashbyhq.com/sierra/9b70b937-9634-4bcd-a10e-2671145f3a07 | Sierra | Software Engineer, Agent Builder
 - [ ] https://jobs.ashbyhq.com/sierra/8cca0a0d-7359-410b-81ed-331a0bb4667f | Sierra | Software Engineer, Insights
 - [ ] https://jobs.ashbyhq.com/sierra/032c8ab4-1911-4477-bc39-9cfcd701d5a9 | Sierra | Software Engineer, Voice
-- [ ] https://job-boards.greenhouse.io/xai/jobs/5063490007 | xAI | AI Tutor - Software Engineering Specialist
-- [ ] https://job-boards.greenhouse.io/xai/jobs/5090265007 | xAI | AI Tutor - Swedish
-- [ ] https://job-boards.greenhouse.io/xai/jobs/5119111007 | xAI | Backend Engineer - API
-- [ ] https://job-boards.greenhouse.io/xai/jobs/4956028007 | xAI | Exceptional Software Engineer
-- [ ] https://job-boards.greenhouse.io/xai/jobs/5052038007 | xAI | Internal Tools (Front-End)
-- [ ] https://job-boards.greenhouse.io/xai/jobs/5152408007 | xAI | Software Engineer, Ads Product 
-- [ ] https://job-boards.greenhouse.io/xai/jobs/5124616007 | xAI | Software Engineer - Data
-- [ ] https://job-boards.greenhouse.io/xai/jobs/5063929007 | xAI | Software Engineer– X Core Product
-- [ ] https://jobs.ashbyhq.com/supabase/e569b7f7-fa8f-4139-86f6-4f52b456882d | Supabase | Software Engineer (Go) - Auth Product
-- [ ] https://jobs.ashbyhq.com/supabase/77439e1c-e4eb-483c-aa8e-7686913886e3 | Supabase | Software Engineer (Go) - Auth
-- [ ] https://jobs.ashbyhq.com/supabase/b7206c22-979f-444a-809b-e70d9ee23c7f | Supabase | Software Engineer: IaC Platform Experience
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4699772005 | Glean | Product Management Intern, Admin Console (Summer 2026)
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4616929005 | Glean | Software Engineer, Agentic Runtime 
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4501783005 | Glean | Software Engineer, AI Infrastructure
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4605446005 | Glean | Software Engineer, AI & Security
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4696752005 | Glean | Software Engineer, APIs & Context Platform
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4581643005 | Glean | Software Engineer, Backend
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4675862005 | Glean | Software Engineer, Billing & Revenue Platform
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4704106005 | Glean | Software Engineer, Compute Infrastructure
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4638008005 | Glean | Software Engineer, Context Platform
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4637208005 | Glean | Software Engineer, Data Foundations
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4614706005 | Glean | Software Engineer, Developer Productivity 
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4006733005 | Glean | Software Engineer, Frontend
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4006734005 | Glean | Software Engineer, Fullstack
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4659229005 | Glean | Software Engineer, Insights
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4636739005 | Glean | Software Engineer, Platform
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4428090005 | Glean | Software Engineer, Product Backend
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4610281005 | Glean | Software Engineer, Storage
-- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4592324005 | Glean | Software Engineer, University Grad (2026)
+- [ ] https://jobs.ashbyhq.com/elevenlabs/a3097257-a07a-4a7e-b9fe-b8555c1a0fa7 | ElevenLabs | Engineering - Internal AI Transformation
 - [ ] https://jobs.ashbyhq.com/replit/12737078-74c7-4e63-98a7-5e8da1e9deb1 | Replit | Software Engineering Intern (Summer 2026)
 - [ ] https://jobs.ashbyhq.com/replit/8fbbe594-596a-4a4f-844b-dc00111e717f | Replit | Software Engineer, Mobile
 - [ ] https://jobs.ashbyhq.com/replit/447a6e11-b06b-4cc5-9203-cd55883f2af4 | Replit | Software Engineer, Growth
@@ -483,23 +479,23 @@
 - [ ] https://jobs.ashbyhq.com/render/57a61c00-fa74-402d-89cd-1a1b936e14d5 | Render | Software Engineer, Billing (all levels)
 - [ ] https://jobs.ashbyhq.com/render/62ea10c7-ad69-444f-9632-dd4b50b8c805 | Render | Software Engineer, Growth (all levels)
 - [ ] https://jobs.ashbyhq.com/render/88cb74a4-bc28-40b1-b792-d3041e3e17d3 | Render | Software Engineer, Network Infrastructure
-- [ ] https://job-boards.greenhouse.io/twilio/jobs/7605743 | Twilio | Software Engineer
-- [ ] https://job-boards.greenhouse.io/twilio/jobs/7188174 | Twilio | Software Engineer (L2)
-- [ ] https://job-boards.greenhouse.io/twilio/jobs/7767263 | Twilio | Software Engineer (L2) Segment Team
-- [ ] https://job-boards.greenhouse.io/twilio/jobs/7926883 | Twilio | Software Engineer (L3)
-- [ ] https://job-boards.greenhouse.io/twilio/jobs/7954715 | Twilio | Software Engineer (L3) Data Substrate
-- [ ] https://job-boards.greenhouse.io/twilio/jobs/7661919 | Twilio | Software Engineer - Video
+- [ ] https://jobs.ashbyhq.com/supabase/e569b7f7-fa8f-4139-86f6-4f52b456882d | Supabase | Software Engineer (Go) - Auth Product
+- [ ] https://jobs.ashbyhq.com/supabase/77439e1c-e4eb-483c-aa8e-7686913886e3 | Supabase | Software Engineer (Go) - Auth
+- [ ] https://jobs.ashbyhq.com/supabase/b7206c22-979f-444a-809b-e70d9ee23c7f | Supabase | Software Engineer: IaC Platform Experience
 - [ ] https://job-boards.greenhouse.io/mixpanel/jobs/7850958 | Mixpanel | Software Engineer, AI Product Insights
 - [ ] https://jobs.lever.co/spotify/66492688-d5b0-4cf8-b1a4-4a715157edd9 | Spotify | Backend Engineer  - Data Infrastructure
 - [ ] https://jobs.lever.co/spotify/0c4bc66b-b75d-4499-b0ec-26acba862b4c | Spotify | Backend Engineer -  Personalization - Tunesday
 - [ ] https://jobs.lever.co/spotify/52fe2b49-3c85-4479-b1db-2c5ab74cbcfc | Spotify | Backend Engineer, Oasis, Music
 - [ ] https://jobs.lever.co/spotify/69524356-88f8-4a8e-b543-0198670e4ceb | Spotify | Full Stack Engineer - Podcast
 - [ ] https://jobs.lever.co/spotify/3707cd2f-202a-4aec-9de8-bf73a5a6e922 | Spotify | Software Engineer - Platform Infrastructure
+- [ ] https://www.squarepoint-capital.com/open-opportunities?id=239376&gh_jid=239376 | Squarepoint Capital | Junior Quant Researcher
+- [ ] https://www.squarepoint-capital.com/open-opportunities?id=6069464&gh_jid=6069464 | Squarepoint Capital | Junior Quant Researcher - ML Alpha Research
+- [ ] https://www.squarepoint-capital.com/open-opportunities?id=1468761&gh_jid=1468761 | Squarepoint Capital | Software Developer - Data Services (KDB+/Q)
 - [ ] https://jobs.lever.co/zoox/0686875b-6d06-49aa-b9f2-772f756d5235 | Zoox | Full Stack Software Engineer, Operational Applications and Platforms
+- [ ] https://jobs.lever.co/zoox/9abd3543-0d46-4fd8-882c-2fe93d75a51b | Zoox | Sensor Software Engineer - Core Sensors
 - [ ] https://jobs.lever.co/zoox/fae3a833-35de-4258-8618-d9878b69a9ab | Zoox | Software Engineer - 3D Mapping
 - [ ] https://jobs.lever.co/zoox/b7c1a78f-43b9-4142-bd71-97022a760750 | Zoox | Software Engineer - Behavior Capabilities
 - [ ] https://jobs.lever.co/zoox/51630efc-50f6-461c-8d56-ebed59a5d0d6 | Zoox | Software Engineer - C++  GPU Performance
-- [ ] https://jobs.lever.co/zoox/9abd3543-0d46-4fd8-882c-2fe93d75a51b | Zoox | Software Engineer - Core Sensors
 - [ ] https://jobs.lever.co/zoox/71a2b465-11fb-49fa-b5f8-29757bc6bba6 | Zoox | Software Engineer - Driving Behavior
 - [ ] https://jobs.lever.co/zoox/9176aa65-14e3-4f9d-98f9-e755e9777d67 | Zoox | Software Engineer - Learned Trajectory Machine Learning Engineer
 - [ ] https://jobs.lever.co/zoox/6efb15a8-ebe0-4ffc-bcc6-1d8f8375dbee | Zoox | Software Engineer - Mission Planning
@@ -509,14 +505,10 @@
 - [ ] https://jobs.lever.co/zoox/2783987b-5ab8-4447-a9e4-77745439e7ba | Zoox | Software Engineer - Ride and Fleet Services
 - [ ] https://jobs.lever.co/zoox/357b4f2a-1dd8-4a53-8d39-9c898cdc2d79 | Zoox | Software Engineer - Site Reliability Engineering
 - [ ] https://jobs.lever.co/zoox/d7e7968c-60cc-49da-be2d-240251ebbc7a | Zoox | Software Engineer - Tools & Automation
-- [ ] https://jobs.lever.co/zoox/04039062-1f3a-49ed-a282-6d4529c5a082 | Zoox | Software Engineer, Analytics Platform
 - [ ] https://jobs.lever.co/zoox/50dcb67f-cb53-43ec-8ac4-fbd9d435fb59 | Zoox | Software Engineer, C++ Vehicle Experience
 - [ ] https://jobs.lever.co/zoox/bc11276c-8db7-426e-9d00-d41c2097723a | Zoox | Software Engineer, ML Performance Optimization
 - [ ] https://jobs.lever.co/zoox/c8ca7105-5044-49ee-88d3-cf6b7145a2ec | Zoox | Software Engineer, Operational Tools
 - [ ] https://jobs.lever.co/zoox/62adaf80-43a9-4210-a908-7b714bfea84b | Zoox | Software Engineer, Test Set Curation
-- [ ] https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/India---Bangalore/Software-Engineering--MTS--SRE---Devops-_JR344521 | Salesforce | Software Engineering, MTS (SRE & Devops)
-- [ ] https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Texas---Dallas/Software-Engineering-MTS_JR342765 | Salesforce | Software Engineering MTS
-- [ ] https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Washington---Seattle/Software-Engineer-I--Service-Network---Slack_JR342034-1 | Salesforce | Software Engineer I, Service Network - Slack
 - [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-OR-Hillsboro/Systems-Software-Engineer---New-College-Grad-2026_JR2017083 | NVIDIA | Systems Software Engineer - New College Grad 2026
 - [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Engineer--TensorRT-Specialized-Platforms---New-College-Grad-2025_JR2002870 | NVIDIA | Software Engineer, TensorRT Specialized Platforms - New College Grad 2025
 - [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Engineer--Hardware-Tools-and-Methodology---New-College-Grad-2026_JR2018659 | NVIDIA | Software Engineer, Hardware Tools and Methodology - New College Grad 2026
@@ -528,15 +520,17 @@
 - [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/DGX-Cloud-Kubernetes-Runtime-Intern---Fall-2026_JR2009619 | NVIDIA | DGX Cloud Kubernetes Runtime Intern - Fall 2026
 - [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Performance-at-Scale-Intern---Fall-2026_JR2018701 | NVIDIA | Software Performance at Scale Intern - Fall 2026
 - [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Cloud-Software-Intern--GeForce-NOW---Fall-2026_JR2019414 | NVIDIA | Cloud Software Intern, GeForce NOW - Fall 2026
-- [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/AI-and-Systems-Software-Intern--At-Scale-AI---Fall-2026_JR2018652 | NVIDIA | AI and Systems Software Intern, At Scale AI - Fall 2026
 - [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-TX-Austin/Agentic-AI-Solution-Engineering-Intern---Fall-2026_JR2019390 | NVIDIA | Agentic AI Solution Engineering Intern - Fall 2026
 - [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Data-Analysis-Intern--Applied-System-Engineering---Fall-2026_JR2018687-1 | NVIDIA | Data Analysis Intern, Applied System Engineering - Fall 2026
 - [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-MA-Westford/Software-Engineer---DPU-Platform_JR2015949-1 | NVIDIA | Software Engineer - DPU Platform
 - [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/GPU-Development-Tools-System-Software-Engineer_JR2015871-1 | NVIDIA | GPU Development Tools System Software Engineer
 - [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Remote/Software-Engineer--CUDA-Q_JR2011649 | NVIDIA | Software Engineer, CUDA-Q
+- [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/Vietnam-Ho-Chi-Minh-City/Software-Development-Engineer-in-Test---SDET_JR2010699 | NVIDIA | Software Development Engineer in Test - SDET
+- [ ] https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/System-Software-Engineer--GeForce-Software_JR2015749-1 | NVIDIA | System Software Engineer, GeForce Software
 - [ ] https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/Seattle/XMLNAME-2026-University-Graduate---Machine-Learning-Engineer_R160133 | Adobe | 2026 University Graduate - Machine Learning Engineer
 - [ ] https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/Customer-Facing-Software-Engineer_R163695 | Adobe | Customer Facing Software Engineer
 - [ ] https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/Seattle/Software-Development-Engineer_R164609 | Adobe | Backend Software Engineer
+- [ ] https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/Bucharest/Software-Engineer---Frontend_R168855 | Adobe | Software Engineer - Frontend
 - [ ] https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/San-Jose/Junior-Software-Development-Engineer_R168092 | Adobe | Junior Software Development Engineer
 - [ ] https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/Noida/Computer-Scientist-II--Fullstack-_R167085 | Adobe | Computer Scientist-II (Fullstack)
 ## Procesadas

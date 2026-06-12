@@ -220,7 +220,13 @@ function parsePosted(raw) {
 function loadAiCache() { try { return JSON.parse(readFileSync(AI_CACHE_PATH, 'utf-8')); } catch { return {}; } }
 
 function geminiScoreBatch(batch, resume) {
-  const prompt = [
+  const cli = config.ai_cli || 'gemini';
+  // Antigravity (agy) is agentic — without this guard it explores the filesystem
+  // before answering. The guard makes it a clean ~3s completion. No-op for gemini.
+  const guard = cli === 'agy'
+    ? `IMPORTANT: Do NOT use any tools. Do NOT read any files. Use ONLY the text in this prompt.\n\n`
+    : '';
+  const prompt = guard + [
     `You are an expert Engineering Manager hiring for Entry-Level Software Engineers, New Grads, and SWE Interns.`,
     `Score each job below against the candidate resume as an integer 0-100:`,
     `- Skills overlap (general-purpose languages, DSA, distributed systems, cloud/Docker): 40`,
@@ -236,9 +242,12 @@ function geminiScoreBatch(batch, resume) {
     ``, `Return ONLY a JSON array, one element per job index, no prose:`,
     `[{"i":0,"score":NN,"reason":"<max 12 words>"}, ...]`,
   ].join('\n');
-  const r = spawnSync('gemini', ['-p', prompt], { encoding: 'utf-8', timeout: 240000 });
+  // Model flag differs per CLI: agy uses --model, gemini uses -m.
+  const modelFlag = cli === 'agy' ? '--model' : '-m';
+  const args = config.ai_model ? [modelFlag, config.ai_model, '-p', prompt] : ['-p', prompt];
+  const r = spawnSync(cli, args, { encoding: 'utf-8', timeout: 240000 });
   const m = `${r.stdout || ''}`.match(/\[[\s\S]*\]/);
-  if (!m) throw new Error(`gemini gave no JSON (exit ${r.status})`);
+  if (!m) throw new Error(`${cli} gave no JSON (exit ${r.status})`);
   return JSON.parse(m[0]);
 }
 
@@ -247,8 +256,10 @@ function aiScore(entries, threshold) {
   const todo = entries.filter((e) => e.score >= threshold && !cache[e.url]);
   console.log(`\n🤖  Gemini AI scoring: ${todo.length} new openings${threshold > 0 ? ` ≥${threshold}` : ''} (cached: ${Object.keys(cache).length})`);
   if (todo.length) {
+    const cli = config.ai_cli || 'gemini';
     const resume = readFileSync('cv.md', 'utf-8').slice(0, 6000);
     const BATCH = 5;
+    let ok = 0, failedStart = 0;
     for (let i = 0; i < todo.length; i += BATCH) {
       const batch = todo.slice(i, i + BATCH);
       process.stdout.write(`   batch ${i / BATCH + 1}/${Math.ceil(todo.length / BATCH)}… `);
@@ -257,9 +268,20 @@ function aiScore(entries, threshold) {
           const e = batch[row.i];
           if (e && Number.isFinite(row.score)) cache[e.url] = { score: Math.max(0, Math.min(100, Math.round(row.score))), reason: String(row.reason || '').slice(0, 80), date: new Date().toISOString().slice(0, 10) };
         }
-        console.log('ok');
-      } catch (err) { console.log(`failed (${err.message.split('\n')[0]}) — heuristic still applies`); }
+        console.log('ok'); ok++;
+      } catch (err) {
+        console.log(`failed (${err.message.split('\n')[0]})`);
+        // Likely an auth/setup problem (not transient) if the first calls all fail.
+        if (ok === 0 && ++failedStart >= 2) {
+          console.log(`\n⚠️  AI scoring isn't working — is the '${cli}' CLI signed in?`);
+          console.log(`   Run \`${cli}\` once in a terminal to log in, then re-run. (Heuristic scores still applied.)`);
+          break;
+        }
+      }
       writeFileSync(AI_CACHE_PATH, JSON.stringify(cache, null, 1), 'utf-8');
+    }
+    if (ok === 0 && failedStart < 2 && todo.length) {
+      console.log(`\n⚠️  No AI scores produced — check that '${cli}' is installed and signed in. Heuristic scores still applied.`);
     }
   }
   for (const e of entries) { const c = cache[e.url]; if (c) { e.ai = c.score; e.aiReason = c.reason; } }
