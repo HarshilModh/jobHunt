@@ -1,0 +1,892 @@
+# jobhunt config — single source of truth.
+# Sections: profile, referral_networks, title_filter, location_filter, linkedin, companies.
+# Companies: careers_url drives the provider (greenhouse/ashby/lever/workable/workday).
+
+profile:
+  name: Harshil Modh
+  email: hmodh@stevens.edu
+  phone: +1 (551) 267-0683
+  location: Hoboken, NJ, USA
+  timezone: America/New_York
+  linkedin: https://www.linkedin.com/in/harshil-modh-53a62a1a6
+  github: https://github.com/harshilmodh
+  portfolio: https://www.harshilmodh.app
+  education:
+    current: MS Computer Science, Stevens Institute of Technology (2024 – May 2026)
+    gpa: 3.86 / 4.00
+    prior: BE Computer Science, LDRP Institute of Technology and Research, India (2019 – 2023)
+  referral_networks: &ref_0
+    schools:
+      - Stevens Institute of Technology
+      - LDRP Institute of Technology and Research
+    companies:
+      - Grownited
+  work_authorization:
+    status: F-1 student, OPT eligible May 2026
+    sponsorship_required: true
+    notes: |
+      Need employer to support OPT → STEM OPT extension → H-1B sponsorship.
+      Hard filter: roles that explicitly say "no sponsorship" should be deprioritized,
+      not auto-rejected — startups sometimes update policy for strong candidates.
+  target_level: New Grad / Entry-level Software Engineer (SWE I / SDE I / Associate)
+  graduation_date: May 2026
+  available_start: June 2026
+  target_roles:
+    primary:
+      - Backend Engineer (New Grad)
+      - Full-Stack Engineer (New Grad)
+      - Software Engineer I
+      - Associate Software Engineer
+    secondary:
+      - AI/ML Engineer (entry-level, applied/product side)
+      - Platform / Infra Engineer (new grad)
+      - Developer Productivity / DevTools Engineer
+  comp_expectations:
+    base_min: 110000
+    base_target: 140000
+    base_stretch: 170000
+    total_comp_target: 180000
+    notes: |
+      NYC/Hoboken-based, willing to consider Bay Area with relocation support.
+      Will flex base for strong brand (FAANG-tier, Plaid, Stripe, Datadog) or
+      exceptional learning trajectory. Below 100k base is not viable in NYC metro.
+  must_avoid:
+    - Roles requiring 3+ years of professional experience
+    - Senior / Staff / Lead / Principal titles
+    - Sales engineering or pre-sales roles
+    - Roles where the JD never mentions building software (pure consulting/PM)
+    - Heavy on-call rotations at pre-Series-B startups
+    - Crypto/Web3-only roles (open to fintech that touches crypto, not crypto-native)
+    - Roles requiring active US security clearance (not eligible)
+  soft_avoid:
+    - Pure frontend roles (I can do frontend but my strength is backend/full-stack)
+    - QA / SDET as primary function
+    - Pure data engineering (interested but not primary target)
+  preferences:
+    remote_ok: true
+    hybrid_ok: true
+    onsite_ok: true
+    relocation_ok: true
+    preferred_metros:
+      - New York / NYC metro
+      - San Francisco / Bay Area
+      - Seattle
+      - Boston
+    acceptable_metros:
+      - Austin
+      - Chicago
+      - Los Angeles
+    scoring_note: |
+      Per stored preference: do NOT deduct points for location, hybrid, or in-person
+      requirements when scoring resume-JD fit. Treat these as advisory only — useful
+      for cover letter notes, not for the score.
+  target_companies:
+    tier_1_dream:
+      - Google
+      - Meta
+      - Apple
+      - Microsoft
+      - Netflix
+      - Nvidia
+      - Stripe
+      - Plaid
+      - Block
+      - Datadog
+      - MongoDB
+      - Snowflake
+      - Databricks
+      - Cloudflare
+      - Anthropic
+      - OpenAI
+      - Vercel
+      - Figma
+      - Notion
+      - Linear
+      - Airbnb
+      - Uber
+      - Pinterest
+    tier_2_strong:
+      - Amazon
+      - AWS
+      - Salesforce
+      - Adobe
+      - Oracle Cloud
+      - ServiceNow
+      - Workday
+      - Goldman Sachs
+      - JPMorgan
+      - Morgan Stanley
+      - Citadel
+      - Two Sigma
+      - Jane Street
+      - Bloomberg
+      - Robinhood
+      - Coinbase
+      - SoFi
+      - TikTok
+      - Spotify
+      - Reddit
+      - Discord
+      - Snap
+      - DoorDash
+      - Instacart
+      - Lyft
+      - GitHub
+      - GitLab
+      - HashiCorp
+      - Confluent
+      - Elastic
+      - Atlassian
+      - Scale AI
+      - Hugging Face
+      - Perplexity
+      - Cursor (Anysphere)
+      - Sierra
+      - ElevenLabs
+      - Replit
+      - Glean
+      - Waymo
+      - Zoox
+      - Hudson River Trading
+      - IMC Trading
+      - Akuna Capital
+      - Jump Trading
+      - Squarepoint Capital
+      - DRW
+      - SeatGeek
+      - Justworks
+      - Betterment
+      - Attentive
+      - Alloy
+      - Squarespace
+      - Cockroach Labs
+      - Asana
+      - Monday.com
+      - Miro
+      - Box
+      - Dropbox
+      - Twilio
+      - Okta
+    tier_3_apply_if_role_fits:
+      - IBM
+      - Cisco
+      - Intel
+      - VMware
+      - Dell
+      - HPE
+      - SAP
+      - Capital One
+      - American Express
+      - Visa
+      - Mastercard
+      - Fidelity
+      - BlackRock
+      - Wells Fargo
+      - Deloitte (engineering)
+      - Accenture (engineering)
+      - Affirm
+      - Brex
+      - Ramp
+      - EarnIn
+      - Chime
+      - Mercury
+      - Wise
+      - eBay
+      - Etsy
+      - Shopify
+      - Wayfair
+      - Walmart Labs
+      - Target
+      - Booking.com
+      - Expedia
+      - Zoom
+      - Slack
+      - Asana
+      - Smartsheet
+      - DocuSign
+      - HubSpot
+      - Zendesk
+      - Intuit
+      - Oscar Health
+      - Cedar
+      - Hims & Hers
+      - Hulu
+      - Disney Streaming
+      - Roku
+  core_stack:
+    expert:
+      - JavaScript / TypeScript
+      - Node.js / Express
+      - React / Next.js
+      - MongoDB
+      - REST API design
+      - JWT / RBAC / auth flows
+      - Java (HackerRank 4★, college coursework)
+    strong:
+      - PostgreSQL / Prisma
+      - Redis (caching, BullMQ)
+      - Socket.IO / real-time systems
+      - Docker
+      - AWS (EC2, S3)
+      - GitHub Actions / CI/CD
+      - Firebase Auth / Firestore
+    working:
+      - Python (Flask, scripting)
+      - pgvector / vector search
+      - GraphQL
+      - LLM APIs (OpenAI, Gemini, Claude)
+      - Inngest / durable jobs
+      - E2B sandboxes
+      - Stripe
+    exploring:
+      - Go
+      - Kubernetes
+  strengths:
+    - Multi-tenant systems and RBAC — done end-to-end at CareConnect and Grownited
+    - Real-time backends — Socket.IO chat, panic alerts, live polling
+    - >-
+      LLM/agent application engineering — PromptStudio (agentic + sandboxed exec), CodePulse (RAG chat, MCP,
+      multi-agent, pgvector)
+    - Caching and DB optimization — measured 40% read reduction, 50% latency cut at Grownited
+    - Production deploy chops — Dockerized AWS EC2, CI/CD, monitoring
+    - Teaching / communication — TA for 100+ students, published npm package used by other TAs
+  gaps:
+    - No professional experience at scale (only 6-month internship)
+    - Limited Java/JVM-stack production experience (HackerRank only)
+    - No Kubernetes in production yet (interested, learning)
+    - No ML training / data science background — applied LLM only
+    - No formal system design at FAANG-scale interview level yet (in prep)
+  top_of_mind:
+    - CodePulse shipped and replaced Interview Master on the resume (June 2026).
+    - Active SDE interview prep — JS/Node deep dives, NeetCode 150 in C++, Love Babbar DSA Supreme.
+    - The old n8n LinkedIn pipeline is retired — career-ops (jobs.mjs: boards + LinkedIn, Gemini scoring) is the single pipeline now.
+  evaluation_rules:
+    resume_format:
+      - DO NOT recommend adding a summary section
+      - DO NOT flag inline `• Skills:` tags under entries — these are intentional
+      - DO NOT enforce strict X-Y-Z bullet format
+    scoring:
+      - Project depth > years of experience for new-grad evals
+      - System design fundamentals > advanced architecture knowledge
+      - Stack fluency in 1-2 areas > breadth across many
+      - Quantified impact in bullets is already present — do not over-flag
+    output_voice:
+      - Be honest about gaps, not encouraging-by-default
+      - Surface specific JD requirements I don't meet, not generic advice
+      - >-
+        When generating STAR stories, ground them in CareConnect / PromptStudio / CodePulse / Grownited specifics — not
+        hypotheticals
+referral_networks: *ref_0
+title_filter:
+  positive:
+    - Software Engineer
+    - Software Developer
+    - SWE
+    - SDE
+    - Backend Engineer
+    - Back-End Engineer
+    - Full Stack
+    - Full-Stack
+    - Fullstack
+    - New Grad
+    - University Grad
+    - Early Career
+    - Entry Level
+    - Entry-Level
+    - Junior
+    - Intern
+  negative:
+    - Senior
+    - Sr.
+    - 'Sr '
+    - Snr
+    - Staff
+    - Lead
+    - Principal
+    - Architect
+    - Distinguished
+    - Director
+    - Manager
+    - VP
+    - Head of
+    - Engineer 2
+    - Engineer 3
+    - Engineer 4
+    - Engineer II
+    - Engineer IV
+    - L4
+    - L5
+    - L6
+    - L7
+    - SMTS
+    - LMTS
+    - PMTS
+    - Research Scientist
+    - PhD
+    - Solutions
+    - Forward Deployed
+    - Sales
+    - Account Executive
+    - GTM
+    - Marketing
+    - Designer
+    - Product Manager
+    - Program Manager
+    - Consultant
+    - Recruiter
+    - Strategy
+    - Analyst
+    - iOS
+    - Android
+    - Embedded
+    - Firmware
+    - Clearance
+location_filter:
+  always_allow:
+    - United States
+    - USA
+    - U.S.
+    - New York
+    - NYC
+    - New York metropolitan area
+    - US-Remote
+    - US Remote
+    - Remote - US
+    - Remote, US
+  block:
+    - India
+    - Gurugram
+    - Bengaluru
+    - Bangalore
+    - Hyderabad
+    - Pune
+    - Mumbai
+    - Delhi
+    - Pakistan
+    - Ireland
+    - Dublin
+    - Cork
+    - United Kingdom
+    - London
+    - Germany
+    - Berlin
+    - Munich
+    - France
+    - Paris
+    - Netherlands
+    - Amsterdam
+    - Denmark
+    - Aarhus
+    - Copenhagen
+    - Sweden
+    - Stockholm
+    - Poland
+    - Warsaw
+    - Spain
+    - Madrid
+    - Barcelona
+    - Portugal
+    - Lisbon
+    - Switzerland
+    - Zurich
+    - Belgium
+    - Romania
+    - Czech
+    - Estonia
+    - Slovenia
+    - Ljubljana
+    - Austria
+    - Vienna
+    - Italy
+    - Milan
+    - Finland
+    - Helsinki
+    - Norway
+    - Oslo
+    - Lithuania
+    - Vilnius
+    - Ukraine
+    - Serbia
+    - Bulgaria
+    - Hungary
+    - Budapest
+    - Greece
+    - Athens
+    - Turkey
+    - Istanbul
+    - Canada
+    - Toronto
+    - Vancouver
+    - Montreal
+    - Calgary
+    - Ottawa
+    - British Columbia
+    - Ontario
+    - Quebec
+    - Waterloo
+    - Mexico
+    - Costa Rica
+    - Brazil
+    - Sao Paulo
+    - Argentina
+    - Colombia
+    - Singapore
+    - Japan
+    - Tokyo
+    - China
+    - Shanghai
+    - Beijing
+    - Hong Kong
+    - Korea
+    - Seoul
+    - Taiwan
+    - Taipei
+    - Australia
+    - Sydney
+    - Melbourne
+    - New Zealand
+    - Israel
+    - Tel Aviv
+    - Dubai
+    - UAE
+    - Nigeria
+    - South Africa
+linkedin:
+  max_new_per_run: 150      # how many NEW jobs get JD-fetched + scored per run (~10 min)
+  pages: 6                  # search pages per query (~10 each) — more = wider net (n8n rawness)
+  queries:
+    # Your original n8n filter-sheet rows (verbatim)
+    - keywords: Software Engineer
+      location: United States
+    - keywords: Backend Engineer
+      location: United States
+    - keywords: Full Stack Engineer
+      location: United States
+    - keywords: Associate Software Engineer
+      location: United States
+    - keywords: New Grad Software Engineer
+      location: United States
+    - keywords: Software Engineer
+      location: New York City
+    - keywords: Backend Engineer
+      location: New York City
+    - keywords: Full Stack Engineer
+      location: New York City
+    # Extra variants for n8n-level breadth (catch alt phrasings: Goldman/MLB-style titles)
+    - keywords: Software Engineering
+      location: United States
+    - keywords: Software Engineering
+      location: New York City
+    - keywords: Software Developer
+      location: United States
+    - keywords: Software Engineer New Grad 2026
+      location: United States
+    - keywords: Software Engineer I
+      location: United States
+companies:
+  - name: Stripe
+    careers_url: https://job-boards.greenhouse.io/stripe
+    tier: 1
+    notes: New grad SWE roles open ~Jan-Mar annually; worth checking even off-cycle
+  - name: Plaid
+    careers_url: https://jobs.lever.co/plaid
+    tier: 1
+    notes: Strong Node/backend team, NYC office, sponsors OPT
+  - name: Datadog
+    careers_url: https://job-boards.greenhouse.io/datadog
+    tier: 1
+    notes: NYC HQ, large new-grad cohort annually, sponsors H-1B
+  - name: MongoDB
+    careers_url: https://job-boards.greenhouse.io/mongodb
+    tier: 1
+    notes: NYC HQ, sponsors OPT+H-1B, strong backend SWE pipeline
+  - name: Anthropic
+    careers_url: https://job-boards.greenhouse.io/anthropic
+    tier: 1
+    notes: AI-adjacent roles; your LLM project work is a direct signal
+  - name: OpenAI
+    careers_url: https://jobs.ashbyhq.com/openai
+    tier: 1
+    notes: Competitive; PromptStudio + CodePulse are relevant
+  - name: Figma
+    careers_url: https://job-boards.greenhouse.io/figma
+    tier: 1
+    notes: Product-heavy SWE roles, SF/NY, strong new-grad program
+  - name: Notion
+    careers_url: https://jobs.ashbyhq.com/notion
+    tier: 1
+    notes: Full-stack focused; your MERN background fits
+  - name: Vercel
+    careers_url: https://jobs.ashbyhq.com/vercel
+    tier: 1
+    notes: Next.js team — PromptStudio + CodePulse are native fits
+  - name: Linear
+    careers_url: https://jobs.ashbyhq.com/linear
+    tier: 1
+    notes: Small, senior-heavy — watch for rare early-career openings
+  - name: Cloudflare
+    careers_url: https://job-boards.greenhouse.io/cloudflare
+    tier: 1
+    notes: Austin/SF/remote; systems-leaning backend roles
+  - name: Snowflake
+    careers_url: https://jobs.ashbyhq.com/snowflake
+    tier: 1
+    notes: Migrated from Greenhouse to Ashby; new-grad SWE cohorts
+  - name: Databricks
+    careers_url: https://job-boards.greenhouse.io/databricks
+    tier: 1
+    notes: New grad program (2026 start); backend/platform roles
+  - name: Airbnb
+    careers_url: https://job-boards.greenhouse.io/airbnb
+    tier: 1
+    notes: New Grad SWE postings appear on Greenhouse board
+  - name: Uber
+    careers_url: https://job-boards.greenhouse.io/uberfreight
+    tier: 1
+    notes: Freight org only — main Uber board is custom (careers.uber.com), check manually
+  - name: DoorDash
+    careers_url: https://job-boards.greenhouse.io/doordashusa
+    tier: 2
+    notes: US board (doordash board inactive)
+  - name: Discord
+    careers_url: https://job-boards.greenhouse.io/discord
+    tier: 2
+    notes: Real-time systems — Socket.IO experience is a direct hook
+  - name: Reddit
+    careers_url: https://job-boards.greenhouse.io/reddit
+    tier: 2
+    notes: NYC/remote backend roles
+  - name: GitHub
+    enabled: false
+    careers_url: https://www.github.careers
+    tier: 2
+    notes: Custom ATS (github.careers, under Microsoft) — not API-scannable, check manually
+  - name: Confluent
+    careers_url: https://jobs.ashbyhq.com/confluent
+    tier: 2
+    notes: Migrated to Ashby; Kafka/streaming backend roles
+  - name: Elastic
+    careers_url: https://job-boards.greenhouse.io/elastic
+    tier: 2
+    notes: Distributed remote-first; search/backend roles
+  - name: Scale AI
+    careers_url: https://job-boards.greenhouse.io/scaleai
+    tier: 2
+    notes: Applied AI + full-stack roles
+  - name: HashiCorp
+    enabled: false
+    careers_url: https://www.hashicorp.com/careers
+    tier: 2
+    notes: Acquired by IBM — jobs moved to IBM careers (custom ATS), check manually
+  - name: Robinhood
+    careers_url: https://job-boards.greenhouse.io/robinhood
+    tier: 2
+    notes: Fintech backend; new-grad cohort most years
+  - name: Ramp
+    careers_url: https://jobs.ashbyhq.com/ramp
+    tier: 2
+    notes: NYC fintech, fast-growing, Node/TypeScript heavy
+  - name: Brex
+    careers_url: https://job-boards.greenhouse.io/brex
+    tier: 2
+    notes: Migrated from Ashby to Greenhouse
+  - name: Block
+    careers_url: https://job-boards.greenhouse.io/block
+    tier: 2
+    notes: Square/Cash App; backend + payments
+  - name: Instacart
+    careers_url: https://job-boards.greenhouse.io/instacart
+    tier: 2
+    notes: Full-stack product engineering
+  - name: Spotify
+    careers_url: https://jobs.lever.co/spotify
+    tier: 2
+    notes: NYC office; backend/platform roles
+  - name: Hugging Face
+    careers_url: https://apply.workable.com/huggingface
+    tier: 2
+    notes: Workable board; US-remote ML/infra engineer roles
+  - name: TikTok
+    enabled: false
+    careers_url: https://careers.tiktok.com
+    tier: 2
+    notes: Custom board — not API-scannable, check manually; large new-grad program NYC+LA
+  - name: Justworks
+    careers_url: https://job-boards.greenhouse.io/justworks
+    tier: 2
+    notes: NYC HQ; HR/fintech platform; backend-heavy
+  - name: Betterment
+    careers_url: https://job-boards.greenhouse.io/betterment
+    tier: 2
+    notes: NYC HQ fintech; known OPT-friendly
+  - name: Attentive
+    careers_url: https://job-boards.greenhouse.io/attentive
+    tier: 2
+    notes: NYC HQ; messaging/AI platform; Node+backend roles
+  - name: Oscar Health
+    careers_url: https://job-boards.greenhouse.io/oscar
+    tier: 2
+    notes: NYC HQ healthtech; large eng org
+  - name: Squarespace
+    careers_url: https://job-boards.greenhouse.io/squarespace
+    tier: 2
+    notes: NYC HQ; product/full-stack roles
+  - name: Cockroach Labs
+    careers_url: https://job-boards.greenhouse.io/cockroachlabs
+    tier: 2
+    notes: NYC HQ; distributed DB — strong backend signal
+  - name: Mercury
+    careers_url: https://job-boards.greenhouse.io/mercury
+    tier: 2
+    notes: Remote-US fintech; TypeScript-friendly
+  - name: Hudson River Trading
+    careers_url: https://job-boards.greenhouse.io/wehrtyou
+    tier: 2
+    notes: NYC HQ; new-grad SWE + intern roles; high comp
+  - name: DRW
+    careers_url: https://job-boards.greenhouse.io/drweng
+    tier: 2
+    notes: Chicago + NYC trading firm; new-grad + intern SWE
+  - name: Duolingo
+    careers_url: https://job-boards.greenhouse.io/duolingo
+    tier: 2
+    notes: Pittsburgh + NYC; famous new-grad/intern program
+  - name: Affirm
+    careers_url: https://job-boards.greenhouse.io/affirm
+    tier: 2
+    notes: Remote-first US fintech
+  - name: Coinbase
+    careers_url: https://job-boards.greenhouse.io/coinbase
+    tier: 2
+    notes: Remote-US; backend/platform roles
+  - name: Lyft
+    careers_url: https://job-boards.greenhouse.io/lyft
+    tier: 2
+    notes: NYC + SF; new-grad cohorts
+  - name: Pinterest
+    careers_url: https://job-boards.greenhouse.io/pinterest
+    tier: 2
+    notes: NYC + SF; new-grad program (Pinterns)
+  - name: Twilio
+    careers_url: https://job-boards.greenhouse.io/twilio
+    tier: 3
+    notes: Remote-US; comms APIs — Node-native
+  - name: Dropbox
+    careers_url: https://job-boards.greenhouse.io/dropbox
+    tier: 3
+    notes: Virtual-first US
+  - name: Asana
+    careers_url: https://job-boards.greenhouse.io/asana
+    tier: 3
+    notes: NYC + SF; product full-stack
+  - name: Samsara
+    careers_url: https://job-boards.greenhouse.io/samsara
+    tier: 3
+    notes: Large board; IoT/platform; remote-US friendly
+  - name: Gusto
+    careers_url: https://job-boards.greenhouse.io/gusto
+    tier: 3
+    notes: NYC + SF + Denver; payroll fintech
+  - name: xAI
+    careers_url: https://job-boards.greenhouse.io/xai
+    tier: 3
+    notes: AI infra + product roles; your LLM project work is relevant
+  - name: Temporal
+    careers_url: https://job-boards.greenhouse.io/temporaltechnologies
+    tier: 3
+    notes: Durable execution platform — direct match for your Inngest/BullMQ work
+  - name: SeatGeek
+    careers_url: https://job-boards.greenhouse.io/seatgeek
+    tier: 2
+    notes: NYC HQ; had a live New Grad SWE posting on LinkedIn
+  - name: SoFi
+    careers_url: https://job-boards.greenhouse.io/sofi
+    tier: 2
+    notes: Fintech; NYC + remote
+  - name: Chime
+    careers_url: https://job-boards.greenhouse.io/chime
+    tier: 2
+    notes: SF fintech; backend roles
+  - name: Klaviyo
+    careers_url: https://job-boards.greenhouse.io/klaviyo
+    tier: 2
+    notes: Boston; known new-grad program
+  - name: Carta
+    careers_url: https://job-boards.greenhouse.io/carta
+    tier: 3
+    notes: Equity fintech; NYC + SF
+  - name: Flexport
+    careers_url: https://job-boards.greenhouse.io/flexport
+    tier: 3
+    notes: Logistics platform; full-stack roles
+  - name: Faire
+    careers_url: https://job-boards.greenhouse.io/faire
+    tier: 3
+    notes: Marketplace; SF + remote
+  - name: Toast
+    careers_url: https://job-boards.greenhouse.io/toast
+    tier: 3
+    notes: Boston; large eng org, big board
+  - name: Verkada
+    careers_url: https://job-boards.greenhouse.io/verkada
+    tier: 3
+    notes: San Mateo; hires new grads aggressively
+  - name: Airtable
+    careers_url: https://job-boards.greenhouse.io/airtable
+    tier: 2
+    notes: SF + NYC; product full-stack
+  - name: Nuro
+    careers_url: https://job-boards.greenhouse.io/nuro
+    tier: 3
+    notes: Autonomy; infra/backend roles
+  - name: Peloton
+    careers_url: https://job-boards.greenhouse.io/peloton
+    tier: 3
+    notes: NYC HQ
+  - name: Alloy
+    careers_url: https://job-boards.greenhouse.io/alloy
+    tier: 2
+    notes: NYC fintech identity platform; Node-heavy
+  - name: Yext
+    careers_url: https://job-boards.greenhouse.io/yext
+    tier: 3
+    notes: NYC HQ; search/AI platform
+  - name: Glean
+    careers_url: https://job-boards.greenhouse.io/gleanwork
+    tier: 2
+    notes: Enterprise AI search — your RAG/pgvector work is a direct signal
+  - name: Waymo
+    careers_url: https://job-boards.greenhouse.io/waymo
+    tier: 2
+    notes: Alphabet autonomy; SWE infra roles
+  - name: Zoox
+    careers_url: https://jobs.lever.co/zoox
+    tier: 3
+    notes: Amazon autonomy; SWE + intern roles
+  - name: IMC Trading
+    careers_url: https://job-boards.greenhouse.io/imc
+    tier: 2
+    notes: Chicago + NYC; structured grad program
+  - name: Akuna Capital
+    careers_url: https://job-boards.greenhouse.io/akunacapital
+    tier: 2
+    notes: Chicago; known for junior dev roles + internships
+  - name: Jump Trading
+    careers_url: https://job-boards.greenhouse.io/jumptrading
+    tier: 2
+    notes: Chicago + NYC
+  - name: Squarepoint Capital
+    careers_url: https://job-boards.greenhouse.io/squarepointcapital
+    tier: 2
+    notes: NYC; quant platform SWE roles
+  - name: Cursor (Anysphere)
+    careers_url: https://jobs.ashbyhq.com/cursor
+    tier: 1
+    notes: AI code editor; TS-heavy; your daily tool — strong narrative hook
+  - name: Sierra
+    careers_url: https://jobs.ashbyhq.com/sierra
+    tier: 2
+    notes: AI agents (Bret Taylor); agentic experience is a direct signal
+  - name: ElevenLabs
+    careers_url: https://jobs.ashbyhq.com/elevenlabs
+    tier: 2
+    notes: Voice AI; NYC presence; your Vapi/Deepgram work fits
+  - name: Vanta
+    careers_url: https://jobs.ashbyhq.com/vanta
+    tier: 2
+    notes: Security/compliance SaaS; TS/Node stack
+  - name: Replit
+    careers_url: https://jobs.ashbyhq.com/replit
+    tier: 2
+    notes: AI coding platform; your E2B sandbox work is a direct parallel
+  - name: Supabase
+    careers_url: https://jobs.ashbyhq.com/supabase
+    tier: 3
+    notes: Postgres platform; remote-first
+  - name: Modal
+    careers_url: https://jobs.ashbyhq.com/modal
+    tier: 3
+    notes: NYC; serverless compute infra
+  - name: PostHog
+    careers_url: https://jobs.ashbyhq.com/posthog
+    tier: 3
+    notes: Product analytics; remote-first
+  - name: Render
+    careers_url: https://jobs.ashbyhq.com/render
+    tier: 3
+    notes: Cloud platform; full-stack roles
+  - name: Google
+    enabled: false
+    careers_url: >-
+      https://www.google.com/about/careers/applications/jobs/results/?target_level=EARLY&target_level=INTERN_AND_APPRENTICE
+    tier: 1
+    notes: Custom ATS — use the early-career filter URL; also seen via LinkedIn scan
+  - name: Meta
+    enabled: false
+    careers_url: https://www.metacareers.com/jobs?roles[0]=University%20Grad
+    tier: 1
+    notes: Custom ATS — university grad filter; also seen via LinkedIn scan
+  - name: Amazon
+    enabled: false
+    careers_url: https://www.amazon.jobs/en/business_categories/student-programs
+    tier: 1
+    notes: Custom ATS — student programs page covers SDE I new grad + internships
+  - name: Apple
+    enabled: false
+    careers_url: https://jobs.apple.com/en-us/search?team=internships-STDNT-INTRN
+    tier: 1
+    notes: Custom ATS — students/new grad team filter
+  - name: Netflix
+    enabled: false
+    careers_url: https://explore.jobs.netflix.net/careers
+    tier: 1
+    notes: Custom ATS (Eightfold) — L3/L4 only via LinkedIn scan; new grad roles rare
+  - name: Microsoft
+    enabled: false
+    careers_url: https://careers.microsoft.com/v2/global/en/universityrecruiting
+    tier: 1
+    notes: Custom ATS — university recruiting hub (also owns GitHub/LinkedIn roles)
+  - name: NVIDIA
+    careers_url: https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite
+    tier: 1
+    notes: Now API-scannable via Workday provider; GeForce NOW interns seen on LinkedIn too
+  - name: Salesforce
+    careers_url: https://salesforce.wd12.myworkdayjobs.com/External_Career_Site
+    tier: 2
+    notes: AMTS/MTS new-grad track; sponsors visas
+  - name: Adobe
+    careers_url: https://adobe.wd5.myworkdayjobs.com/external_experienced
+    tier: 2
+    notes: University hires often posted here despite the board name
+  - name: Capital One
+    careers_url: https://capitalone.wd12.myworkdayjobs.com/Capital_One
+    tier: 2
+    notes: Large TDP/new-grad SWE program; NYC + McLean; strong sponsor history
+  - name: Mastercard
+    careers_url: https://mastercard.wd1.myworkdayjobs.com/CorporateCareers
+    tier: 3
+    notes: NYC tech hub; launch program for new grads
+  - name: Workday
+    careers_url: https://workday.wd5.myworkdayjobs.com/Workday
+    tier: 3
+    notes: Generation Workday early-career program
+  - name: Braze
+    careers_url: https://job-boards.greenhouse.io/braze
+    tier: 2
+    notes: NYC HQ; messaging platform; Node-heavy
+  - name: GitLab
+    careers_url: https://job-boards.greenhouse.io/gitlab
+    tier: 3
+    notes: All-remote; devtools
+  - name: Okta
+    careers_url: https://job-boards.greenhouse.io/okta
+    tier: 3
+    notes: Identity/auth — your JWT/RBAC depth is a direct signal
+  - name: Amplitude
+    careers_url: https://job-boards.greenhouse.io/amplitude
+    tier: 3
+    notes: Product analytics; SF
+  - name: Mixpanel
+    careers_url: https://job-boards.greenhouse.io/mixpanel
+    tier: 3
+    notes: Analytics; SF + NYC

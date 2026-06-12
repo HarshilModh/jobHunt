@@ -1,0 +1,8 @@
+{
+  "name": "jobhunt",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Clean, self-contained job-search tool: scan boards + LinkedIn, rank against your profile, find referrals.",
+  "bin": { "jobhunt": "jobhunt.mjs" },
+  "dependencies": { "js-yaml": "^4.1.0" }
+}
