@@ -12,6 +12,7 @@ against the profile, finds referrals. **No CV/PDF generation, no auto-apply.**
 | `cv.md` | Resume (scoring input) |
 | `jobhunt.mjs` | Interactive CLI: scan + LinkedIn + rank |
 | `scan.mjs` | Board scanner (greenhouse/ashby/lever/workable/workday) → `data/pipeline.md` |
+| `aggregators.mjs` | Open-ended discovery beyond the company list (SimplifyJobs new-grad + intern); same filters, F-1 citizenship-required drop → `data/pipeline.md` |
 | `linkedin.mjs` | LinkedIn discovery → `data/linkedin-jds.json` |
 | `rank.mjs` | Heuristic + optional Gemini scoring → `data/top-openings.md`, `data/linkedin-openings.md` (full) |
 | `linkedin-recent.mjs` | Windowed LinkedIn slice → `data/linkedin-recent.md` (chosen freshness, replaced each run) |
@@ -19,6 +20,8 @@ against the profile, finds referrals. **No CV/PDF generation, no auto-apply.**
 | `prep.mjs` | Interview-prep scaffold → `interview-prep/{company}.md` (maps `data/story-bank.md` to question buckets) |
 | `today.mjs` | Daily briefing: apply-first + referral nudges + app follow-ups + pipeline counts |
 | `keywords.mjs` | JD-vs-`cv.md` skill gap for a job URL/company |
+| `liveness.mjs` | Is a posting still open? `node liveness.mjs <url>` or `--top N` → `data/liveness-report.md` |
+| `dsa.mjs` | A company's most-asked LeetCode problems (GitHub LeetCode-company-tags mirror) → `data/dsa-{company}.md` |
 | `data/story-bank.md` | 8 STAR+R stories from his real projects |
 | `people-grabber.js` + `make-bookmarklet.mjs` | LinkedIn People Grabber bookmarklet |
 | `data/applications.md` | Application tracker |
@@ -65,25 +68,90 @@ and write each to `reports/{n}-{company}.md`. Header: `**Score:** X.X/5 (NN/100)
 
 No PDF, no CV rewrite. Append a row to `data/applications.md`. End with one table summarizing all N scores + legitimacy tiers.
 
-## "prep me for {company}" (interview prep)
+## "prep me for {company}" (interview prep — FULL, always research-backed)
 
-Start from the scaffold: run `node prep.mjs {company}` (or read `interview-prep/{company}.md` if
-it exists). Then deepen it and write the enriched doc back to `interview-prep/{company}.md`:
+This is a full prep, never a skeleton. Do real research and write a complete intel doc to
+`interview-prep/{company}.md`. (`prep.mjs` only exists as an offline fallback when there's no
+network — don't use it as the starting point; go straight to the research below.) Read
+`data/story-bank.md`, `cv.md`, and any matching `reports/{n}-{company}.md` first.
 
-1. **Research the process** (WebSearch: Glassdoor / Blind / LeetCode discuss): number of rounds,
-   format, difficulty, reported questions. **Cite each source or tag `[inferred from JD]` —
-   never fabricate questions or ratings.**
-2. **Audience-map each round** — prep differs by who's in the room:
-   - `recruiter-screen` (first call): fit gate — motivation, comp, location/visa, timeline. Wrong-footed answers end it before any technical signal. Prep a 60–90s "why you / why now," a comp range (from research, deferring cleanly if leverage is thin), "why this company" from a real signal, and the F-1/OPT line.
-   - `hiring-manager`: why this role, scope fit, ownership. Connect his narrative to a named team challenge.
-   - `peer-tech`: depth + collaboration on the actual stack — coding, system design, his projects' internals.
-   - `panel-mixed` (onsite loop): prep all three, capped to top items; vary the angle across slots, don't repeat the same proof point verbatim.
-3. **Map `data/story-bank.md` → likely questions** per audience; flag any question with no story.
-4. **Technical checklist** (max ~8) of what THIS company actually tests, by frequency.
+**Step 0 — Calibrate before researching (this reshapes everything).** A recruiter screen
+tomorrow and a full onsite in two weeks are different documents. If he hasn't already said,
+ask three quick things in one message:
+- **Which round is this?** (recruiter screen / technical phone / onsite loop / unsure)
+- **When is it?** (date — drives how much to prep and in what order)
+- **Who's it with, if known?** (name/title — lets me LinkedIn-map them to an audience)
 
-Ground every STAR story in his real projects (CareConnect, CodePulse, PromptStudio, Grownited
-TA) — never hypotheticals. If the *Failure*/*Conflict* stories are still drafts, prompt him to
-confirm the real details first.
+If he doesn't know, default to "full process from the top" but **prep the nearest round
+deepest** and keep later rounds lighter. Don't dump equal depth on every round — weight the
+prep to where he actually is.
+
+**New-grad calibration (applies throughout):** entry/new-grad loops are coding + behavioral
+heavy, system design light-to-none (one light design chat at most, usually not a full one).
+Don't over-prep distributed-systems design for a new-grad role; do over-prep LeetCode patterns,
+"tell me about a project," and the F-1 questions. If the role is genuinely senior/stretch, flip
+this and say so.
+
+1. **Research the process** — WebSearch across audiences, **cite every claim or tag
+   `[inferred from JD]`; never fabricate a question, rating, or stat:**
+   - Comp band: `"{company} {role} salary" site:levels.fyi` and `site:glassdoor.com/Salary`.
+   - Process + questions: `"{company} interview process site:glassdoor.com"`,
+     `"{company} {role} interview questions site:glassdoor.com"`,
+     `"{company} {role} interview site:leetcode.com/discuss"`, `site:teamblind.com`.
+   - Team context: `"{company} engineering blog"`, recent news / launches / layoffs (last 12 mo).
+   - If an interviewer name was given: look them up (LinkedIn/blog/GitHub) and tag their audience.
+   If intel is thin (small company), say so and lean on JD-inferred questions tagged clearly.
+
+2. **Process overview** — rounds, end-to-end timeline, format, difficulty (X/5 with review
+   count), known quirks (pair-programming / take-home / no-LeetCode). Write "unknown — not
+   enough data" rather than guessing.
+
+3. **Audience-map each round** — prep differs by who's in the room. Round 1 short call →
+   `recruiter-screen`; deep coding/design block → `peer-tech`; manager/skip-level →
+   `hiring-manager`; onsite loop → `panel-mixed`. Tag inferred classifications `[inferred]`.
+   - `recruiter-screen`: fit gate — motivation, comp, location/visa, timeline. Prep a 60–90s
+     "why you / why now," a comp range (defer cleanly if leverage is thin), "why this company"
+     from a real signal, and the F-1/OPT line.
+   - `hiring-manager`: why this role, scope fit, ownership, first-90-days; connect his narrative
+     to a *named* team challenge from research. 2–3 sharp reverse questions tied to recent work.
+   - `peer-tech`: depth + collaboration on the actual stack — coding, system design, his
+     projects' internals. Reverse questions on on-call / code review / deploy cadence.
+   - `panel-mixed` (onsite loop): prep all three packs capped to top items; vary the angle
+     across slots — never repeat the same proof point verbatim; don't contradict on comp/timeline.
+
+4. **Round-by-round breakdown** — for each round: duration, who runs it, what they evaluate,
+   reported questions (with source), and 1–2 concrete prep actions. **Go deepest on the round
+   he's actually in next**; keep the rest as a lighter heads-up.
+
+5. **Likely questions for the target round** + draft answers grounded in his real projects
+   (CareConnect, CodePulse, PromptStudio, Grownited TA) — never hypotheticals. Always include
+   the new-grad staples: "tell me about yourself," "walk me through a project you're proud of,"
+   "a hard bug you debugged," "a time you disagreed with someone," "a failure."
+
+6. **Map `data/story-bank.md` → likely questions** (strong / partial / none); for every "none,"
+   name the gap and propose a real experience that could become a STAR+R story.
+
+7. **DSA** — run `node dsa.mjs {company}` and fold its most-asked problems + patterns-to-drill
+   into the coding section. Flag the 3–4 patterns to drill first given the time before the round.
+
+8. **Technical checklist** (max ~10) of what THIS company actually tests, ordered by frequency.
+
+9. **Company signals per audience** — what to volunteer / avoid and the vocabulary to use with
+   the recruiter vs HM vs peer panel.
+
+10. **Prioritized action plan (close with this — the most useful part).** Convert all of the
+    above into a time-boxed to-do list scaled to days-until-interview:
+    - **≤24h:** the 3–5 highest-leverage things only (lock the "why you / why this company,"
+      rehearse 2 stories out loud, drill the single most-common DSA pattern, prep the F-1 line).
+      Don't hand him the whole essay the night before.
+    - **2–5 days:** all stories tight + ~10–15 targeted LeetCode + reverse questions.
+    - **1–2 weeks:** full breadth — every round, full DSA set, mock loops.
+    Then a short **night-before / day-of** checklist (logistics, what to re-read, reverse
+    questions ready, F-1 answer rehearsed).
+
+If the *Failure*/*Conflict* stories in `data/story-bank.md` are still drafts, prompt him to
+confirm the real details before relying on them. Close by asking if he wants a mock loop
+("mock interview me for {company}") or stories drafted for any gaps.
 
 ## "draft outreach to {person}" (referral / networking message)
 
@@ -102,3 +170,35 @@ email can be longer. Never corporate-speak, never "I'm passionate about," never 
 
 He sends every message himself. See also `referrals.mjs` for the per-company drafts and search
 links.
+
+## "mock interview me for {company}" (behavioral practice loop)
+
+Run a real practice loop, ONE question at a time — do not dump a list. For each:
+1. Ask a single likely question (pull from `interview-prep/{company}.md` if it exists, else from
+   the role's archetype + common new-grad behavioral/technical questions).
+2. Wait for his answer.
+3. Critique it honestly: was it specific (real numbers/actions from his projects, not vague)?
+   Structured (STAR)? Did it land a clear result + reflection? Flag rambling, hedging, or missing
+   ownership. Suggest the sharper version, grounded in `data/story-bank.md`.
+4. Then the next question. ~6–8 questions, mixing recruiter-screen, behavioral, and 1–2 light
+   technical. End with a short scorecard (strengths + the 2 things to fix before the real thing).
+
+Keep it brisk and honest — this is practice, not a pep talk.
+
+## Red-flag questions (the uncomfortable ones)
+
+When prepping or mock-interviewing, always cover the questions an F-1 new grad gets and is
+caught off-guard by. Help him build honest, confident, non-defensive answers:
+- **"Do you need visa sponsorship?"** — straight, factual: F-1, OPT from May 2026, STEM-eligible
+  for the extension, comfortable being on the team for years. Never apologetic.
+- **"You've only had a 6-month internship."** — pivot to project depth (CareConnect, CodePulse,
+  PromptStudio) + TA scale (100+ students), framed as shipped, owned, measured work.
+- **"Why should we pick you over a candidate who doesn't need sponsorship?"** — the work speaks;
+  redirect to a specific, quantified strength, not a plea.
+- **Any résumé gap / transition** — honest, forward-looking, one sentence, no over-explaining.
+
+## Story bank — needs his input
+
+`data/story-bank.md` has 8 stories, but the **Failure** and **Conflict** ones are still drafts.
+Before any real interview, prompt him to confirm the actual experiences behind those two — they
+must be real and defensible. Don't invent specifics; ask him.

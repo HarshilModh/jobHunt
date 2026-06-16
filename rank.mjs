@@ -37,6 +37,13 @@ const USE_AI = process.argv.includes('--ai');
 const config = yaml.load(readFileSync(CONFIG_PATH, 'utf-8'));
 const profile = config.profile || {};
 const tierByCompany = new Map((config.companies || []).map((c) => [c.name.toLowerCase(), c.tier || 3]));
+// Per-company H-1B sponsorship signal (config.sponsors). Substring match.
+const sponsorEntries = Object.entries(config.sponsors || {}).map(([k, v]) => [k.toLowerCase(), String(v).toLowerCase()]);
+function companySponsors(company) {
+  const c = company.toLowerCase();
+  for (const [k, v] of sponsorEntries) if (c.includes(k)) return v;
+  return null;
+}
 
 const splitSkill = (s) => String(s).split('/').map((x) => x.replace(/\(.*?\)/g, '').trim().toLowerCase()).filter((x) => x.length > 2);
 const expertSkills = (profile.core_stack?.expert || []).flatMap(splitSkill);
@@ -155,6 +162,12 @@ function scoreEntry(e) {
 
   const tier = tierByCompany.get(e.company.toLowerCase());
   if (tier === 1) score += 14; else if (tier === 2) score += 9; else if (tier === 3) score += 5;
+
+  // Per-company H-1B sponsorship signal (from config.sponsors) — applies even
+  // when the JD says nothing about sponsorship.
+  const coSponsor = companySponsors(e.company);
+  if (coSponsor === 'yes') flags.push('🛂');
+  else if (coSponsor === 'no') { score -= 30; flags.push('🚫 no-sponsor-co'); }
 
   if (/new grad|university grad|early career|entry.level|recent grad|engineer i\b|swe i\b|engineer 1\b/.test(title)) { score += 20; flags.push('🎓 new-grad'); }
   if (/intern/.test(title) && !/internal/.test(title)) { score += 16; flags.push('🎓 intern'); }

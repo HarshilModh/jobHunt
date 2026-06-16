@@ -54,6 +54,9 @@ console.log('  5) Everything      (recommended for the first run of the day)');
 const fresh = await ask('\nChoice [5]: ', '5');
 const DAYS = { 1: 1, 2: 4, 3: 7, 4: 14, 5: 0 }[fresh] ?? 0;
 
+const aggAns = (await ask('🌐  Also pull aggregators (SimplifyJobs new-grad + intern, beyond the company list)? (Y/n): ', 'y')).toLowerCase();
+const USE_AGG = aggAns !== 'n' && aggAns !== 'no';
+
 const liAns = (await ask('🔗  Also scan LinkedIn? ~3-8 min, separate list (Y/n): ', 'y')).toLowerCase();
 const USE_LINKEDIN = liAns !== 'n' && liAns !== 'no';
 
@@ -66,6 +69,11 @@ if (USE_AI && !has(AI_CLI)) {
 
 console.log('\n📡  Scanning job boards…\n');
 run('node', ['scan.mjs']);
+
+if (USE_AGG) {
+  console.log('\n🌐  Pulling aggregators…\n');
+  run('node', ['aggregators.mjs']);
+}
 
 if (USE_LINKEDIN) {
   console.log('\n🔗  Scanning LinkedIn…\n');

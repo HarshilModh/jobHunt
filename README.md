@@ -115,6 +115,7 @@ Open `data/top-openings.md` or `data/linkedin-openings.md`:
 
 ### 📡 Discovery
 - **Board scanner** — 90+ ATS APIs in parallel (zero tokens)
+- **Aggregators** — SimplifyJobs new-grad + intern feeds (beyond the company list)
 - **LinkedIn scanner** — 13+ search queries, full JD fetch
 - **Dedup** — never shows the same job twice
 
@@ -223,6 +224,25 @@ node scan.mjs --company nvidia     # scan one company (substring match)
 3. Applies `title_filter` (positive + negative) and `location_filter`
 4. Deduplicates against `data/scan-history.tsv` + `data/pipeline.md`
 5. Runs 10 companies in parallel
+
+</details>
+
+<details>
+<summary><strong><code>aggregators.mjs</code> — Open-Ended Aggregators</strong></summary>
+
+`scan.mjs` only checks companies in `config.yml`. This pulls community job aggregators (**SimplifyJobs New-Grad + Internships** by default), applies the **same** `title_filter` + `location_filter`, dedups, and appends to `data/pipeline.md` — so they get ranked exactly like board results. **Zero tokens.**
+
+```bash
+node aggregators.mjs                 # all enabled sources, last 30 days
+node aggregators.mjs --days 7        # only postings from the last 7 days
+node aggregators.mjs --days 0        # no date filter (every active listing)
+node aggregators.mjs --dry-run       # preview — write nothing
+node aggregators.mjs --source intern # one source (substring match on id)
+```
+
+**F-1 aware:** each listing's `sponsorship` field is used — `"U.S. Citizenship is Required"` postings are dropped (ineligible), `"Does Not Offer Sponsorship"` ones are kept but counted + flagged ⚠️ in the summary.
+
+Configure sources / window in `config.yml` under `aggregators:`.
 
 </details>
 

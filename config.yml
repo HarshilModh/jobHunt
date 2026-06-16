@@ -12,6 +12,58 @@
 ai_cli: agy
 ai_model: Gemini 3.5 Flash (High)
 
+# H-1B sponsorship signal (per company). rank.mjs flags it on the leaderboard:
+#   yes → 🛂 sponsors-co   ·   no → 🚫 no-sponsor-co (−30, like a JD no-sponsor)
+# Most tracked tech companies sponsor (seeded below). The real value is recording
+# `no` for any company a recruiter tells you won't sponsor — it downranks forever.
+# Keys are matched against the opening's company name (case-insensitive substring).
+# NOTE: LinkedIn jobs from companies NOT listed here fall back to JD-text detection.
+sponsors:
+  # Known strong H-1B sponsors (seed)
+  Google: yes
+  Meta: yes
+  Amazon: yes
+  Apple: yes
+  Microsoft: yes
+  NVIDIA: yes
+  Stripe: yes
+  Datadog: yes
+  MongoDB: yes
+  Anthropic: yes
+  OpenAI: yes
+  Figma: yes
+  Notion: yes
+  Cloudflare: yes
+  Snowflake: yes
+  Databricks: yes
+  Airbnb: yes
+  Salesforce: yes
+  Adobe: yes
+  Capital One: yes
+  Mastercard: yes
+  Plaid: yes
+  Robinhood: yes
+  Ramp: yes
+  Coinbase: yes
+  Pinterest: yes
+  Lyft: yes
+  # Add companies that told you they DON'T sponsor, e.g.:
+  # Some Startup: no
+
+# Open-ended discovery beyond the company list (node aggregators.mjs).
+# Pulls community job aggregators, applies the SAME title_filter + location_filter,
+# dedups against scan-history + pipeline, and feeds rank.mjs like everything else.
+aggregators:
+  default_days: 30              # only postings from the last N days (--days overrides; 0 = all active)
+  drop_citizenship_required: true  # F-1: drop "U.S. Citizenship is Required" listings
+  sources:
+    - id: simplify-newgrad
+      url: https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/.github/scripts/listings.json
+      enabled: true
+    - id: simplify-intern
+      url: https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json
+      enabled: true
+
 profile:
   name: Harshil Modh
   email: hmodh@stevens.edu
@@ -377,6 +429,7 @@ location_filter:
     - Dublin
     - Cork
     - United Kingdom
+    - ', UK'
     - London
     - Germany
     - Berlin

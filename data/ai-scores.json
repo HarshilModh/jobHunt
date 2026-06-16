@@ -1,757 +1,1177 @@
 {
- "https://jobs.ashbyhq.com/openai/5ebd5f66-75db-4a96-8d39-babc14f1c582": {
-  "score": 54,
-  "reason": "Great AI devtools project overlap; role is mid-senior level.",
-  "date": "2026-06-12"
+ "https://careers-gdms.icims.com/jobs/72592/job?mobile=true&needsRedirect=false": {
+  "score": 49,
+  "reason": "Defense contractor requires US citizenship; F-1 candidate lacks work authorizati",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4426958313": {
+ "https://amazon.jobs/en/jobs/3141336/software-engineer-i": {
+  "score": 94,
+  "reason": "Excellent fit for SDE 1 with strong backend, cloud, and project skills.",
+  "date": "2026-06-16"
+ },
+ "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Cell-Modelling-and-Verification-Engineer---New-College-Grad-2026_JR2011631": {
+  "score": 43,
+  "reason": "Hardware cell modeling role requires EE/CE background; candidate lacks VLSI skil",
+  "date": "2026-06-16"
+ },
+ "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-TX-Austin/Software-R-D-Engineer--VLSI-Physical-Design---New-College-Grad-2026_JR2019330": {
+  "score": 58,
+  "reason": "Software role requires VLSI/EDA knowledge; candidate lacks hardware layout exper",
+  "date": "2026-06-16"
+ },
+ "https://www.metacareers.com/jobs/1468691051611430": {
+  "score": 78,
+  "reason": "Good fit for new grad data role using Python and SQL.",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/melotech/e99207bd-8a2f-4641-a463-08a6633a7073/application": {
+  "score": 70,
+  "reason": "Strong applied AI projects but lacks core machine learning engineering backgroun",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/melotech/15af19d9-a318-45a6-8a06-23053ea487a5/application": {
+  "score": 95,
+  "reason": "Perfect match for MERN, Next.js, and Docker full-stack internship requirements.",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/wealth-com/1899d513-4c4a-43b2-a307-8c8e4b877622/application": {
+  "score": 45,
+  "reason": "Typically targets PhD candidates with research focus rather than application dev",
+  "date": "2026-06-16"
+ },
+ "https://apply.careers.microsoft.com/careers/job/1970393556867858": {
   "score": 35,
-  "reason": "Requires 3+ years full-time experience; mid-level cloud database storage role.",
-  "date": "2026-06-12"
+  "reason": "Requires advanced PhD-level AI research, theory, and publications candidate lack",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4424829575": {
-  "score": 35,
-  "reason": "Requires 3+ years professional experience; transactional database architecture f",
-  "date": "2026-06-12"
+ "https://jobs.ashbyhq.com/greatquestion/c533196c-75d5-43b8-b1c8-dedf2437d544/application": {
+  "score": 90,
+  "reason": "Excellent fit with candidate's projects in agentic AI, RAG, and sandboxes.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4369238440": {
+ "https://jobs.apple.com/en-us/details/200663968": {
   "score": 74,
-  "reason": "Requires 2+ years experience; strong skills and Master's education alignment.",
-  "date": "2026-06-12"
+  "reason": "Undergrad target mismatch; strong general engineering skills overlap.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4416726486": {
-  "score": 31,
-  "reason": "Mid/senior role requiring production storage and Rust experience; candidate lack",
-  "date": "2026-06-12"
+ "https://jobs.apple.com/en-us/details/200664383": {
+  "score": 41,
+  "reason": "Poor fit due to hardware focus and lack of hardware experience.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4416723484": {
-  "score": 25,
-  "reason": "Requires US citizenship (deducted 40 points); candidate is F-1 OPT.",
-  "date": "2026-06-12"
+ "https://jobs.apple.com/en-us/details/200664785": {
+  "score": 90,
+  "reason": "Undergrad target mismatch despite perfect software skills and experience fit.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4424810021": {
-  "score": 34,
-  "reason": "Senior role requiring 5+ years experience; strong skill mismatch with Kotlin.",
-  "date": "2026-06-12"
+ "https://jobs.apple.com/en-us/details/200664320": {
+  "score": 100,
+  "reason": "Perfect fit: targets Master's students with excellent software skills overlap.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4426943355": {
-  "score": 48,
-  "reason": "Requires 3+ years experience; excellent AI and backend stack match.",
-  "date": "2026-06-12"
+ "https://jobs.apple.com/en-us/details/200663981": {
+  "score": 41,
+  "reason": "Poor fit due to hardware focus and lack of hardware experience.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4424876444": {
+ "https://jobs.apple.com/en-us/details/200664780": {
+  "score": 58,
+  "reason": "Good AI projects but education level is too high for undergraduate.",
+  "date": "2026-06-16"
+ },
+ "https://jobs.apple.com/en-us/details/200664221": {
   "score": 75,
-  "reason": "Perfect fit for agentic AI and pipeline skills; mid-level role.",
-  "date": "2026-06-12"
+  "reason": "Strong AI project experience matches graduate-level internship profile well.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4423695550": {
-  "score": 5,
-  "reason": "Requires 5 years experience, Go/OpenShift stack; located in Lowell, MA.",
-  "date": "2026-06-12"
+ "https://jobs.apple.com/en-us/details/200664419": {
+  "score": 32,
+  "reason": "Candidate lacks hardware engineering experience and relevant coursework.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4369726941": {
-  "score": 54,
-  "reason": "Mid-level SWE II role; strong education fit and general languages.",
-  "date": "2026-06-12"
+ "https://jobs.ashbyhq.com/anterior/550c48f9-eb2e-4d5e-80ff-8db076b4e52d/application": {
+  "score": 83,
+  "reason": "Matches AI projects and CareConnect health domain; NYC location is ideal.",
+  "date": "2026-06-16"
+ },
+ "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Data-Analysis-Intern--Applied-System-Engineering---Fall-2026_JR2018687-1": {
+  "score": 75,
+  "reason": "Good backend, database, and system-level project experience fits well.",
+  "date": "2026-06-16"
+ },
+ "https://careers-cotiviti.icims.com/jobs/18972/job?mobile=true&needsRedirect=false": {
+  "score": 84,
+  "reason": "Strong GenAI project focus, though role may lean towards AI research.",
+  "date": "2026-06-16"
+ },
+ "https://lifeattiktok.com/search/7644719084681234741": {
+  "score": 61,
+  "reason": "Data science focus aligns poorly with candidate's core engineering projects.",
+  "date": "2026-06-16"
+ },
+ "https://lifeattiktok.com/search/7534878965941766408": {
+  "score": 88,
+  "reason": "Infrastructure and queuing experience matches recommendations infrastructure nee",
+  "date": "2026-06-16"
+ },
+ "https://careers-cotiviti.icims.com/jobs/19214/job?mobile=true&needsRedirect=false": {
+  "score": 96,
+  "reason": "PromptStudio and CodePulse projects directly align with GenAI developer role.",
+  "date": "2026-06-16"
+ },
+ "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Performance-at-Scale-Intern---Fall-2026_JR2018701": {
+  "score": 79,
+  "reason": "Strong system optimization projects, but lacks deep low-level profiling experien",
+  "date": "2026-06-16"
+ },
+ "https://careers-peraton.icims.com/jobs/167460/job?mobile=true&needsRedirect=false": {
+  "score": 46,
+  "reason": "Peraton defense role requires US citizenship, causing a heavy visa penalty.",
+  "date": "2026-06-16"
+ },
+ "https://ats.rippling.com/rippling/jobs/35b3ba25-ff2e-4b68-a2d7-61be26f2b24a": {
+  "score": 97,
+  "reason": "Perfect skills match with extensive full-stack project and internship experience",
+  "date": "2026-06-16"
+ },
+ "https://ats.rippling.com/rippling/jobs/00cbc991-d2fb-452c-a8b6-2978f109a484": {
+  "score": 95,
+  "reason": "Strong backend skills in Node, Redis, and databases align well.",
+  "date": "2026-06-16"
+ },
+ "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Engineering-Intern--Mapping-Autonomous-Vehicles---Fall-2026_JR2011493": {
+  "score": 81,
+  "reason": "Lower domain fit; candidate focus is web/AI SaaS over autonomous vehicles.",
+  "date": "2026-06-16"
+ },
+ "https://lifeattiktok.com/search/7646621925436131637": {
+  "score": 91,
+  "reason": "Good fit for AI engineering and transaction systems; strong NYC presence.",
+  "date": "2026-06-16"
+ },
+ "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Cloud-Distributed-Systems-Backend-Intern--GeForce-NOW---Fall-2026_JR2019665": {
+  "score": 91,
+  "reason": "Excellent overlap in distributed systems, backend, and cloud technologies.",
+  "date": "2026-06-16"
+ },
+ "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Cloud-Software-Intern--GeForce-NOW---Fall-2026_JR2019414": {
+  "score": 86,
+  "reason": "Strong cloud and systems software alignment; fits intern profile well.",
+  "date": "2026-06-16"
+ },
+ "https://apply.careers.microsoft.com/careers/job/1970393556874233": {
+  "score": 57,
+  "reason": "Targets research/PhD students; candidate has a standard SWE background.",
+  "date": "2026-06-16"
+ },
+ "https://job-boards.greenhouse.io/arine/jobs/6026856004": {
+  "score": 97,
+  "reason": "Perfect skills match and aligns with healthcare project CareConnect.",
+  "date": "2026-06-16"
+ },
+ "https://lifeattiktok.com/search/7532238337198622983": {
+  "score": 49,
+  "reason": "Candidate is SWE-focused; lacks data science, modeling, or statistics background",
+  "date": "2026-06-16"
+ },
+ "https://lifeattiktok.com/search/7532390182411405586": {
+  "score": 78,
+  "reason": "Intern role, solid AI projects but lacks deep ML modeling background.",
+  "date": "2026-06-16"
+ },
+ "https://lifeattiktok.com/search/7532254890627696903": {
+  "score": 68,
+  "reason": "Internship matches timeline, but profile is SWE-focused rather than data science",
+  "date": "2026-06-16"
+ },
+ "https://lifeattiktok.com/search/7538301580093720840": {
+  "score": 99,
+  "reason": "Excellent backend skills, projects, and intern status align perfectly.",
+  "date": "2026-06-16"
+ },
+ "https://stripe.com/jobs/search?gh_jid=8003382": {
+  "score": 95,
+  "reason": "Strong match for full-stack, meets 1-year experience requirement through interns",
+  "date": "2026-06-16"
+ },
+ "https://stripe.com/jobs/search?gh_jid=8009143": {
+  "score": 36,
+  "reason": "Mid-level role requiring Ruby and two years of industry experience.",
+  "date": "2026-06-16"
+ },
+ "https://job-boards.greenhouse.io/uberfreight/jobs/5262378008": {
+  "score": 2,
+  "reason": "Non-technical logistics role; zero skills or experience overlap with software en",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/snowflake/cade83ae-9727-4497-8e73-8a310a8b6a85": {
+  "score": 4,
+  "reason": "Non-technical public policy internship; targets enrolled students, candidate has",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/openai/39e06ef9-5e62-425d-81e2-e8690188011f": {
+  "score": 78,
+  "reason": "Excellent technical stack match, but OpenAI roles typically require mid/senior e",
+  "date": "2026-06-16"
+ },
+ "https://generalmotors.wd5.myworkdayjobs.com/en-CA/Careers_GM/job/Warren-Michigan-United-States-of-America/XMLNAME-2026-Fall-Intern---Research---Development--AI-ML_JR-202612795": {
+  "score": 12,
+  "reason": "Requires US citizenship, no visa sponsorship, and PhD enrollment.",
+  "date": "2026-06-16"
+ },
+ "https://boards.greenhouse.io/figma/jobs/5691911004?gh_jid=5691911004": {
+  "score": 84,
+  "reason": "Excellent full-stack skill match, but encompasses varying seniority levels.",
+  "date": "2026-06-16"
+ },
+ "https://job-boards.greenhouse.io/anthropic/jobs/5186067008": {
+  "score": 57,
+  "reason": "Excellent AI sandbox project relevance, but role is highly senior.",
+  "date": "2026-06-16"
+ },
+ "https://job-boards.greenhouse.io/anthropic/jobs/5109273008": {
+  "score": 53,
+  "reason": "Great UI and full-stack alignment, but is a senior-level position.",
+  "date": "2026-06-16"
+ },
+ "https://job-boards.greenhouse.io/anthropic/jobs/5191226008": {
+  "score": 39,
+  "reason": "Requires senior data engineering skills not present in candidate's profile.",
+  "date": "2026-06-16"
+ },
+ "https://job-boards.greenhouse.io/anthropic/jobs/5238606008": {
+  "score": 29,
+  "reason": "Senior foundational role; deducts 30 points for high experience requirement.",
+  "date": "2026-06-16"
+ },
+ "https://stripe.com/jobs/search?gh_jid=7232592": {
+  "score": 24,
+  "reason": "Mid-level role explicitly excluding new grads; deducts 30 points.",
+  "date": "2026-06-16"
+ },
+ "https://stripe.com/jobs/search?gh_jid=7926587": {
+  "score": 91,
+  "reason": "Strong alignment; 1 year experience requirement includes internship/education ba",
+  "date": "2026-06-16"
+ },
+ "https://www.mongodb.com/careers/job/?gh_jid=7523834": {
+  "score": 24,
+  "reason": "Mid-level role requiring 2+ years; location mismatch (West Coast).",
+  "date": "2026-06-16"
+ },
+ "https://www.mongodb.com/careers/job/?gh_jid=7851388": {
+  "score": 96,
+  "reason": "Perfect new-grad role; great NYC location and dev-tools projects alignment.",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/notion/a6311f97-4850-4674-a5f3-d9fe5f6f2555": {
+  "score": 97,
+  "reason": "Excellent skills overlap, internship experience, and aligns with May 2026 gradua",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/notion/5b15697c-fa91-4511-9482-c98a6ff29f90": {
+  "score": 88,
+  "reason": "Strong skills fit but graduation in May 2026 conflicts with Fall internship.",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/notion/7e6dc7fe-7ddd-42c1-8928-13f7bddb9ec9": {
+  "score": 100,
+  "reason": "Perfect match on LLMs, agentic workflows, Next.js stack, and graduation timeline",
+  "date": "2026-06-16"
+ },
+ "https://job-boards.greenhouse.io/scaleai/jobs/4703343005": {
+  "score": 94,
+  "reason": "Superb AI project overlap, but internship timing conflicts with May graduation.",
+  "date": "2026-06-16"
+ },
+ "https://job-boards.greenhouse.io/reddit/jobs/7997866": {
+  "score": 36,
+  "reason": "Requires 2+ years experience and lacks Spark, Flink, and Airflow skills.",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/openai/9d11e1d8-af1d-413b-873f-d8fac2bdee99": {
+  "score": 51,
+  "reason": "High skill overlap in React/Node, but requires significant full-time experience.",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/openai/77bc0b3a-35c1-4ecf-99c7-1b3b19d959ca": {
+  "score": 46,
+  "reason": "Strong full-stack frontend background, but targets experienced mid-to-senior eng",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/openai/dd2025b9-4d18-4ad7-a78c-7a643419ecc5": {
+  "score": 46,
+  "reason": "Good Node/Express backend skills, but requires experienced industry candidates.",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/openai/130a5389-83e1-493f-9205-542d3ff53afb": {
+  "score": 66,
+  "reason": "Direct match with agentic projects, but seeks mid-level candidates.",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/openai/1312f55e-ff56-4dab-9bf7-a91e2c157572": {
+  "score": 52,
+  "reason": "Great Docker and systems overlap, but requires significant experience.",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/openai/e7a4ee23-138a-4004-916e-72a452e7d115": {
+  "score": 58,
+  "reason": "Requires experienced backend engineer; strong technical fit but lacks senior lea",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/openai/6b47238e-025a-4350-b270-2f3564002fcc": {
+  "score": 63,
+  "reason": "Requires experienced full-stack engineer; great MERN fit but matches mid-level r",
+  "date": "2026-06-16"
+ },
+ "https://jobs.ashbyhq.com/openai/5ebd5f66-75db-4a96-8d39-babc14f1c582": {
+  "score": 67,
+  "reason": "Excellent fit with PromptStudio AI agent experience, but targets experienced eng",
+  "date": "2026-06-16"
+ },
+ "https://www.hudsonrivertrading.com/careers/job/?gh_jid=7583957": {
+  "score": 98,
+  "reason": "Perfect fit for new-grad MSCS; matches PromptStudio and MCP agent skills.",
+  "date": "2026-06-16"
+ },
+ "https://www.hudsonrivertrading.com/careers/job/?gh_jid=7583953": {
+  "score": 14,
+  "reason": "Senior role requiring finance domain expertise and numerical computing experienc",
+  "date": "2026-06-16"
+ },
+ "https://www.pinterestcareers.com/jobs/?gh_jid=7253017": {
+  "score": 57,
+  "reason": "Post-grad candidate; mismatch with ML research and CV domain focus.",
+  "date": "2026-06-16"
+ },
+ "https://www.pinterestcareers.com/jobs/?gh_jid=6816337": {
+  "score": 90,
+  "reason": "Great skills overlap, NYC location, fits entry-level backend role.",
+  "date": "2026-06-16"
+ },
+ "https://seatgeek.com/jobs/7858968?gh_jid=7858968": {
+  "score": 99,
+  "reason": "Perfect graduation alignment, NYC office, and complete backend stack overlap.",
+  "date": "2026-06-16"
+ },
+ "https://job-boards.greenhouse.io/verkada/jobs/5117760007": {
+  "score": 57,
+  "reason": "Post-grad status mismatch, West Coast location, audio/video AI focus.",
+  "date": "2026-06-16"
+ },
+ "https://job-boards.greenhouse.io/verkada/jobs/5099422007": {
+  "score": 79,
+  "reason": "Strong backend skills overlap, but logistics and post-grad timeline mismatch.",
+  "date": "2026-06-16"
+ },
+ "https://nuro.ai/careersitem?gh_jid=7351061": {
+  "score": 87,
+  "reason": "Strong Python/C++ skills, backend/AI interest, fits intern profile but graduated",
+  "date": "2026-06-16"
+ },
+ "https://nuro.ai/careersitem?gh_jid=7351066": {
+  "score": 93,
+  "reason": "Perfect fit for new grad role with Python/C++ and distributed systems.",
+  "date": "2026-06-16"
+ },
+ "https://nuro.ai/careersitem?gh_jid=7978432": {
+  "score": 76,
+  "reason": "Strong developer profile but lacks required GPU programming and low-level optimi",
+  "date": "2026-06-16"
+ },
+ "https://jobs.lever.co/spotify/52fe2b49-3c85-4479-b1db-2c5ab74cbcfc": {
+  "score": 52,
+  "reason": "Matches backend skills but deducted for being a mid-level industry role.",
+  "date": "2026-06-16"
+ },
+ "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Engineering-Intern--JAX---Fall-2026_JR2009745": {
+  "score": 56,
+  "reason": "Lacks JAX/compiler experience; timeline conflicts with May 2026 OPT start.",
+  "date": "2026-06-16"
+ },
+ "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Engineering-Intern--Mapping-Autonomous-Vehicles---Fall-2026_JR2011493": {
+  "score": 72,
+  "reason": "Strong backend/Docker skills, but graduates before Fall 2026 internship starts.",
+  "date": "2026-06-16"
+ },
+ "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/DGX-Cloud-Kubernetes-Runtime-Intern---Fall-2026_JR2009619": {
+  "score": 71,
+  "reason": "Good cloud/Docker overlap, but graduates before Fall 2026 internship starts.",
+  "date": "2026-06-16"
+ },
+ "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Performance-at-Scale-Intern---Fall-2026_JR2018701": {
+  "score": 67,
+  "reason": "Systems/Python skills match, but graduates before Fall 2026 internship starts.",
+  "date": "2026-06-16"
+ },
+ "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-TX-Austin/Agentic-AI-Solution-Engineering-Intern---Fall-2026_JR2019390": {
+  "score": 88,
+  "reason": "Perfect match for Agentic AI projects, but graduates before Fall 2026.",
+  "date": "2026-06-16"
+ },
+ "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Data-Analysis-Intern--Applied-System-Engineering---Fall-2026_JR2018687-1": {
+  "score": 65,
+  "reason": "Basic Python/C++ overlap, but graduates before Fall 2026 internship starts.",
+  "date": "2026-06-16"
+ },
+ "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/Seattle/XMLNAME-2026-University-Graduate---Machine-Learning-Engineer_R160133": {
+  "score": 82,
+  "reason": "Strong university graduate fit; lacks deep academic statistical and ML training.",
+  "date": "2026-06-16"
+ },
+ "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced/job/Seattle/Software-Development-Engineer_R164609": {
+  "score": 37,
+  "reason": "Strictly requires five plus years experience; candidate is a new graduate.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4417565729": {
+  "score": 75,
+  "reason": "Entry-level role with good stack fit, but requires Seattle relocation.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429127655": {
+  "score": 47,
+  "reason": "Excellent healthtech match, but penalized for requiring 5+ years experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4408916821": {
+  "score": 93,
+  "reason": "Outstanding junior role match with candidate's extensive GenAI project experienc",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4286968047": {
+  "score": 77,
+  "reason": "Good stack overlap, but requires 2+ years experience and SF hybrid.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4168110099": {
+  "score": 38,
+  "reason": "Penalized as mid/senior tech-lead role requiring Los Angeles relocation.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4410263225": {
+  "score": 67,
+  "reason": "Good stack alignment but requires 2-4 years of full-stack experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4214697219": {
+  "score": 41,
+  "reason": "Strong skills but role is mid/senior requiring 2-7 years experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428035824": {
+  "score": 9,
+  "reason": "Senior platform role requiring extensive OLAP experience; SF location mismatch.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4410265188": {
+  "score": 60,
+  "reason": "Great backend match but requires 1-4 years post-internship experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4330361169": {
+  "score": 94,
+  "reason": "Perfect entry-level fit accepting internships and academic projects; great align",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427706568": {
+  "score": 74,
+  "reason": "Good frontend skills match; contract role does not leverage MSCS backend experti",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4374849763": {
+  "score": 94,
+  "reason": "Excellent entry-level backend alignment; requires relocation from NYC area to Bo",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4410261275": {
+  "score": 64,
+  "reason": "Strong backend skills but requires 1-4 years of post-internship experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427499509": {
+  "score": 100,
+  "reason": "Flawless match for tech stack, entry-level scope, and recent grad status.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4407963889": {
+  "score": 44,
+  "reason": "Great agentic AI domain fit but requires 3-5 years experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4285896406": {
+  "score": 38,
+  "reason": "Prefers systems experience; candidate has web background and low C++ experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428018873": {
+  "score": 82,
+  "reason": "Strong security and RBAC skills overlap, but located in California.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4398173648": {
+  "score": 90,
+  "reason": "Excellent entry-level full-stack alignment, though located in California.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429174096": {
+  "score": 35,
+  "reason": "No visa sponsorship provided; role requires US Person status.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4417861621": {
+  "score": 0,
+  "reason": "Requires 3-5 years hardware sensor experience; candidate lacks embedded backgrou",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427249366": {
+  "score": 60,
+  "reason": "Deducted 20 points for 3-5 years professional experience requirement.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4417162343": {
+  "score": 51,
+  "reason": "Deducted 25 points for experienced/mid-senior role requirements.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4407298053": {
+  "score": 63,
+  "reason": "Deducted 10 points for 2-4 years experience requirement.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427790138": {
+  "score": 46,
+  "reason": "Deducted 30 points for requiring 4+ years of experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4408325482": {
+  "score": 51,
+  "reason": "Deducted 40 points because role is ineligible for sponsorship.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4414383750": {
+  "score": 93,
+  "reason": "Good full-stack skill overlap and aligned with 1-3 years requirement.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4417172135": {
+  "score": 30,
+  "reason": "Seasoned role requiring deep experience; deducted for seniority and SF location.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4426452460": {
+  "score": 92,
+  "reason": "Excellent backend fit, 6mo-2yr experience range, and NYC hybrid location.",
+  "date": "2026-06-16"
  },
  "https://www.linkedin.com/jobs/view/4369174265": {
-  "score": 100,
-  "reason": "Perfect entry-level fit with AI development projects and Python/TypeScript skill",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427942835": {
-  "score": 96,
-  "reason": "Excellent match for junior role requiring SQL and REST API skills.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4423699752": {
-  "score": 0,
-  "reason": "Requires 4+ years experience and does not support STEM OPT.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4417128121": {
-  "score": 84,
-  "reason": "Good fit for 1+ years experience but requires West Coast relocation.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4398647092": {
-  "score": 79,
-  "reason": "Strong backend match but requires 2+ years experience and California relocation.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4417127126": {
-  "score": 73,
-  "reason": "Strong full-stack skills and junior fit, but requires relocation to SF/Seattle.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4385678571": {
-  "score": 66,
-  "reason": "Matches C++ and Linux, but lacks robotics or hardware experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426621891": {
-  "score": 49,
-  "reason": "Great tech/AI overlap, but penalized 30 points for mid-senior requirement.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4351877495": {
-  "score": 79,
-  "reason": "Junior role with healthcare domain fit, but relocation to Cincinnati required.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4385025315": {
-  "score": 58,
-  "reason": "Perfect NYC location and agentic AI alignment, but requires 3+ years.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426953855": {
-  "score": 84,
-  "reason": "Strong skills and Master's fit; requires relocation and 2 years experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426920784": {
-  "score": 48,
-  "reason": "Great full-stack fit but penalized 25 points for 4+ years requirement.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427910114": {
-  "score": 96,
-  "reason": "Perfect full-stack match; Master's degree required; requires West Coast relocati",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427651524": {
-  "score": 22,
-  "reason": "Penalized 30 points due to 5 years experience requirement; infrastructure-heavy.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4428103255": {
-  "score": 57,
-  "reason": "Good AI/backend fit; penalized 15 points for mid-senior startup expectations.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4275246282": {
-  "score": 96,
-  "reason": "Great Node/TS match, entry-level scope, local hybrid, no sponsorship constraints",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427986137": {
-  "score": 0,
-  "reason": "No visa sponsorship available and requires 4-7 years professional experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4407038394": {
-  "score": 89,
-  "reason": "Strong React/Node fit, accepts MS grads, matching hybrid location.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4368417016": {
-  "score": 100,
-  "reason": "Perfect stack match, targets MS students, ideal full-stack internship role.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426950980": {
-  "score": 65,
-  "reason": "Great technical alignment but founding role has mid/senior ownership requirement",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4409045327": {
-  "score": 41,
-  "reason": "SWE III requires 4+ years experience; high skills overlap with Java/React.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427912211": {
-  "score": 76,
-  "reason": "Strong Master's degree alignment; requires 2 years of Java/C++ experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4408705083": {
-  "score": 0,
-  "reason": "Zero score due to strict no visa sponsorship policy and experience bar.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426949315": {
-  "score": 39,
-  "reason": "Mid-level SWE III infra role requires 2 years C++ experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426636823": {
-  "score": 75,
-  "reason": "Perfect technical stack overlap; requires 2-5 years of experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4368060613": {
-  "score": 0,
-  "reason": "U.S. citizenship and clearance required (-40); mid-senior 5+ YOE (-30).",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4425301635": {
-  "score": 25,
-  "reason": "Requires 8+ YOE (-30); lacks Salesforce platform experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4386578218": {
-  "score": 41,
-  "reason": "Requires 4+ YOE (-30); strong backend and AI alignment.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4354844336": {
-  "score": 49,
-  "reason": "Requires 5+ YOE (-30); exceptional MCP and AI stack match.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4416718212": {
-  "score": 13,
-  "reason": "U.S. citizenship required (-40); requires 2-10 YOE (-10).",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4417790262": {
-  "score": 54,
-  "reason": "Entry-level but requires embedded C/C++ and RTOS skills candidate lacks.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426688928": {
-  "score": 75,
-  "reason": "Good backend skills match but requires two years experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426925684": {
-  "score": 60,
-  "reason": "Great tech and domain match but requires senior-level founding experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426945608": {
-  "score": 76,
-  "reason": "Incredible AI/MCP project overlap but targets a mid-level SE II.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4412037972": {
-  "score": 53,
-  "reason": "Strong TS/GraphQL skills match but strictly requires 3+ years experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4418064126": {
-  "score": 73,
-  "reason": "Good backend skills but mid-level role and hybrid/remote logistics",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427583596": {
-  "score": 84,
-  "reason": "Entry-level web role fits well but located in Austin, TX",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426686037": {
-  "score": 24,
-  "reason": "Requires significant C++ experience and is a senior role in SF",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4424811200": {
-  "score": 64,
-  "reason": "Good backend skills but requires on-site work in Wyoming",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4422203098": {
-  "score": 96,
-  "reason": "Perfect NJ location, visa sponsorship, targets Master's grads, entry-level",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4387483962": {
-  "score": 62,
-  "reason": "Mid-level frontend role; strong React and TypeScript overlap.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4408533163": {
-  "score": 41,
-  "reason": "Requires 3-5 years experience; Python and React stack overlap.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4418059183": {
-  "score": 83,
-  "reason": "Excellent match with generative AI and distributed systems project experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426930925": {
   "score": 98,
-  "reason": "Perfect stack match; explicitly accepts projects and internships for experience.",
-  "date": "2026-06-12"
+  "reason": "Perfect fit for full-stack AI/ML focus, Docker, and remote flexibility.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4418050709": {
-  "score": 83,
-  "reason": "Excellent match with generative AI and distributed systems project experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4425834945": {
-  "score": 35,
-  "reason": "Low skills overlap; requires automotive chassis and Matlab experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427994192": {
-  "score": 0,
-  "reason": "Senior role deduction; lacks finance and high-performance C++ experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4422208616": {
-  "score": 92,
-  "reason": "Excellent skills overlap; entry-level role explicitly providing visa sponsorship",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4424801761": {
-  "score": 63,
-  "reason": "Decent skills overlap, but lacks aerospace software domain experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4417123871": {
-  "score": 42,
-  "reason": "Strong skill alignment in GenAI, but penalized as senior role.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426968012": {
-  "score": 42,
-  "reason": "Senior SF billing role; strong backend skills but lacks payment experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4325411431": {
-  "score": 51,
-  "reason": "NYC role requiring 2+ years experience and mentoring; lacks Go language.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4418756640": {
-  "score": 64,
-  "reason": "NYC AI startup with excellent skill overlap; salary indicates senior level.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4356193156": {
-  "score": 28,
-  "reason": "L4 role strictly requiring 3+ years experience and Rust/Go proficiency.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427157764": {
-  "score": 28,
-  "reason": "Onsite role strictly requiring 4+ years experience and project leadership.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426169579": {
-  "score": 35,
-  "reason": "Senior role penalty; good skills overlap but targets experienced developers.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4414034567": {
-  "score": 35,
-  "reason": "Senior role penalty; NYC location fits well but requires 5+ years.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4414061401": {
-  "score": 63,
-  "reason": "Mid-level penalty; strong stack match and notifications project experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426976598": {
-  "score": 96,
-  "reason": "Perfect junior fit with healthcare domain, but requires West Coast relocation.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426958491": {
-  "score": 38,
-  "reason": "Founding role penalty; requires 5+ years experience and SF relocation.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4374836641": {
-  "score": 30,
-  "reason": "Senior role requiring 4+ years of backend experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427577895": {
-  "score": 14,
-  "reason": "Requires 5+ years experience and onsite relocation to Harrisburg.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426670443": {
-  "score": 95,
-  "reason": "Perfect skills overlap, NYC location, and explicit visa sponsorship.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4418036731": {
-  "score": 0,
-  "reason": "Requires 7 years of Java and 5 years of Spring.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4428103097": {
-  "score": 43,
-  "reason": "Mid-to-senior role requiring advanced full-stack experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427630233": {
-  "score": 49,
-  "reason": "Founding role is senior, though high stack and AI project overlap.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426906439": {
-  "score": 64,
-  "reason": "Mid-level 2-4 years requirement; outstanding alignment with AI SaaS projects.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4406471228": {
-  "score": 37,
-  "reason": "Strict 5+ years experience requirement; low domain and education alignment.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4428120045": {
-  "score": 91,
-  "reason": "Excellent stack fit, NYC location, and explicitly targets Master's in CS.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4416732100": {
-  "score": 39,
-  "reason": "Strict 3+ years experience requirement; requires Golang and GCP stack.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4406088375": {
-  "score": 71,
-  "reason": "Leans mid-level requiring 2+ years Python experience; strong overlap with projec",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426697212": {
-  "score": 24,
-  "reason": "Requires 3-5+ years Java experience; game backend domain is poor fit.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426682856": {
-  "score": 17,
-  "reason": "Staff level requiring 5+ years experience; high mismatch in seniority.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4387466483": {
-  "score": 0,
-  "reason": "Staff level requiring Elixir/Rust; lacks required language skills and seniority.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4384776886": {
-  "score": 24,
-  "reason": "Senior level requiring 5+ years; good healthcare domain fit but senior.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427978884": {
-  "score": 51,
-  "reason": "Requires 3-5 years experience; strong Python and backend skills overlap.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4424821347": {
-  "score": 94,
-  "reason": "Entry-friendly onboarding; excellent match for Java, Python, and Redis skills.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4318563465": {
+ "https://www.linkedin.com/jobs/view/4426847424": {
   "score": 40,
-  "reason": "Requires 6+ years experience; senior role despite matching Node.js/TS stack.",
-  "date": "2026-06-12"
+  "reason": "Poor skill overlap with C++/MFC/WPF and California location mismatch.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4427996883": {
-  "score": 32,
-  "reason": "Requires 5-6+ years experience; senior-level systems and cloud focus.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4325466035": {
-  "score": 23,
-  "reason": "Senior infrastructure role requiring extensive distributed databases and scale e",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427994566": {
-  "score": 22,
-  "reason": "Requires 6+ years experience; Ruby on Rails not on resume.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4418027107": {
-  "score": 72,
-  "reason": "Perfect stack match with TypeScript and Prisma, but architecture-heavy.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427983289": {
-  "score": 44,
-  "reason": "Good AI project fit and NYC location, but senior role.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427627122": {
-  "score": 64,
-  "reason": "Strong backend stack alignment, but located in Boston with experience penalty.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4424820310": {
-  "score": 1,
-  "reason": "Staff level role requiring 8+ years experience and Golang.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427615741": {
-  "score": 71,
-  "reason": "Good stack overlap but lacks web3 experience; remote option fits well.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4418035812": {
-  "score": 0,
-  "reason": "Requires 5+ years of DevOps experience; not entry-level appropriate.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4421152074": {
-  "score": 89,
-  "reason": "Perfect entry-level fit with visa sponsorship and NJ hybrid location.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427994926": {
-  "score": 17,
-  "reason": "Senior-level role requiring 3-10 years of experience; logistics require relocati",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426944905": {
-  "score": 39,
-  "reason": "Strong technical alignment but disqualified due to explicit lack of sponsorship.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426698784": {
-  "score": 92,
-  "reason": "Excellent full-stack/AI skills overlap, fits startup profile perfectly.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4351881767": {
-  "score": 62,
-  "reason": "Moderate skill overlap, focused on Java/Spring instead of MERN/Next.js.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4424837028": {
-  "score": 0,
-  "reason": "Requires Secret clearance (US citizenship) and 7+ years of experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4416732485": {
+ "https://www.linkedin.com/jobs/view/4398856858": {
   "score": 43,
-  "reason": "Strong full-stack overlap, but strictly requires 4+ years of experience.",
-  "date": "2026-06-12"
+  "reason": "Mid-level role requiring two plus years experience; some stack mismatch.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4418048053": {
-  "score": 52,
-  "reason": "Good stack overlap but is a high-rate mid/senior contract role.",
-  "date": "2026-06-12"
+ "https://www.linkedin.com/jobs/view/4429119036": {
+  "score": 46,
+  "reason": "Intermediate role requiring C-sharp and VB6; strong AI-agent alignment.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4425303112": {
-  "score": 42,
-  "reason": "Lacks Kafka/Cassandra/Spring Boot; contract role not targeting new grads.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427561003": {
-  "score": 61,
-  "reason": "Excellent tech/location overlap but founding role requires mid-senior autonomy.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427915833": {
-  "score": 52,
-  "reason": "Great stack/AI alignment but founding role requires senior architectural ownersh",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4374834620": {
-  "score": 99,
-  "reason": "Perfect new-grad role matching candidate's AI agent and backend experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4428113071": {
-  "score": 62,
-  "reason": "Good backend alignment but spans senior levels and requires relocation.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4412034983": {
-  "score": 90,
-  "reason": "Strong skills and projects fit for entry-level telemetry role.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4424800077": {
-  "score": 57,
-  "reason": "Perfect role fit but disqualified due to no visa sponsorship.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4374838577": {
-  "score": 89,
-  "reason": "Exceptional AI project alignment but asks for 1-3 years experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4414360574": {
-  "score": 88,
-  "reason": "Good entry-level backend fit but requires West Coast relocation.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4414366528": {
-  "score": 88,
-  "reason": "Good entry-level backend fit but requires West Coast relocation.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427988619": {
-  "score": 34,
-  "reason": "Requires 6+ years experience; candidate is a new graduate.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4414307552": {
-  "score": 5,
-  "reason": "No visa sponsorship provided; requires 3-5 years experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4428114230": {
-  "score": 50,
-  "reason": "Requires 3+ years experience; great location match in NYC.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427636102": {
-  "score": 65,
-  "reason": "Requires relocation to Toronto; mid-level role with high skill overlap.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427996718": {
-  "score": 44,
-  "reason": "Requires 3+ years experience; located in California.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4412044790": {
-  "score": 91,
-  "reason": "Entry-level full-stack role matching JS/TS/React and cloud skills.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4416721484": {
-  "score": 60,
-  "reason": "Mid-level role requiring experienced engineers; good frontend skill match.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427694538": {
-  "score": 51,
-  "reason": "Requires 3+ years backend experience; penalized for seniority requirement.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427949014": {
-  "score": 28,
-  "reason": "Staff level role with high seniority requirements; low responsibilities alignmen",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4421951809": {
-  "score": 89,
-  "reason": "Early-stage startup role valuing builders with strong TypeScript/LLM experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426941918": {
-  "score": 39,
-  "reason": "Requires 6+ years experience, senior role mismatch for new grad",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426689369": {
-  "score": 26,
-  "reason": "Requires 10+ years experience, staff-level role mismatch for new grad",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4409101138": {
-  "score": 39,
-  "reason": "Requires US citizenship or permanent residency; candidate is F-1 OPT",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4421944905": {
-  "score": 92,
-  "reason": "Excellent stack and AI project overlap; no strict experience barrier",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4421617596": {
-  "score": 78,
-  "reason": "Strong full-stack skills overlap, but requires in-person relocation to SF",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4318547972": {
-  "score": 16,
-  "reason": "Staff role requiring 10+ years experience; candidate is entry-level.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427991131": {
-  "score": 38,
-  "reason": "Requires 3-5 years experience; contract role for mid-level developer.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4418064125": {
-  "score": 62,
-  "reason": "Good backend/AI stack overlap, but requires some industry experience.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427903618": {
-  "score": 79,
-  "reason": "Excellent education fit; matches Java/web skills with no experience block.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4424853542": {
-  "score": 87,
-  "reason": "Perfect associate role match, but location in Missouri requires relocation.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4337460176": {
-  "score": 0,
-  "reason": "Senior role and lack of visa sponsorship result in major deductions.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4427977477": {
-  "score": 95,
-  "reason": "Perfect fit with strong React, Next.js, and LLM API prototyping projects.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4337310937": {
-  "score": 0,
-  "reason": "Senior UI role and lack of sponsorship result in major deductions.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4413636912": {
-  "score": 51,
-  "reason": "Good fit for Java/SQL, but mid-level role leads to points deduction.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426663575": {
-  "score": 86,
-  "reason": "Great fit for entry-level role with JS/TS, React, and SQL skills.",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4342128593": {
-  "score": 15,
-  "reason": "Senior research role requiring publications and leadership; high experience barr",
-  "date": "2026-06-12"
- },
- "https://www.linkedin.com/jobs/view/4426963065": {
+ "https://www.linkedin.com/jobs/view/4377876564": {
   "score": 56,
-  "reason": "Great skills overlap, but requires senior founding autonomy and SF relocation.",
-  "date": "2026-06-12"
+  "reason": "Mid-level SE II evening role with solid full-stack overlap.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4381761503": {
-  "score": 86,
-  "reason": "Entry-level NJ role; targets MSCS, provides visa sponsorship, good skills match.",
-  "date": "2026-06-12"
+ "https://www.linkedin.com/jobs/view/4361019880": {
+  "score": 38,
+  "reason": "Strictly requires three to five years experience and mobile stack.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4426623980": {
-  "score": 81,
-  "reason": "Early-career NY role; matches MSCS with 1 year experience and skills.",
-  "date": "2026-06-12"
+ "https://www.linkedin.com/jobs/view/4417195819": {
+  "score": 54,
+  "reason": "Extremely senior role requiring seven plus years experience despite perfect stac",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4407053152": {
-  "score": 73,
-  "reason": "Early-career full-stack role; fits skills well but located in SF.",
-  "date": "2026-06-12"
+ "https://www.linkedin.com/jobs/view/4425778171": {
+  "score": 62,
+  "reason": "NYC location, strong CS fit, but requires 2+ years experience.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4427632909": {
+ "https://www.linkedin.com/jobs/view/4428174166": {
+  "score": 1,
+  "reason": "Requires 3+ years experience and strictly no visa sponsorship.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4344168688": {
+  "score": 53,
+  "reason": "Decent full stack fit, but targets experienced developer.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428160992": {
   "score": 98,
-  "reason": "Perfect tech stack match, NY location, and entry-level experience requirement fi",
-  "date": "2026-06-12"
+  "reason": "Exceptional skills overlap and fits prompt engineering project background.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4426974255": {
+ "https://www.linkedin.com/jobs/view/4412178359": {
+  "score": 15,
+  "reason": "Requires US citizenship and clearance; ineligible under F-1 OPT.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4384795275": {
+  "score": 47,
+  "reason": "Excellent tech stack overlap but heavily penalized for senior level requirements",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427210205": {
+  "score": 80,
+  "reason": "Strong overlap with agentic AI projects; minor mid-level experience penalty.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429118983": {
+  "score": 20,
+  "reason": "Severely penalized due to no visa sponsorship policy and mid-level requirements.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427206764": {
+  "score": 13,
+  "reason": "Disqualified due to security clearance requirement and relocation to Louisiana.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429506891": {
+  "score": 47,
+  "reason": "Great skills match but penalized for mid-level Software Engineer II requirements",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4426486373": {
+  "score": 50,
+  "reason": "Requires 3+ years of Python; candidate is a Node-focused new grad.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4426414242": {
+  "score": 0,
+  "reason": "Requires active Secret clearance and C/RTOS; candidate is F-1 OPT.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4397615736": {
+  "score": 60,
+  "reason": "Strong messaging pipeline stack match; deducted for mid-level SWE II requirement",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428374627": {
+  "score": 19,
+  "reason": "Requires 3-7 years Java financial experience; candidate lacks this domain.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429122044": {
+  "score": 64,
+  "reason": "Perfect frontend stack match; deducted for 3+ years experience requirement.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4403266370": {
+  "score": 56,
+  "reason": "Requires 3+ years experience; strong full-stack/AI skill overlap but SF relocati",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428019939": {
+  "score": 49,
+  "reason": "Founding Engineer role is too senior despite excellent agentic AI skills.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428165568": {
+  "score": 91,
+  "reason": "Excellent full-stack skill match, local NYC location, and suitable experience le",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4388588567": {
+  "score": 54,
+  "reason": "Strictly requires 3+ years experience despite local NJ location and MSCS.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4418604292": {
+  "score": 93,
+  "reason": "Perfect 2026 new-grad alignment, strong front-end skills, and local NYC option.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4408110533": {
+  "score": 61,
+  "reason": "Requires 4+ years of experience; no sponsorship restrictions listed.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4426482650": {
+  "score": 98,
+  "reason": "Perfect alignment with React and AI developer tools projects.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4417188308": {
+  "score": 63,
+  "reason": "Requires 3+ years of experience; fits React/Python stack.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4414362956": {
+  "score": 16,
+  "reason": "Requires 4+ years of experience and explicitly denies visa sponsorship.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4368509789": {
+  "score": 65,
+  "reason": "Requires mentoring and upleveling engineers; strong backend stack overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428603013": {
+  "score": 57,
+  "reason": "SE II mid-level role (2+ years), good backend skills overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4378040567": {
+  "score": 56,
+  "reason": "Mid-level expectations (leadership, ownership), good general engineering match.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4425797782": {
+  "score": 45,
+  "reason": "Senior role requiring 5+ years experience; high skills overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428374982": {
+  "score": 57,
+  "reason": "SE II mid-level role (2+ years), good backend skills overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428013812": {
+  "score": 58,
+  "reason": "Lacks Go skill, hybrid in Boulder CO creates poor logistics.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4363834638": {
+  "score": 81,
+  "reason": "Entry-friendly, matches AWS and databases, but Mountain View location.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4425798788": {
+  "score": 54,
+  "reason": "Requires 3+ years experience; great TS/React stack and NYC location.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4081518713": {
+  "score": 31,
+  "reason": "Requires 4+ years experience; primary Java stack matches candidate's languages.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4406548495": {
+  "score": 25,
+  "reason": "Requires 4+ years experience and niche Rust/systems engineering background.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429525635": {
+  "score": 43,
+  "reason": "Requires 4+ years experience; perfect stack match with NestJS and BullMQ.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429267065": {
+  "score": 56,
+  "reason": "Requires 3-5 years experience; excellent Node/React stack overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4417176063": {
+  "score": 36,
+  "reason": "Requires 4+ years excluding internships; senior AI/evals role.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427239622": {
+  "score": 34,
+  "reason": "Requires 3-6+ years experience; high Python/AWS stack match.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4399933005": {
+  "score": 66,
+  "reason": "Backend II requires 2+ years; strong stack and AI alignment.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427494932": {
+  "score": 32,
+  "reason": "Senior backend contractor role; requires extensive production Node/AWS experienc",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428119141": {
+  "score": 86,
+  "reason": "Great skills match, NYC location, MSCS degree preferred, requires 2 years.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429527548": {
+  "score": 54,
+  "reason": "Perfect tech stack but penalized 30 points for 4+ years requirement.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429122739": {
+  "score": 79,
+  "reason": "Strong full-stack/healthcare fit, but requires relocation to SF or Boston.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427774454": {
+  "score": 38,
+  "reason": "Good Node/AWS skills, but penalized 30 points for 3+ years requirement.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429215251": {
+  "score": 84,
+  "reason": "Ideal entry-level Developer 1 role, but requires relocation to Ohio.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4332205894": {
+  "score": 93,
+  "reason": "Strong match for new-grad AI projects and TypeScript backend skills.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428020879": {
+  "score": 19,
+  "reason": "Requires 5+ years experience; candidate is a new graduate.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428019940": {
+  "score": 70,
+  "reason": "Excellent stack and NYC location, but seeks prior professional experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428325395": {
+  "score": 22,
+  "reason": "Strictly requires 3-7 years of backend engineering experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428149244": {
+  "score": 25,
+  "reason": "Requires 4+ years of professional backend software engineering experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4291610181": {
+  "score": 67,
+  "reason": "Requires 2-4 years experience; strong backend skills and education overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4416702063": {
+  "score": 20,
+  "reason": "Requires 5+ years experience; mismatch on GCP/Kubernetes and location.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4369403419": {
+  "score": 59,
+  "reason": "Requires 3+ years experience; excellent AI project and skills overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4318230246": {
+  "score": 11,
+  "reason": "Staff level requiring 10+ years of experience; major seniority mismatch.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428035537": {
+  "score": 59,
+  "reason": "Second engineer role is mid/senior; excellent healthtech and backend fit.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4369720490": {
+  "score": 39,
+  "reason": "Requires 5+ years of experience and senior leadership responsibilities.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4290771622": {
+  "score": 26,
+  "reason": "Requires 4+ years of experience and specialized Rust systems engineering.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429176076": {
+  "score": 41,
+  "reason": "Requires 3-5 years of experience; strong health-tech domain fit.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4410272050": {
+  "score": 30,
+  "reason": "Requires 5+ years of experience, mentoring, and senior architectural design.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4391479551": {
+  "score": 45,
+  "reason": "Requires 3-6 years of experience; perfect backend and AI skill overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4384777826": {
+  "score": 29,
+  "reason": "Senior role requiring 5+ years experience. Low logistics fit (LA).",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4417168161": {
+  "score": 64,
+  "reason": "Strong AI domain and skills overlap, but expects mid-level production experience",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428023496": {
+  "score": 39,
+  "reason": "Senior role with great skills match (Python, WebSockets, queues) and remote.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429540341": {
+  "score": 45,
+  "reason": "Requires 4+ years experience despite near-perfect stack overlap (TS, NestJS, Bul",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4418687099": {
+  "score": 76,
+  "reason": "Excellent stack overlap and responsibilities alignment. Requires 2-3+ years expe",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4426450696": {
+  "score": 5,
+  "reason": "Senior role requiring 8+ years and Scala; poor fit.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429104539": {
+  "score": 50,
+  "reason": "Requires experienced Java contractor; hybrid in Denver (NJ-based).",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427749026": {
+  "score": 97,
+  "reason": "Perfect match for AI/MERN stack skills; intern role fits well.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4409041404": {
+  "score": 49,
+  "reason": "Mid-level role (SE II) requiring more industry experience than candidate has.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428017850": {
+  "score": 0,
+  "reason": "Requires TS/SCI clearance (citizenship required) and 3+ years experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429528572": {
+  "score": 46,
+  "reason": "Strong TypeScript and queue overlap but requires 4+ years experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429198711": {
+  "score": 47,
+  "reason": "Good Python and AI project overlap but requires 5+ years.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429544209": {
+  "score": 46,
+  "reason": "Strong TypeScript and queue overlap but requires 4+ years experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4425742521": {
+  "score": 39,
+  "reason": "Mid-senior role requiring 3+ years experience and Boston hybrid logistics.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429122302": {
+  "score": 53,
+  "reason": "Excellent AI and TypeScript stack match but requires 6+ years.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4407983740": {
+  "score": 76,
+  "reason": "Google SWE III is mid-level; excellent technical skills overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4426474704": {
+  "score": 93,
+  "reason": "Perfect alignment with AI coding agent projects; remote logistics.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428140985": {
+  "score": 51,
+  "reason": "Deducted 30 points: strictly requires 4+ years professional experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4317707969": {
+  "score": 96,
+  "reason": "Ideal new-grad AI platform role; strong systems and projects overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4413183162": {
+  "score": 95,
+  "reason": "Strong junior full-stack alignment with React, Node, and Python.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429540140": {
+  "score": 30,
+  "reason": "Requires 6+ years experience, mismatching candidate's entry-level profile.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427790822": {
+  "score": 73,
+  "reason": "Great stack overlap and AI agent project alignment; requires 2+ years.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429208891": {
+  "score": 5,
+  "reason": "Requires Vue.js, 5 years experience, and local residency in North Carolina.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4388574017": {
+  "score": 46,
+  "reason": "Requires 3+ years experience, though stack aligns well with full-stack skills.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429520638": {
+  "score": 96,
+  "reason": "Perfect stack alignment and no strict experience barriers for a strong candidate",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4294278438": {
+  "score": 73,
+  "reason": "Strong frontend and AI project match; lacks full-time experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428017851": {
+  "score": 0,
+  "reason": "Requires active TS/SCI clearance and 5+ years of experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4359033086": {
+  "score": 70,
+  "reason": "Excellent real-time frontend stack overlap; requires 2+ years experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427486945": {
+  "score": 47,
+  "reason": "Perfect Manhattan location and tech match, but requires 3+ years experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427747270": {
+  "score": 67,
+  "reason": "Good fit for AI evaluation; contract role requires 2+ years.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4317460401": {
+  "score": 52,
+  "reason": "Requires 3+ years experience; good full-stack skills overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427792161": {
+  "score": 70,
+  "reason": "Prefers 2-4 years experience; excellent AI projects overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4409569190": {
+  "score": 42,
+  "reason": "Requires 2-5 years experience, VA/federal background, and mentorship.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4429115204": {
+  "score": 51,
+  "reason": "Requires 3+ years experience; high healthcare domain fit.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428039264": {
+  "score": 56,
+  "reason": "Contract role requiring mentoring and multi-framework backend expertise.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4414376695": {
+  "score": 13,
+  "reason": "Senior .NET/Angular role with low stack overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4426415617": {
+  "score": 36,
+  "reason": "Senior role requiring 5+ years experience despite high stack overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4409508349": {
+  "score": 0,
+  "reason": "Senior PHP role explicitly offering no visa sponsorship.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4427771494": {
   "score": 92,
-  "reason": "Good foundational languages/DSA alignment, entry-level, but generic job descript",
-  "date": "2026-06-12"
+  "reason": "Excellent full-stack stack match, though requires relocation to Boise.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4408070145": {
-  "score": 75,
-  "reason": "Slightly lower skills fit due to specific Unqork no-code requirement.",
-  "date": "2026-06-12"
+ "https://www.linkedin.com/jobs/view/4409504439": {
+  "score": 0,
+  "reason": "Senior PHP role explicitly offering no visa sponsorship.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4427195583": {
-  "score": 89,
-  "reason": "Matches MS requirement and NJ location; requires some networking/Vue knowledge.",
-  "date": "2026-06-12"
+ "https://www.linkedin.com/jobs/view/4426994788": {
+  "score": 77,
+  "reason": "Strong fullstack skills and NJ location; backend uses Java instead of Node.",
+  "date": "2026-06-16"
  },
- "https://www.linkedin.com/jobs/view/4386889377": {
-  "score": 55,
-  "reason": "Perfect entry-level fit but disqualified by explicit visa sponsorship exclusion.",
-  "date": "2026-06-12"
+ "https://www.linkedin.com/jobs/view/4408326461": {
+  "score": 0,
+  "reason": "Deducted 70 points for no sponsorship policy and Senior Engineer level.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428312229": {
+  "score": 92,
+  "reason": "Excellent match for React, Python, and AI agent project experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4416188332": {
+  "score": 0,
+  "reason": "Deducted 70 points: requires U.S. citizenship and seven years experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4406673932": {
+  "score": 22,
+  "reason": "Deducted 30 points for senior role; NJ is not an eligible state.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4400667751": {
+  "score": 13,
+  "reason": "Senior role requiring 4-8 years; healthcare domain overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4416580639": {
+  "score": 9,
+  "reason": "Software Engineer III requiring 5-7 years; poor location fit.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4401648819": {
+  "score": 26,
+  "reason": "Requires 5+ years; strong alignment with React and JavaScript.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428054513": {
+  "score": 36,
+  "reason": "Senior role requiring 5+ years; perfect TS/Next.js stack match.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4426423335": {
+  "score": 16,
+  "reason": "Senior/Lead role requiring extensive experience; D3/visualization match.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428101923": {
+  "score": 0,
+  "reason": "Requires U.S. Person status and 5+ years of full-stack experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4407779886": {
+  "score": 47,
+  "reason": "Requires 5+ years experience, but strong Java/React technical stack overlap.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4376446516": {
+  "score": 38,
+  "reason": "Vice President position requires extensive senior leadership; located in Dallas.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4377274984": {
+  "score": 48,
+  "reason": "Excellent stack and AI overlap, but requires 8+ years experience.",
+  "date": "2026-06-16"
+ },
+ "https://www.linkedin.com/jobs/view/4428048713": {
+  "score": 30,
+  "reason": "Requires 5+ years, C#/.NET stack, and onsite work in Colorado.",
+  "date": "2026-06-16"
  }
 }

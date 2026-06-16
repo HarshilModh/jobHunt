@@ -121,7 +121,10 @@ async function fetchDescription(jobUrl) {
 // ── Main ────────────────────────────────────────────────────────────
 
 const seen = loadSeen();
-const jdCache = existsSync(JD_CACHE_PATH) ? JSON.parse(readFileSync(JD_CACHE_PATH, 'utf-8')) : {};
+// JD cache is a map keyed by URL ({}). Guard against a stray array/null on disk —
+// assigning string keys to an array then JSON.stringify-ing it silently drops them all.
+const _rawJd = existsSync(JD_CACHE_PATH) ? JSON.parse(readFileSync(JD_CACHE_PATH, 'utf-8')) : {};
+const jdCache = (_rawJd && typeof _rawJd === 'object' && !Array.isArray(_rawJd)) ? _rawJd : {};
 const found = new Map();
 let blocked = false;
 
