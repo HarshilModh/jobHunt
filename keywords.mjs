@@ -61,7 +61,13 @@ async function getJson(url, timeoutMs = 30000, opts = {}) {
 }
 
 function urlForCompany(name) {
-  for (const path of ['data/top-openings.md', 'data/linkedin-openings.md']) {
+  const paths = [
+    existsSync('data/ats-recent.md') ? 'data/ats-recent.md' : 'data/ats-openings.md',
+    existsSync('data/aggregator-recent.md') ? 'data/aggregator-recent.md' : 'data/aggregator-openings.md',
+    existsSync('data/linkedin-recent.md') ? 'data/linkedin-recent.md' : 'data/linkedin-openings.md',
+    'data/indeed-openings.md',
+  ];
+  for (const path of paths) {
     if (!existsSync(path)) continue;
     for (const m of readFileSync(path, 'utf-8').matchAll(/\| *([^|]+?) *\| *\[([^\]]+)\]\((https?:[^)]+)\) *\|/g))
       if (m[1].trim().toLowerCase().includes(name.toLowerCase())) return m[3];
@@ -70,6 +76,11 @@ function urlForCompany(name) {
 }
 
 async function fetchJd(url) {
+  // Indeed — cached description only (indeed.com 403s Node — Cloudflare)
+  if (/indeed\.com\//.test(url) && existsSync('data/indeed-jds.json')) {
+    const cache = JSON.parse(readFileSync('data/indeed-jds.json', 'utf-8'));
+    if (cache[url]?.desc) return cache[url].desc;
+  }
   // LinkedIn — use the cached description
   if (/linkedin\.com/.test(url) && existsSync('data/linkedin-jds.json')) {
     const cache = JSON.parse(readFileSync('data/linkedin-jds.json', 'utf-8'));

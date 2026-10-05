@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>JobHunt | Executive Job Search Toolkit</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+
+  <link rel="stylesheet" href="/styles.css"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#ebffe2",
+            "primary-fixed-dim": "#00e639",
+            "background": "#0f141b",
+            "surface": "#0f141b",
+            "surface-container-lowest": "#090f15",
+            "surface-container-low": "#171c23",
+            "surface-container": "#1b2027",
+            "surface-container-high": "#252a32",
+            "surface-container-highest": "#30353d",
+            "outline": "#84967e",
+            "outline-variant": "#3b4b37",
+            "on-background": "#dee2ec",
+            "on-surface": "#dee2ec",
+            "on-surface-variant": "#b9ccb2"
+          },
+          fontFamily: {
+            "sans": ["Geist", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-sans selection:bg-primary-fixed-dim selection:text-black">
+
+  <!-- Top Navigation Bar -->
+  <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center h-16 px-6 bg-background/90 backdrop-blur-md border-b border-outline-variant">
+    <div class="flex items-center gap-4 min-w-0">
+      <a class="font-mono text-xl font-bold tracking-tight text-primary-fixed-dim flex items-center gap-2 flex-shrink-0" href="#" title="JobHunt">
+        <img src="/logo.svg" alt="JobHunt Logo" class="h-7 w-auto object-contain hover:scale-105 transition-transform"/>
+        <span class="text-xs bg-primary-fixed-dim/20 text-primary-fixed-dim px-2 py-0.5 rounded border border-primary-fixed-dim/40 font-normal">v1.0 WEB</span>
+      </a>
+
+      <div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-lg border border-outline-variant overflow-x-auto max-w-full">
+        <button id="tab-leaderboard" onclick="switchTab('leaderboard')" class="tab-btn active font-mono text-xs px-2.5 py-1.5 rounded transition-all flex items-center gap-1 text-primary-fixed-dim bg-surface-container-highest border border-primary-fixed-dim/30 whitespace-nowrap">
+          <span class="material-symbols-outlined text-[15px]">dashboard</span> Leaderboard
+        </button>
+        <button id="tab-applications" onclick="switchTab('applications')" class="tab-btn font-mono text-xs px-2.5 py-1.5 rounded transition-all flex items-center gap-1 text-on-surface-variant hover:text-on-surface whitespace-nowrap">
+          <span class="material-symbols-outlined text-[15px]">task_alt</span> Tracker (<span id="nav-app-count">0</span>)
+        </button>
+        <button id="tab-referrals" onclick="switchTab('referrals')" class="tab-btn font-mono text-xs px-2.5 py-1.5 rounded transition-all flex items-center gap-1 text-on-surface-variant hover:text-on-surface whitespace-nowrap">
+          <span class="material-symbols-outlined text-[15px]">groups</span> Referrals
+        </button>
+        <button id="tab-prep" onclick="switchTab('prep')" class="tab-btn font-mono text-xs px-2.5 py-1.5 rounded transition-all flex items-center gap-1 text-on-surface-variant hover:text-on-surface whitespace-nowrap">
+          <span class="material-symbols-outlined text-[15px]">menu_book</span> Interview Prep
+        </button>
+        <button id="tab-terminal" onclick="switchTab('terminal')" class="tab-btn font-mono text-xs px-2.5 py-1.5 rounded transition-all flex items-center gap-1 text-on-surface-variant hover:text-on-surface whitespace-nowrap">
+          <span class="material-symbols-outlined text-[15px]">terminal</span> Workstation
+        </button>
+        <button id="tab-docs" onclick="switchTab('docs')" class="tab-btn font-mono text-xs px-2.5 py-1.5 rounded transition-all flex items-center gap-1 text-on-surface-variant hover:text-on-surface whitespace-nowrap">
+          <span class="material-symbols-outlined text-[15px]">help_center</span> Setup & Docs
+        </button>
+      </div>
+    </div>
+
+    
+    <div class="flex items-center gap-3">
+      <div class="hidden lg:flex items-center gap-3 text-xs font-mono text-on-surface-variant bg-surface-container-low px-3 py-1.5 rounded border border-outline-variant">
+        <span class="flex items-center gap-1 text-primary-fixed-dim"><span class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse"></span> F-1 OPT (May '26)</span>
+        <span>•</span>
+        <span class="text-amber-300">NYC First</span>
+      </div>
+      <button onclick="runTask('today')" class="bg-primary-fixed-dim hover:bg-primary text-black font-mono font-semibold text-xs px-3.5 py-2 rounded flex items-center gap-1.5 transition-all shadow-[0_0_15px_rgba(0,230,57,0.3)]">
+        <span class="material-symbols-outlined text-[16px]">play_arrow</span> Daily Briefing
+      </button>
+      <button id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Light/Dark Theme" class="p-2 rounded bg-surface-container-low border border-outline-variant text-on-surface-variant hover:text-on-surface transition-all flex items-center justify-center">
+        <span class="material-symbols-outlined text-[18px]" id="theme-toggle-icon">light_mode</span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- Main Workspace Canvas -->
+  <main class="flex-grow pt-20 pb-16 px-4 md:px-8 max-w-7xl mx-auto w-full">
+
+    <!-- VIEW 1: LEADERBOARD & OPENINGS -->
+    <div id="view-leaderboard" class="view-panel space-y-6">
+      
+      <!-- Top Metrics Banner -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="bg-surface-container-low border border-outline-variant p-4 rounded-lg flex items-center justify-between card-hover">
+          <div>
+            <div class="text-xs font-mono text-on-surface-variant uppercase tracking-wider">Total Scanned</div>
+            <div id="stat-total-openings" class="text-2xl font-mono font-bold text-on-surface mt-1">0</div>
+          </div>
+          <div class="p-3 bg-surface-container rounded-lg border border-outline-variant text-primary-fixed-dim">
+            <span class="material-symbols-outlined">radar</span>
+          </div>
+        </div>
+        <div class="bg-surface-container-low border border-outline-variant p-4 rounded-lg flex items-center justify-between card-hover">
+          <div>
+            <div class="text-xs font-mono text-on-surface-variant uppercase tracking-wider">AI Scored Fit</div>
+            <div id="stat-ai-top" class="text-2xl font-mono font-bold text-primary-fixed-dim mt-1">0</div>
+          </div>
+          <div class="p-3 bg-surface-container rounded-lg border border-outline-variant text-emerald-400">
+            <span class="material-symbols-outlined">auto_awesome</span>
+          </div>
+        </div>
+        <div class="bg-surface-container-low border border-outline-variant p-4 rounded-lg flex items-center justify-between card-hover">
+          <div>
+            <div class="text-xs font-mono text-on-surface-variant uppercase tracking-wider">Applied Roles</div>
+            <div id="stat-applied" class="text-2xl font-mono font-bold text-sky-400 mt-1">0</div>
+          </div>
+          <div class="p-3 bg-surface-container rounded-lg border border-outline-variant text-sky-400">
+            <span class="material-symbols-outlined">check_circle</span>
+          </div>
+        </div>
+        <div class="bg-surface-container-low border border-outline-variant p-4 rounded-lg flex items-center justify-between card-hover">
+          <div>
+            <div class="text-xs font-mono text-on-surface-variant uppercase tracking-wider">Visa Friendly</div>
+            <div id="stat-sponsored" class="text-2xl font-mono font-bold text-emerald-300 mt-1">0</div>
+          </div>
+          <div class="p-3 bg-surface-container rounded-lg border border-outline-variant text-emerald-300">
+            <span class="material-symbols-outlined">verified</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Filters & Controls Bar -->
+      <div class="bg-surface-container-low border border-outline-variant p-4 rounded-lg flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div class="relative w-full md:w-96">
+          <span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-[18px]">search</span>
+          <input type="text" id="search-input" onkeyup="filterOpenings()" placeholder="Search company, title, signals..." class="w-full bg-surface-container border border-outline-variant rounded-md pl-10 pr-4 py-2 text-xs font-mono text-on-surface focus:outline-none focus:border-primary-fixed-dim"/>
+        </div>
+
+        <div class="flex flex-wrap gap-2 w-full md:w-auto items-center">
+          <select id="filter-source" onchange="filterOpenings()" class="bg-surface-container border border-outline-variant rounded-md px-3 py-2 text-xs font-mono text-on-surface focus:outline-none focus:border-primary-fixed-dim">
+            <option value="all">Source: All Lists</option>
+            <option value="ATS Boards">ATS Boards (Greenhouse/Ashby/Lever)</option>
+            <option value="LinkedIn Recent">LinkedIn Recent (Fresh Windowed Slice)</option>
+            <option value="LinkedIn">LinkedIn (Full Master Set)</option>
+            <option value="Aggregators">Aggregators (SimplifyJobs)</option>
+            <option value="Indeed">Indeed</option>
+            <option value="Pipeline Inbox">Pipeline Inbox</option>
+          </select>
+
+
+          <select id="filter-status" onchange="filterOpenings()" class="bg-surface-container border border-outline-variant rounded-md px-3 py-2 text-xs font-mono text-on-surface focus:outline-none focus:border-primary-fixed-dim">
+            <option value="all">Status: All</option>
+            <option value="pending" selected>Status: Pending</option>
+            <option value="applied">Status: Applied</option>
+            <option value="screening">Status: Screening/Interview</option>
+          </select>
+
+          <select id="filter-signals" onchange="filterOpenings()" class="bg-surface-container border border-outline-variant rounded-md px-3 py-2 text-xs font-mono text-on-surface focus:outline-none focus:border-primary-fixed-dim">
+            <option value="all">Signals: All</option>
+            <option value="nyc">🗽 NYC Location</option>
+            <option value="sponsors">✅ Sponsoring</option>
+            <option value="grad">🎓 New Grad / Entry</option>
+            <option value="fresh">🆕 Posted ≤7d</option>
+          </select>
+
+          <button onclick="runTask('rank')" class="bg-surface-container hover:bg-surface-container-highest text-on-surface border border-outline-variant px-3 py-2 rounded-md font-mono text-xs flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">refresh</span> Heuristic Rank
+          </button>
+          <button onclick="runTask('rank-ai')" class="bg-surface-container hover:bg-surface-container-highest text-primary-fixed-dim border border-primary-fixed-dim/30 px-3 py-2 rounded-md font-mono text-xs flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">auto_awesome</span> Gemini AI Rank
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Scan Toggles & List Switcher -->
+      <div class="flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-on-surface-variant text-[11px] uppercase font-bold mr-1">Quick Scan:</span>
+          <button onclick="toggleQuickFilter('sponsors')" class="px-2.5 py-1 rounded border border-emerald-500/30 text-emerald-400 bg-emerald-500/10 text-xs hover:bg-emerald-500/20 transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">verified</span> Visa Friendly
+          </button>
+          <button onclick="toggleQuickFilter('grad')" class="px-2.5 py-1 rounded border border-sky-500/30 text-sky-400 bg-sky-500/10 text-xs hover:bg-sky-500/20 transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">school</span> New Grad
+          </button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-on-surface-variant text-[11px] uppercase font-bold mr-1">List Switcher:</span>
+          <button id="src-pill-all" onclick="selectSourcePill('all')" class="src-pill active bg-primary-fixed-dim/20 text-primary-fixed-dim border border-primary-fixed-dim/40 px-3 py-1 rounded-full">All Lists</button>
+          <button id="src-pill-ats" onclick="selectSourcePill('ATS Boards')" class="src-pill bg-surface-container hover:bg-surface-container-highest text-on-surface-variant border border-outline-variant px-3 py-1 rounded-full">ATS Boards</button>
+          <button id="src-pill-linkedin-recent" onclick="selectSourcePill('LinkedIn Recent')" class="src-pill bg-surface-container hover:bg-surface-container-highest text-on-surface-variant border border-outline-variant px-3 py-1 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-[13px] text-amber-400">bolt</span> LinkedIn Recent</button>
+          <button id="src-pill-linkedin" onclick="selectSourcePill('LinkedIn')" class="src-pill bg-surface-container hover:bg-surface-container-highest text-on-surface-variant border border-outline-variant px-3 py-1 rounded-full">LinkedIn</button>
+          <button id="src-pill-agg" onclick="selectSourcePill('Aggregators')" class="src-pill bg-surface-container hover:bg-surface-container-highest text-on-surface-variant border border-outline-variant px-3 py-1 rounded-full">Aggregators</button>
+          <button id="src-pill-indeed" onclick="selectSourcePill('Indeed')" class="src-pill bg-surface-container hover:bg-surface-container-highest text-on-surface-variant border border-outline-variant px-3 py-1 rounded-full">Indeed</button>
+          <button id="src-pill-pipeline" onclick="selectSourcePill('Pipeline Inbox')" class="src-pill bg-surface-container hover:bg-surface-container-highest text-on-surface-variant border border-outline-variant px-3 py-1 rounded-full">Pipeline Inbox</button>
+
+        </div>
+      </div>
+
+
+      <!-- Leaderboard Data Table -->
+      <div class="border border-outline-variant rounded-lg bg-surface-container-lowest overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-outline-variant bg-surface-container font-mono text-on-surface-variant uppercase text-[11px]">
+              <th class="p-3 font-semibold">AI Fit</th>
+              <th class="p-3 font-semibold">Heuristic</th>
+              <th class="p-3 font-semibold">Source</th>
+              <th class="p-3 font-semibold">Company & Role</th>
+              <th class="p-3 font-semibold">Location</th>
+              <th class="p-3 font-semibold">Posted / Comp</th>
+              <th class="p-3 font-semibold">Signals</th>
+              <th class="p-3 font-semibold text-center">Status</th>
+              <th class="p-3 font-semibold text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="openings-tbody" class="font-mono divide-y divide-outline-variant/30">
+            <tr>
+              <td colspan="9" class="p-8 text-center text-on-surface-variant animate-pulse">
+                Loading job openings leaderboard data...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination Controls Bar -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-on-surface-variant bg-surface-container-low border border-outline-variant p-3 rounded-lg">
+        <div id="pagination-info">Showing 1–50 of 0 openings</div>
+        
+        <div class="flex items-center gap-2">
+          <button id="btn-prev-page" onclick="changePage(-1)" class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-highest border border-outline-variant text-on-surface flex items-center gap-1 disabled:opacity-40">
+            <span class="material-symbols-outlined text-[16px]">chevron_left</span> Prev
+          </button>
+          
+          <span id="pagination-page-num" class="px-2 font-bold text-primary-fixed-dim">Page 1</span>
+          
+          <button id="btn-next-page" onclick="changePage(1)" class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-highest border border-outline-variant text-on-surface flex items-center gap-1 disabled:opacity-40">
+            Next <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+          </button>
+          
+          <select id="select-page-size" onchange="changePageSize(this.value)" class="bg-surface-container border border-outline-variant rounded px-2 py-1 text-xs text-on-surface ml-2">
+            <option value="25">25 / page</option>
+            <option value="50" selected>50 / page</option>
+            <option value="100">100 / page</option>
+            <option value="250">250 / page</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- VIEW 2: APPLICATIONS TRACKER -->
+    <div id="view-applications" class="view-panel hidden space-y-6">
+      <div class="flex justify-between items-center bg-surface-container-low border border-outline-variant p-4 rounded-lg">
+        <div>
+          <h2 class="text-lg font-mono font-bold text-on-surface">Application Tracker (`data/applications.md`)</h2>
+          <p class="text-xs text-on-surface-variant">Live synced with repository applications log.</p>
+        </div>
+        <button onclick="openAddAppModal()" class="bg-primary-fixed-dim text-black px-3.5 py-2 rounded font-mono text-xs font-semibold flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">add</span> Log Application
+        </button>
+      </div>
+
+      <div class="border border-outline-variant rounded-lg bg-surface-container-lowest overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs font-mono">
+          <thead>
+            <tr class="border-b border-outline-variant bg-surface-container text-on-surface-variant uppercase text-[11px]">
+              <th class="p-3">#</th>
+              <th class="p-3">Date</th>
+              <th class="p-3">Company</th>
+              <th class="p-3">Role</th>
+              <th class="p-3">Score</th>
+              <th class="p-3">Status</th>
+              <th class="p-3">Notes</th>
+              <th class="p-3 text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody id="applications-tbody" class="divide-y divide-outline-variant/30">
+            <tr>
+              <td colspan="8" class="p-8 text-center text-on-surface-variant">Loading application tracker...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VIEW 3: REFERRALS OUTREACH HUB -->
+    <div id="view-referrals" class="view-panel hidden space-y-6">
+      <div class="bg-surface-container-low border border-outline-variant p-4 rounded-lg">
+        <h2 class="text-lg font-mono font-bold text-on-surface">Referral Outreach Generator</h2>
+        <p class="text-xs text-on-surface-variant">Structured 3-sentence outreach templates for Recruiter, Hiring Manager, or Peer referrals.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Outreach Builder -->
+        <div class="bg-surface-container-low border border-outline-variant p-5 rounded-lg space-y-4">
+          <h3 class="font-mono text-sm font-semibold text-primary-fixed-dim flex items-center gap-2">
+            <span class="material-symbols-outlined">send</span> Outreach Message Builder
+          </h3>
+          
+          <div class="space-y-3 font-mono text-xs">
+            <div>
+              <label class="block text-on-surface-variant mb-1">Target Audience</label>
+              <select id="outreach-target" class="w-full bg-surface-container border border-outline-variant rounded p-2 text-on-surface">
+                <option value="recruiter">Recruiter (Fit gate & pre-answer screening)</option>
+                <option value="hm">Hiring Manager (Scope fit & team challenge)</option>
+                <option value="peer">Peer Engineer (Referral & school/stack link)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-on-surface-variant mb-1">Contact Name</label>
+              <input type="text" id="outreach-name" placeholder="e.g. Alex Smith" class="w-full bg-surface-container border border-outline-variant rounded p-2 text-on-surface"/>
+            </div>
+            <div>
+              <label class="block text-on-surface-variant mb-1">Company</label>
+              <input type="text" id="outreach-company" placeholder="e.g. Stripe" class="w-full bg-surface-container border border-outline-variant rounded p-2 text-on-surface"/>
+            </div>
+            <div>
+              <label class="block text-on-surface-variant mb-1">Role Title</label>
+              <input type="text" id="outreach-role" placeholder="e.g. Software Engineer, Backend" class="w-full bg-surface-container border border-outline-variant rounded p-2 text-on-surface"/>
+            </div>
+            <button onclick="generateOutreachDraft()" class="w-full bg-primary-fixed-dim text-black font-semibold p-2.5 rounded flex items-center justify-center gap-2 mt-2">
+              <span class="material-symbols-outlined text-[18px]">auto_fix_high</span> Generate 3-Sentence Outreach
+            </button>
+          </div>
+        </div>
+
+        <!-- Generated Result -->
+        <div class="bg-surface-container-lowest border border-outline-variant p-5 rounded-lg flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="font-mono text-xs text-on-surface-variant">Generated Outreach Draft</span>
+              <button onclick="copyOutreach()" class="text-xs font-mono text-primary-fixed-dim hover:underline flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]">content_copy</span> Copy
+              </button>
+            </div>
+            <textarea id="outreach-result" readonly class="w-full h-56 bg-surface-container border border-outline-variant rounded p-3 font-mono text-xs text-on-surface focus:outline-none leading-relaxed" placeholder="Click 'Generate Outreach' to build custom message..."></textarea>
+          </div>
+          <div class="text-[11px] font-mono text-on-surface-variant mt-3 border-t border-outline-variant/40 pt-2">
+            💡 Keep DMs short (≤300 chars for LinkedIn). Never corporate speak.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 4: INTERVIEW PREP & STORY BANK -->
+    <div id="view-prep" class="view-panel hidden space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Sidebar Prep Selector -->
+        <div class="space-y-4">
+          <div class="bg-surface-container-low border border-outline-variant p-4 rounded-lg">
+            <h3 class="font-mono text-sm font-semibold text-primary-fixed-dim mb-2 flex items-center gap-2">
+              <span class="material-symbols-outlined">folder</span> Company Preps
+            </h3>
+            <div id="prep-files-list" class="space-y-1 font-mono text-xs">
+              <div class="p-2 text-on-surface-variant">Loading company prep sheets...</div>
+            </div>
+          </div>
+
+          <div class="bg-surface-container-low border border-outline-variant p-4 rounded-lg">
+            <h3 class="font-mono text-sm font-semibold text-amber-300 mb-2 flex items-center gap-2">
+              <span class="material-symbols-outlined">star</span> STAR+R Story Bank
+            </h3>
+            <button onclick="loadStoryBank()" class="w-full bg-surface-container hover:bg-surface-container-highest border border-outline-variant text-on-surface p-2 rounded font-mono text-xs flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-[16px]">article</span> View 8 STAR Stories
+            </button>
+          </div>
+        </div>
+
+        <!-- Prep Viewer Canvas -->
+        <div class="md:col-span-2 bg-surface-container-lowest border border-outline-variant p-6 rounded-lg font-mono text-xs text-on-surface space-y-4 min-h-[500px]">
+          <div id="prep-header" class="border-b border-outline-variant pb-3 flex justify-between items-center">
+            <span class="text-sm font-bold text-primary-fixed-dim" id="prep-title">Select a Prep Sheet or Story Bank</span>
+          </div>
+          <div id="prep-content" class="whitespace-pre-wrap font-mono text-xs leading-relaxed overflow-y-auto max-h-[600px] p-2 bg-surface-container/30 rounded border border-outline-variant/30">
+            Select a company on the left to read its research-backed interview prep sheet, or view your 8 STAR+R stories from CareConnect, CodePulse, PromptStudio, and Grownited TA!
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- VIEW 5: WORKSTATION / LIVE TERMINAL -->
+    <div id="view-terminal" class="view-panel hidden space-y-6">
+      
+      <div class="flex flex-col gap-3 bg-surface-container-low border border-outline-variant p-4 rounded-lg">
+        <div>
+          <h2 class="text-lg font-mono font-bold text-on-surface">CLI Task Launcher & Live Stream</h2>
+          <p class="text-xs text-on-surface-variant">Execute backend job search runners with real-time SSE console output.</p>
+        </div>
+
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-3 space-y-3">
+          <p class="text-[11px] font-mono text-on-surface-variant uppercase tracking-wider">Full Pipeline — same prompts as <code class="text-primary-fixed-dim normal-case">node jobhunt.mjs</code></p>
+
+          <div class="flex flex-wrap items-end gap-4">
+            <div>
+              <label class="block text-[11px] font-mono text-on-surface-variant mb-1">How fresh should the ranked list be?</label>
+              <select id="pipeline-days" class="bg-surface-container border border-outline-variant rounded-md px-3 py-2 text-xs font-mono text-on-surface focus:outline-none focus:border-primary-fixed-dim">
+                <option value="1" selected>Last 24 hours (rolling; date-only rows marked ≈)</option>
+                <option value="4">Last 4 days</option>
+                <option value="7">Last 7 days</option>
+                <option value="14">Last 14 days</option>
+                <option value="0">Everything (archive inspection; much slower)</option>
+              </select>
+            </div>
+
+            <label class="flex items-center gap-1.5 text-xs font-mono text-on-surface cursor-pointer">
+              <input type="checkbox" id="pipeline-agg" checked class="accent-primary-fixed-dim"/> Also pull aggregators
+            </label>
+            <label class="flex items-center gap-1.5 text-xs font-mono text-on-surface cursor-pointer">
+              <input type="checkbox" id="pipeline-linkedin" checked class="accent-primary-fixed-dim"/> Also scan LinkedIn
+            </label>
+            <label class="flex items-center gap-1.5 text-xs font-mono text-on-surface cursor-pointer">
+              <input type="checkbox" id="pipeline-ai" checked class="accent-primary-fixed-dim"/> Add AI-fit scores (Gemini, cached)
+            </label>
+
+            <button onclick="runPipeline()" class="bg-primary-fixed-dim hover:bg-primary text-black font-mono font-semibold text-xs px-4 py-2.5 rounded flex items-center gap-1.5 transition-all shadow-[0_0_15px_rgba(0,230,57,0.3)] ml-auto">
+              <span class="material-symbols-outlined text-[16px]">rocket_launch</span> Run Full Pipeline
+            </button>
+          </div>
+        </div>
+
+        <p class="text-[11px] font-mono text-on-surface-variant border-t border-outline-variant/40 pt-2">Or run steps individually:</p>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="runTask('scan')" class="bg-surface-container hover:bg-surface-container-highest border border-outline-variant text-on-surface font-mono text-xs px-3 py-1.5 rounded flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">radar</span> scan.mjs
+          </button>
+          <button onclick="runTask('aggregators')" class="bg-surface-container hover:bg-surface-container-highest border border-outline-variant text-on-surface font-mono text-xs px-3 py-1.5 rounded flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">hub</span> aggregators.mjs
+          </button>
+          <button onclick="runTask('linkedin')" class="bg-surface-container hover:bg-surface-container-highest border border-outline-variant text-on-surface font-mono text-xs px-3 py-1.5 rounded flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">link</span> linkedin.mjs
+          </button>
+          <button onclick="runTask('rank-ai')" class="bg-surface-container hover:bg-surface-container-highest border border-outline-variant text-on-surface font-mono text-xs px-3 py-1.5 rounded flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">auto_awesome</span> rank.mjs --ai
+          </button>
+        </div>
+      </div>
+
+      <!-- Terminal Mockup Container (Stitch Aesthetic) -->
+      <div class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-[4px_4px_0px_#000000] overflow-hidden relative font-mono">
+        <div class="bg-surface-container border-b border-outline-variant px-4 py-2 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
+            <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+            <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+            <span class="ml-2 text-xs text-on-surface-variant">jobhunt — terminal execution</span>
+          </div>
+          <button onclick="clearTerminal()" class="text-xs text-on-surface-variant hover:text-primary-fixed-dim">Clear Console</button>
+        </div>
+
+        <div class="p-4 font-mono text-xs h-96 overflow-y-auto relative bg-black/40" id="terminal-window">
+          <div class="scan-overlay absolute inset-0 pointer-events-none"></div>
+          <div class="text-on-surface-variant mb-2"><span class="text-primary-fixed-dim">&gt;</span> System ready. Select a command above to execute...</div>
+          <pre id="terminal-logs" class="whitespace-pre-wrap font-mono text-on-surface leading-relaxed text-[12px]"></pre>
+        </div>
+      </div>
+    </div> <!-- End of view-terminal -->
+
+    <!-- TAB 6: SETUP & DOCUMENTATION (Help & Setup Guide) -->
+    <div id="view-docs" class="view-panel hidden space-y-6">
+
+        
+        <!-- Documentation Header Banner -->
+        <div class="bg-surface-container border border-outline-variant rounded-lg p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="flex items-center gap-2 text-primary-fixed-dim font-mono text-xs font-bold mb-1">
+              <span class="material-symbols-outlined text-[18px]">help_center</span> Setup & User Documentation
+            </div>
+            <h2 class="text-xl font-bold text-on-surface">JobHunt Executive Toolkit Guide</h2>
+            <p class="text-xs text-on-surface-variant mt-1">Complete setup, daily workflows, CLI cheat sheet, and F-1/OPT visa sponsorship rules.</p>
+          </div>
+          <div class="flex items-center gap-2 font-mono">
+            <a href="#quick-setup" class="bg-primary-fixed-dim hover:bg-primary text-black text-xs font-bold px-3.5 py-2 rounded flex items-center gap-1.5 transition-all shadow-sm">
+              <span class="material-symbols-outlined text-[16px]">bolt</span> Quick Setup
+            </a>
+            <button onclick="switchTab('terminal')" class="bg-surface-container-high text-on-surface text-xs px-3.5 py-2 rounded border border-outline-variant hover:bg-surface-container-highest flex items-center gap-1.5 transition-all">
+              <span class="material-symbols-outlined text-[16px]">terminal</span> Run Tasks
+            </button>
+          </div>
+        </div>
+
+        <!-- 3-Step Setup Cards Grid -->
+        <div id="quick-setup" class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono">
+          
+          <!-- Step 1 Card -->
+          <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold bg-primary-fixed-dim/20 text-primary-fixed-dim px-2.5 py-0.5 rounded border border-primary-fixed-dim/30">STEP 1</span>
+              <span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">settings</span>
+            </div>
+            <h3 class="font-bold text-on-surface text-sm">Configure config.yml</h3>
+            <p class="text-xs text-on-surface-variant font-sans leading-relaxed">
+              Single source of truth for candidate profile, target location (NYC priority), title filters, and referral networks.
+            </p>
+            <div class="bg-surface-container p-2.5 rounded text-[11px] font-mono text-on-surface-variant border border-outline-variant truncate">
+              <code>config.yml</code> (profile & filters)
+            </div>
+          </div>
+
+          <!-- Step 2 Card -->
+          <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold bg-sky-500/20 text-sky-400 px-2.5 py-0.5 rounded border border-sky-500/30">STEP 2</span>
+              <span class="material-symbols-outlined text-sky-400 text-[20px]">description</span>
+            </div>
+            <h3 class="font-bold text-on-surface text-sm">Add Résumé (cv.md)</h3>
+            <p class="text-xs text-on-surface-variant font-sans leading-relaxed">
+              Paste your résumé in Markdown format into <code>cv.md</code>. Gemini AI fit & heuristic scoring compare every JD against this file.
+            </p>
+            <div class="bg-surface-container p-2.5 rounded text-[11px] font-mono text-on-surface-variant border border-outline-variant truncate">
+              <code>cv.md</code> (Markdown résumé)
+            </div>
+          </div>
+
+          <!-- Step 3 Card -->
+          <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold bg-emerald-500/20 text-emerald-400 px-2.5 py-0.5 rounded border border-emerald-500/30">STEP 3</span>
+              <span class="material-symbols-outlined text-emerald-400 text-[20px]">rocket_launch</span>
+            </div>
+            <h3 class="font-bold text-on-surface text-sm">Run Web & CLI</h3>
+            <p class="text-xs text-on-surface-variant font-sans leading-relaxed">
+              Launch web dashboard with <code>npm start</code> (opens http://localhost:3005) or run interactive CLI <code>node jobhunt.mjs</code>.
+            </p>
+            <div class="bg-surface-container p-2.5 rounded text-[11px] font-mono text-on-surface-variant border border-outline-variant truncate">
+              <code>npm start</code> or <code>node jobhunt.mjs</code>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Detailed Documentation Sections -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Features & Architecture -->
+          <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 space-y-4">
+            <h3 class="font-bold text-on-surface text-sm flex items-center gap-2 border-b border-outline-variant pb-2 font-mono">
+              <span class="material-symbols-outlined text-primary-fixed-dim text-[18px]">auto_awesome</span> Core Engine & Workflows
+            </h3>
+            
+            <div class="space-y-3.5 text-xs">
+              <div>
+                <span class="font-mono font-bold text-primary-fixed-dim">Dual Scoring System</span>
+                <p class="text-on-surface-variant font-sans mt-0.5 leading-relaxed">Combines Gemini AI JD-level fit judgment (0-100) with deterministic heuristic scoring (Company tier, NYC priority, sponsorship flags, title fit).</p>
+              </div>
+
+              <div>
+                <span class="font-mono font-bold text-primary-fixed-dim">Board Scanner & Aggregators</span>
+                <p class="text-on-surface-variant font-sans mt-0.5 leading-relaxed">Scans company ATS boards plus community feeds, preserves posting/JD/visa metadata, then builds deduplicated ATS and aggregator recent views.</p>
+              </div>
+
+              <div>
+                <span class="font-mono font-bold text-primary-fixed-dim">LinkedIn 24h Windowed Slice</span>
+                <p class="text-on-surface-variant font-sans mt-0.5 leading-relaxed">Scrapes & window-slices fresh 24h LinkedIn postings to <code>data/linkedin-recent.md</code> so you can apply early.</p>
+              </div>
+
+              <div>
+                <span class="font-mono font-bold text-primary-fixed-dim">One-Click Application Tracker</span>
+                <p class="text-on-surface-variant font-sans mt-0.5 leading-relaxed">Clicking "Apply ↗" logs your application instantly to <code>data/applications.md</code> with date and status tracking.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CLI Cheatsheet -->
+          <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-5 space-y-4">
+            <h3 class="font-bold text-on-surface text-sm flex items-center gap-2 border-b border-outline-variant pb-2 font-mono">
+              <span class="material-symbols-outlined text-primary-fixed-dim text-[18px]">terminal</span> CLI Commands Cheatsheet
+            </h3>
+            
+            <div class="space-y-2 text-xs font-mono">
+              <div class="bg-surface-container p-2.5 rounded flex justify-between items-center border border-outline-variant/40">
+                <code class="text-primary-fixed-dim font-bold">node jobhunt.mjs</code>
+                <span class="text-[11px] text-on-surface-variant">Interactive CLI dashboard</span>
+              </div>
+
+              <div class="bg-surface-container p-2.5 rounded flex justify-between items-center border border-outline-variant/40">
+                <code class="text-primary-fixed-dim font-bold">node scan.mjs</code>
+                <span class="text-[11px] text-on-surface-variant">Scan 90+ ATS boards</span>
+              </div>
+
+              <div class="bg-surface-container p-2.5 rounded flex justify-between items-center border border-outline-variant/40">
+                <code class="text-primary-fixed-dim font-bold">node today.mjs</code>
+                <span class="text-[11px] text-on-surface-variant">Daily briefing & nudges</span>
+              </div>
+
+              <div class="bg-surface-container p-2.5 rounded flex justify-between items-center border border-outline-variant/40">
+                <code class="text-primary-fixed-dim font-bold">node rank.mjs --ai</code>
+                <span class="text-[11px] text-on-surface-variant">Gemini AI fit scoring</span>
+              </div>
+
+              <div class="bg-surface-container p-2.5 rounded flex justify-between items-center border border-outline-variant/40">
+                <code class="text-primary-fixed-dim font-bold">node referrals.mjs</code>
+                <span class="text-[11px] text-on-surface-variant">Referral outreach drafts</span>
+              </div>
+
+              <div class="bg-surface-container p-2.5 rounded flex justify-between items-center border border-outline-variant/40">
+                <code class="text-primary-fixed-dim font-bold">node keywords.mjs &lt;url&gt;</code>
+                <span class="text-[11px] text-on-surface-variant">JD vs résumé gap</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- F-1 / OPT Visa Sponsorship Guidelines -->
+        <div class="bg-surface-container border border-primary-fixed-dim/30 rounded-lg p-5 space-y-2 border-l-4 border-l-primary-fixed-dim">
+          <div class="flex items-center gap-2 text-primary-fixed-dim font-mono font-bold text-sm">
+            <span class="material-symbols-outlined text-[18px]">verified_user</span> F-1 / STEM OPT Sponsorship Rules
+          </div>
+          <p class="text-xs text-on-surface-variant font-sans leading-relaxed">
+            JobHunt automatically scans JDs for strict "No Sponsorship / US Citizenship Required / Security Clearance" language and flags them with ⚠️ warnings.
+            For F-1 candidates: state factually that you are F-1, eligible for OPT from May 2026, and STEM-eligible for the 3-year extension without requiring immediate H-1B sponsorship.
+          </p>
+        </div>
+
+      </div>
+
+  </main>
+
+
+
+  <!-- Modal for Logging Application -->
+  <div id="modal-add-app" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-surface-container-low border border-outline-variant w-full max-w-md rounded-lg overflow-hidden shadow-2xl p-6 space-y-4">
+      <div class="flex justify-between items-center border-b border-outline-variant pb-3">
+        <h3 class="font-mono text-sm font-bold text-primary-fixed-dim">Log Application</h3>
+        <button onclick="closeModal('modal-add-app')" class="text-on-surface-variant hover:text-on-surface">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form onsubmit="submitApplication(event)" class="space-y-3 font-mono text-xs">
+        <div>
+          <label class="block text-on-surface-variant mb-1">Company Name</label>
+          <input type="text" id="app-form-company" required class="w-full bg-surface-container border border-outline-variant rounded p-2 text-on-surface"/>
+        </div>
+        <div>
+          <label class="block text-on-surface-variant mb-1">Role Title</label>
+          <input type="text" id="app-form-role" required class="w-full bg-surface-container border border-outline-variant rounded p-2 text-on-surface"/>
+        </div>
+        <div>
+          <label class="block text-on-surface-variant mb-1">Fit Score (e.g. 94)</label>
+          <input type="text" id="app-form-score" placeholder="90" class="w-full bg-surface-container border border-outline-variant rounded p-2 text-on-surface"/>
+        </div>
+        <div>
+          <label class="block text-on-surface-variant mb-1">Status</label>
+          <select id="app-form-status" class="w-full bg-surface-container border border-outline-variant rounded p-2 text-on-surface">
+            <option value="Applied">Applied</option>
+            <option value="Screening">Screening / Recruiter Call</option>
+            <option value="Interviewing">Technical / Onsite Loop</option>
+            <option value="Offer">Offer</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-on-surface-variant mb-1">Notes</label>
+          <input type="text" id="app-form-notes" placeholder="Referred by Alex; screening on Friday" class="w-full bg-surface-container border border-outline-variant rounded p-2 text-on-surface"/>
+        </div>
+        <button type="submit" class="w-full bg-primary-fixed-dim text-black font-semibold p-2.5 rounded mt-2">
+          Save to applications.md
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

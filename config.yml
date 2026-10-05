@@ -3,14 +3,27 @@
 # Companies: careers_url drives the provider (greenhouse/ashby/lever/workable/workday).
 
 # AI scoring engine. Two CLIs supported:
-#   ai_cli: agy     → Antigravity. Has the newest models (Gemini 3.5 Flash).
-#                     Models: "Gemini 3.5 Flash (High|Medium|Low)",
+#   ai_cli: agy     → Antigravity. Has the newest models (Gemini 3.8 Flash).
+#                     Models: "Gemini 3.8 Flash (High|Medium|Low)",
 #                             "Gemini 3.1 Pro (High|Low)", "Claude Sonnet 4.6 (Thinking)", ...
 #   ai_cli: gemini  → gemini CLI. Models: gemini-3.1-pro-preview, gemini-3-flash-preview,
 #                     gemini-2.5-pro, gemini-2.5-flash, ...
 # rank.mjs adds a "no tools, use only this prompt" guard so agy returns clean JSON fast (~3s).
 ai_cli: agy
-ai_model: Gemini 3.5 Flash (High)
+ai_model: Gemini 3.8 Flash (High)
+ai_retries: 3                 # retry transient CLI/no-JSON failures per 5-job batch
+ai_retry_delay_ms: 4000       # synchronous backoff between attempts
+ai_new_cap: 200               # max NEW jobs AI-scored per run (newest first; cached ones are free)
+
+# Decision tuning (rank.mjs)
+apply_heuristic_floor: 55     # "Apply first" needs AI >= 70 AND heuristic >= this.
+                              # Guards against the AI scoring a well-written JD at a
+                              # no-name shop 98 while the heuristic sits in the 30s.
+                              # Lower to surface more; raise if junk leads the list.
+evergreen_days: 60            # ATS postings older than this are treated as evergreen
+                              # pipeline reqs and demoted out of "Apply first".
+workday_detail_cap: 120       # recent Workday JDs fetched per rank run (newest first)
+aggregator_board_detail_cap: 80 # recent Greenhouse/Ashby/Lever boards enriched per rank run
 
 # H-1B sponsorship signal (per company). rank.mjs flags it on the leaderboard:
 #   yes → 🛂 sponsors-co   ·   no → 🚫 no-sponsor-co (−30, like a JD no-sponsor)
@@ -47,8 +60,63 @@ sponsors:
   Coinbase: yes
   Pinterest: yes
   Lyft: yes
+  Palantir: yes
+  Roblox: yes
+  BlackRock: yes
+  Perplexity: yes
+  Epic Games: yes
   # Add companies that told you they DON'T sponsor, e.g.:
   # Some Startup: no
+
+# Reposter platforms / gig-work spam / pay-to-train schemes — rank.mjs
+# quarantines matches by employer name, feed source, or posting URL. The Indeed
+# lane hard-drops these entirely. Substring match, case-insensitive.
+company_blocklist:
+  - Jobright.ai
+  - Yara AI
+  - Jobgether
+  - RemoteHunter
+  - Alignerr
+  - BeaconFire
+  - Lensa
+  - Mindrift
+  - Outlier
+  - DataAnnotation
+  - Crossover
+  - SynergisticIT
+  - Team Remotely
+  - Sundayy
+  - Jack & Jill
+  - Radley James
+  - Hired
+  - Crossing Hurdles
+  - Staffworx
+  - avua
+  - Singh Capital Partners
+  - Mentor Talent Acquisition
+  - Hire Feed
+  - Employia
+  - Stealth Startup
+
+# Legit W2 staffing firms — open to contract roles through these during the
+# initial OPT year (ideally contract-to-hire: STEM OPT extension bars
+# third-party client-site placement entirely, even W2). rank.mjs still
+# deducts 40 and flags 🚯 so their reposts don't outrank direct postings,
+# but the Indeed lane lets them through instead of hard-dropping.
+# NOTE: TEKsystems has a reported scheme pressuring OPT hires into pay cuts
+# to fund H-1B fees — kept visible by user choice, apply with eyes open.
+# Substring match, case-insensitive.
+staffing_agencies:
+  - Berg Search
+  - SearchWorks
+  - CyberCoders
+  - Jobot
+  - Motion Recruitment
+  - Robert Half
+  - TEKsystems
+  - Insight Global
+  - Actalent
+  - Kforce
 
 # Open-ended discovery beyond the company list (node aggregators.mjs).
 # Pulls community job aggregators, applies the SAME title_filter + location_filter,
@@ -62,6 +130,40 @@ aggregators:
       enabled: true
     - id: simplify-intern
       url: https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/.github/scripts/listings.json
+      enabled: true
+    # speedyapply — actively maintained, direct apply URLs. They split into
+    # README (interns) + NEW_GRAD_USA.md (new grad). Both have format: markdown.
+    - id: speedyapply-swe-intern
+      url: https://raw.githubusercontent.com/speedyapply/2026-SWE-College-Jobs/main/README.md
+      format: markdown
+      enabled: true
+    - id: speedyapply-swe-newgrad
+      url: https://raw.githubusercontent.com/speedyapply/2026-SWE-College-Jobs/main/NEW_GRAD_USA.md
+      format: markdown
+      enabled: true
+    - id: speedyapply-ai-intern
+      url: https://raw.githubusercontent.com/speedyapply/2026-AI-College-Jobs/main/README.md
+      format: markdown
+      enabled: true
+    - id: speedyapply-ai-newgrad
+      url: https://raw.githubusercontent.com/speedyapply/2026-AI-College-Jobs/main/NEW_GRAD_USA.md
+      format: markdown
+      enabled: true
+    # jobright-ai — retained for maximum discovery breadth. rank.mjs identifies
+    # these by source/URL, quarantines mirrors, and prefers a direct employer URL.
+    - id: jobright-newgrad
+      url: https://raw.githubusercontent.com/jobright-ai/2026-Software-Engineer-New-Grad/master/README.md
+      format: markdown
+      enabled: true
+    - id: jobright-intern
+      url: https://raw.githubusercontent.com/jobright-ai/2026-Software-Engineer-Internship/master/README.md
+      format: markdown
+      enabled: true
+    # vanshb03 — large community new-grad list (some overlap with simplify/jobright;
+    # dedup is by URL, so cross-source repeats of the same job can appear).
+    - id: vanshb03-newgrad
+      url: https://raw.githubusercontent.com/vanshb03/New-Grad-2026/dev/README.md
+      format: markdown
       enabled: true
 
 profile:
@@ -103,6 +205,9 @@ profile:
       - AI/ML Engineer (entry-level, applied/product side)
       - Platform / Infra Engineer (new grad)
       - Developer Productivity / DevTools Engineer
+      - Forward Deployed Engineer (hands-on, ships code at client sites —
+        distinct from "Sales Engineer"/pre-sales below; open to the travel
+        and client-facing work this implies)
   comp_expectations:
     base_min: 110000
     base_target: 140000
@@ -115,7 +220,8 @@ profile:
   must_avoid:
     - Roles requiring 3+ years of professional experience
     - Senior / Staff / Lead / Principal titles
-    - Sales engineering or pre-sales roles
+    - Sales engineering or pre-sales roles (demoing/pitching, not shipping code —
+      NOT the same as Forward Deployed Engineer, which does ship production code)
     - Roles where the JD never mentions building software (pure consulting/PM)
     - Heavy on-call rotations at pre-Series-B startups
     - Crypto/Web3-only roles (open to fintech that touches crypto, not crypto-native)
@@ -343,6 +449,7 @@ title_filter:
   positive:
     - Software Engineer
     - Software Developer
+    - Software Development Engineer
     - SWE
     - SDE
     - Backend Engineer
@@ -350,6 +457,16 @@ title_filter:
     - Full Stack
     - Full-Stack
     - Fullstack
+    # AI-era titles that boards use for the same work (negative list still
+    # blocks Senior/Staff/etc. variants):
+    - AI Engineer
+    - Applied AI
+    - Agent Engineer
+    - Platform Engineer
+    - Infrastructure Engineer
+    - Product Engineer
+    - Founding Engineer
+    - Member of Technical Staff
     - New Grad
     - University Grad
     - Early Career
@@ -357,6 +474,10 @@ title_filter:
     - Entry-Level
     - Junior
     - Intern
+    - Forward Deployed Engineer
+    - Forward Deployed Software Engineer
+    - Deployment Strategist
+    - Deployment Engineer
   negative:
     - Senior
     - Sr.
@@ -375,6 +496,8 @@ title_filter:
     - Engineer 3
     - Engineer 4
     - Engineer II
+    - Engineer III   # was blocked only as a substring of "Engineer II" before
+                     # negatives began matching on word boundaries
     - Engineer IV
     - L4
     - L5
@@ -385,8 +508,8 @@ title_filter:
     - PMTS
     - Research Scientist
     - PhD
+    - Ph.D.
     - Solutions
-    - Forward Deployed
     - Sales
     - Account Executive
     - GTM
@@ -416,11 +539,14 @@ location_filter:
     - Remote - US
     - Remote, US
   block:
+    - Europe          # region-only postings ("Europe", "EMEA") name no country
+    - EMEA
     - India
     - Gurugram
     - Bengaluru
     - Bangalore
     - Hyderabad
+    - Noida
     - Pune
     - Mumbai
     - Delhi
@@ -431,6 +557,9 @@ location_filter:
     - United Kingdom
     - ', UK'
     - London
+    - Scotland
+    - Edinburgh
+    - Glasgow
     - Germany
     - Berlin
     - Munich
@@ -470,6 +599,7 @@ location_filter:
     - Vilnius
     - Ukraine
     - Serbia
+    - Belgrade
     - Bulgaria
     - Hungary
     - Budapest
@@ -515,8 +645,27 @@ location_filter:
     - Nigeria
     - South Africa
 linkedin:
-  max_new_per_run: 150      # how many NEW jobs get JD-fetched + scored per run (~10 min)
-  pages: 6                  # search pages per query (~10 each) — more = wider net (n8n rawness)
+  # Discovery and JD fetching are deliberately separate: every card found is
+  # archived, even when the detail-fetch budget is exhausted. Later runs drain
+  # that backlog, so breadth is never lost just to keep a run reasonably short.
+  max_new_per_run: 300      # maximum job descriptions fetched per completed run
+  initial_hours: 24         # first scan (or scan with no saved state)
+  overlap_hours: 1          # overlap incremental scans so boundary jobs are not missed
+  max_lookback_hours: 168   # catch up after downtime without an unbounded query
+  cooldown_minutes: 90      # frequent pipeline runs reuse the archive inside this window
+  max_pages: 10             # LinkedIn returns roughly 10 cards per page
+  stop_after_seen_pages: 3  # per query: stop after this many pages with no unseen URLs
+  detail_max_age_days: 5    # never spend a JD fetch on a card older than this.
+                            # Discovery still archives it; it just stops
+                            # competing for a budget it can no longer earn.
+  # Run every query twice. Broad protects recall when the recruiter-assigned
+  # level is missing/wrong; early-career changes result ordering so eligible
+  # jobs buried beyond the broad pagination limit can still surface.
+  search_modes:
+    - name: broad
+      experience: []        # no LinkedIn experience-level filter
+    - name: early-career
+      experience: [1, 2, 3] # Internship + Entry level + Associate
   queries:
     # Your original n8n filter-sheet rows (verbatim)
     - keywords: Software Engineer
@@ -546,13 +695,120 @@ linkedin:
       location: United States
     - keywords: Software Engineer I
       location: United States
+    - keywords: Forward Deployed Engineer
+      location: United States
+    # Additional phrasing/location lanes. Discovery stays intentionally broad;
+    # rank.mjs handles level, sponsorship, and source-quality gates afterward.
+    - keywords: Junior Software Engineer
+      location: United States
+    - keywords: Entry Level Software Developer
+      location: United States
+    - keywords: Software Engineer Recent Graduate
+      location: United States
+    - keywords: Software Engineer 2026
+      location: United States
+    - keywords: Platform Engineer
+      location: United States
+    - keywords: Systems Software Engineer
+      location: United States
+    - keywords: AI Software Engineer
+      location: United States
+    - keywords: Software Engineer
+      location: New Jersey
+    - keywords: Software Engineer
+      location: New York Metropolitan Area
+indeed:
+  # Indeed can't be scraped from Node (Cloudflare 403s everything), so the scan
+  # runs through the Indeed MCP connector inside Claude Code: type /indeed there.
+  # The skill applies title_filter + location_filter + company_blocklist (same
+  # ones scan.mjs/aggregators.mjs use) before spending any get_job_details
+  # calls, then `node indeed.mjs --import` re-enforces them + does the
+  # canonical dedup + writes (data/indeed-jds.json + scan-history.tsv).
+  max_new_per_run: 50       # cap on get_job_details MCP calls per /indeed run
+  days: 30                  # drop results whose "Posted on" is older. Indeed's
+                            # search is relevance-ranked, not recency-ranked,
+                            # so a tight window throws away most of every page
+                            # (aggregators.mjs uses the same 30-day default).
+  queries:                  # ~10 results per query, no pagination — breadth = more queries
+    - search: Software Engineer
+      location: United States
+      country_code: US
+    - search: Software Engineer New Grad
+      location: United States
+      country_code: US
+    - search: Entry Level Software Engineer
+      location: United States
+      country_code: US
+    - search: Backend Engineer
+      location: United States
+      country_code: US
+    - search: Full Stack Engineer
+      location: United States
+      country_code: US
+    - search: Associate Software Engineer
+      location: United States
+      country_code: US
+    - search: Software Developer
+      location: United States
+      country_code: US
+    - search: Software Engineer
+      location: New York, NY
+      country_code: US
+    - search: Backend Engineer
+      location: New York, NY
+      country_code: US
+    - search: Full Stack Engineer
+      location: New York, NY
+      country_code: US
+    - search: New Grad Software Engineer
+      location: New York, NY
+      country_code: US
+    - search: Software Engineer
+      location: remote
+      country_code: US
+    - search: Backend Engineer
+      location: remote
+      country_code: US
+    # New York state (broader than the NYC-city query above — Indeed treats
+    # state vs city location strings as distinct searches, so this surfaces
+    # a different top-10 slice, not a subset of the NYC one).
+    - search: Software Engineer
+      location: New York
+      country_code: US
+    - search: Backend Engineer
+      location: New York
+      country_code: US
+    - search: Full Stack Engineer
+      location: New York
+      country_code: US
+    - search: New Grad Software Engineer
+      location: New York
+      country_code: US
+    # New Jersey (adjacent to NYC metro; Stevens Institute is in Hoboken, NJ)
+    - search: Software Engineer
+      location: New Jersey
+      country_code: US
+    - search: Backend Engineer
+      location: New Jersey
+      country_code: US
+    - search: Full Stack Engineer
+      location: New Jersey
+      country_code: US
+    - search: New Grad Software Engineer
+      location: New Jersey
+      country_code: US
+    - search: Forward Deployed Engineer
+      location: United States
+      country_code: US
+    # optional per-query: job_type: fulltime|parttime|contract|internship|temporary
 companies:
   - name: Stripe
     careers_url: https://job-boards.greenhouse.io/stripe
     tier: 1
     notes: New grad SWE roles open ~Jan-Mar annually; worth checking even off-cycle
   - name: Plaid
-    careers_url: https://jobs.lever.co/plaid
+    careers_url: https://jobs.ashbyhq.com/plaid   # moved off Lever; the old
+                                                 # slug returned 200 + []
     tier: 1
     notes: Strong Node/backend team, NYC office, sponsors OPT
   - name: Datadog
@@ -580,7 +836,8 @@ companies:
     tier: 1
     notes: Full-stack focused; your MERN background fits
   - name: Vercel
-    careers_url: https://jobs.ashbyhq.com/vercel
+    careers_url: https://job-boards.greenhouse.io/vercel   # moved off Ashby;
+                                                 # the old slug returned 200 + []
     tier: 1
     notes: Next.js team — PromptStudio + CodePulse are native fits
   - name: Linear
@@ -890,10 +1147,9 @@ companies:
     tier: 1
     notes: Custom ATS — university grad filter; also seen via LinkedIn scan
   - name: Amazon
-    enabled: false
-    careers_url: https://www.amazon.jobs/en/business_categories/student-programs
+    careers_url: https://www.amazon.jobs/en/search?base_query=software+development+engineer
     tier: 1
-    notes: Custom ATS — student programs page covers SDE I new grad + internships
+    notes: API-scannable via amazon.jobs search.json (new-grad/intern SDE search terms)
   - name: Apple
     enabled: false
     careers_url: https://jobs.apple.com/en-us/search?team=internships-STDNT-INTRN
@@ -953,3 +1209,275 @@ companies:
     careers_url: https://job-boards.greenhouse.io/mixpanel
     tier: 3
     notes: Analytics; SF + NYC
+  # ── Added 2026-07-06 (all boards verified live) ──
+  - name: Palantir
+    careers_url: https://jobs.lever.co/palantir
+    tier: 2
+    notes: Big new-grad + intern hirer (Denver/NYC/DC); sponsors H-1B
+  - name: Roblox
+    careers_url: https://job-boards.greenhouse.io/roblox
+    tier: 2
+    notes: San Mateo; structured new-grad program; sponsors
+  - name: Perplexity
+    careers_url: https://jobs.ashbyhq.com/perplexity
+    tier: 2
+    notes: AI search; SF + NYC; your RAG/LLM work is a direct signal
+  - name: Harvey
+    careers_url: https://jobs.ashbyhq.com/harvey
+    tier: 2
+    notes: Legal AI, NYC + SF; fast-growing, TS/Node-friendly
+  - name: LangChain
+    careers_url: https://jobs.ashbyhq.com/langchain
+    tier: 2
+    notes: Agent tooling — CodePulse/PromptStudio map directly
+  - name: Decagon
+    careers_url: https://jobs.ashbyhq.com/decagon
+    tier: 3
+    notes: AI support agents; SF + NYC
+  - name: Together AI
+    careers_url: https://job-boards.greenhouse.io/togetherai
+    tier: 3
+    notes: AI infra/inference platform; SF
+  - name: Vapi
+    careers_url: https://jobs.ashbyhq.com/vapi
+    tier: 3
+    notes: Voice AI — you've built on Vapi; strong narrative hook
+  - name: Character AI
+    careers_url: https://jobs.ashbyhq.com/character
+    tier: 3
+    notes: Consumer AI; small board, mostly senior — cheap to watch
+  - name: Epic Games
+    careers_url: https://job-boards.greenhouse.io/epicgames
+    tier: 3
+    notes: Cary NC + remote; backend/services roles beyond game dev
+  - name: Sigma Computing
+    careers_url: https://job-boards.greenhouse.io/sigmacomputing
+    tier: 3
+    notes: BI/analytics; SF + NYC
+  - name: BlackRock
+    careers_url: https://blackrock.wd1.myworkdayjobs.com/BlackRock_Professional
+    tier: 3
+    notes: NYC HQ; Aladdin engineering hires new grads; strong sponsor
+  - name: Target
+    careers_url: https://target.wd5.myworkdayjobs.com/targetcareers
+    tier: 3
+    notes: Minneapolis + remote; large eng org, entry-level SWE roles
+  - name: Zoom
+    careers_url: https://zoom.wd5.myworkdayjobs.com/Zoom
+    tier: 3
+    notes: Remote-friendly; backend/infra roles
+  # ── Added 2026-07-06 batch 2 (all verified live) ──
+  # AI / ML labs & infra
+  - name: Cohere
+    careers_url: https://jobs.ashbyhq.com/cohere
+    tier: 2
+    notes: Enterprise AI; Toronto + SF + NYC; LLM infra
+  - name: Cognition (Devin)
+    careers_url: https://jobs.ashbyhq.com/cognition
+    tier: 2
+    notes: AI coding agent; your agentic/sandbox work is directly relevant
+  - name: Suno
+    careers_url: https://jobs.ashbyhq.com/suno
+    tier: 3
+    notes: Generative AI (music); Cambridge MA
+  - name: Physical Intelligence
+    careers_url: https://jobs.ashbyhq.com/physicalintelligence
+    tier: 3
+    notes: Robotics + foundation models; SF
+  - name: CoreWeave
+    careers_url: https://job-boards.greenhouse.io/coreweave
+    tier: 2
+    notes: GPU cloud infra; NYC + NJ HQ — local, fast-growing
+  - name: LiveKit
+    careers_url: https://jobs.ashbyhq.com/livekit
+    tier: 3
+    notes: Real-time infra (WebRTC) — Socket.IO experience maps directly
+  - name: Tavus
+    careers_url: https://jobs.ashbyhq.com/tavus
+    tier: 3
+    notes: AI video platform; SF
+  - name: Rime
+    careers_url: https://jobs.ashbyhq.com/rime
+    tier: 3
+    notes: Voice AI/TTS; small but growing
+  # Devtools & infra
+  - name: ClickHouse
+    careers_url: https://job-boards.greenhouse.io/clickhouse
+    tier: 2
+    notes: OLAP database; remote-first; backend/infra roles
+  - name: Grafana Labs
+    careers_url: https://job-boards.greenhouse.io/grafanalabs
+    tier: 2
+    notes: Observability platform; remote-first; Go + TS heavy
+  - name: Postman
+    careers_url: https://job-boards.greenhouse.io/postman
+    tier: 3
+    notes: API platform; large eng org
+  - name: Tailscale
+    careers_url: https://job-boards.greenhouse.io/tailscale
+    tier: 3
+    notes: Networking/VPN; remote-first; small but strong eng
+  - name: LaunchDarkly
+    careers_url: https://job-boards.greenhouse.io/launchdarkly
+    tier: 3
+    notes: Feature flags; remote-US
+  - name: PagerDuty
+    careers_url: https://job-boards.greenhouse.io/pagerduty
+    tier: 3
+    notes: Incident management; remote-US
+  - name: Netlify
+    careers_url: https://job-boards.greenhouse.io/netlify
+    tier: 3
+    notes: Jamstack deploy; remote-first
+  - name: Contentful
+    careers_url: https://job-boards.greenhouse.io/contentful
+    tier: 3
+    notes: Headless CMS; Berlin + remote-US
+  - name: Fivetran
+    careers_url: https://job-boards.greenhouse.io/fivetran
+    tier: 3
+    notes: Data integration; Oakland + remote
+  - name: Dataiku
+    careers_url: https://job-boards.greenhouse.io/dataiku
+    tier: 3
+    notes: Enterprise AI/ML platform; NYC office
+  - name: Chainguard
+    careers_url: https://job-boards.greenhouse.io/chainguard
+    tier: 3
+    notes: Supply-chain security; remote-US
+  - name: Airbyte
+    careers_url: https://jobs.ashbyhq.com/airbyte
+    tier: 3
+    notes: Open-source data integration; SF + remote
+  - name: E2B
+    careers_url: https://jobs.ashbyhq.com/e2b
+    tier: 3
+    notes: Code sandbox infra — you've literally built on this
+  - name: Inngest
+    careers_url: https://jobs.ashbyhq.com/inngest
+    tier: 3
+    notes: Durable functions — you've literally built on this
+  - name: Baseten
+    careers_url: https://jobs.ashbyhq.com/baseten
+    tier: 3
+    notes: ML model serving infra; SF
+  - name: Warp
+    careers_url: https://jobs.ashbyhq.com/warp
+    tier: 3
+    notes: AI terminal; Rust + TS; SF
+  - name: Substack
+    careers_url: https://jobs.ashbyhq.com/substack
+    tier: 3
+    notes: Publishing platform; SF
+  # Fintech / payments
+  - name: Adyen
+    careers_url: https://job-boards.greenhouse.io/adyen
+    tier: 2
+    notes: Global payments; Chicago + SF offices
+  - name: Marqeta
+    careers_url: https://job-boards.greenhouse.io/marqeta
+    tier: 3
+    notes: Card issuing platform; Oakland + remote
+  - name: Melio
+    careers_url: https://job-boards.greenhouse.io/melio
+    tier: 3
+    notes: B2B payments; NYC HQ
+  - name: Lithic
+    careers_url: https://job-boards.greenhouse.io/lithic
+    tier: 3
+    notes: Card issuing API; NYC — fintech + Node-native
+  # Quant / trading
+  - name: Tower Research Capital
+    careers_url: https://job-boards.greenhouse.io/towerresearchcapital
+    tier: 2
+    notes: NYC HQ; new-grad SWE + quant dev roles
+  - name: Five Rings
+    careers_url: https://job-boards.greenhouse.io/fiveringsllc
+    tier: 2
+    notes: NYC; structured new-grad program; high comp
+  - name: Old Mission Capital
+    careers_url: https://job-boards.greenhouse.io/oldmissioncapital
+    tier: 2
+    notes: Chicago + NYC; junior SWE roles
+  - name: Optiver
+    careers_url: https://job-boards.greenhouse.io/optiverus
+    tier: 2
+    notes: Chicago + Austin; large new-grad intake; sponsors
+  # Enterprise / security / cloud
+  - name: CrowdStrike
+    careers_url: https://crowdstrike.wd5.myworkdayjobs.com/crowdstrikecareers
+    tier: 3
+    notes: Cybersecurity; remote-first; large eng org
+  - name: Zillow
+    careers_url: https://zillow.wd5.myworkdayjobs.com/Zillow_Group_External
+    tier: 3
+    notes: Seattle + remote; large eng org
+  - name: Zscaler
+    careers_url: https://job-boards.greenhouse.io/zscaler
+    tier: 3
+    notes: Cloud security; San Jose + remote
+  - name: Abnormal Security
+    careers_url: https://job-boards.greenhouse.io/abnormalsecurity
+    tier: 3
+    notes: AI email security; SF — AI + backend roles
+  - name: Rubrik
+    careers_url: https://job-boards.greenhouse.io/rubrik
+    tier: 3
+    notes: Data security; Palo Alto + remote
+  - name: Pure Storage
+    careers_url: https://job-boards.greenhouse.io/purestorage
+    tier: 3
+    notes: Storage infra; large board; Santa Clara
+  - name: Qualtrics
+    careers_url: https://job-boards.greenhouse.io/qualtrics
+    tier: 3
+    notes: Experience management; Provo + Seattle
+  - name: New Relic
+    careers_url: https://job-boards.greenhouse.io/newrelic
+    tier: 3
+    notes: Observability; Portland + remote
+  - name: Relativity
+    careers_url: https://job-boards.greenhouse.io/relativity
+    tier: 3
+    notes: Legal tech; Chicago + remote; large board
+  # Consumer / marketplace
+  - name: Zocdoc
+    careers_url: https://job-boards.greenhouse.io/zocdoc
+    tier: 3
+    notes: NYC HQ; healthtech marketplace
+  - name: Via
+    careers_url: https://job-boards.greenhouse.io/via
+    tier: 3
+    notes: NYC HQ; transit-tech; large board
+  - name: Maven Clinic
+    careers_url: https://job-boards.greenhouse.io/mavenclinic
+    tier: 3
+    notes: NYC; healthtech; full-stack roles
+  - name: OpenTable
+    careers_url: https://job-boards.greenhouse.io/opentable
+    tier: 3
+    notes: SF + NYC; restaurant-tech
+  - name: Calendly
+    careers_url: https://job-boards.greenhouse.io/calendly
+    tier: 3
+    notes: Atlanta + remote; scheduling platform
+  - name: Instabase
+    careers_url: https://job-boards.greenhouse.io/instabase
+    tier: 3
+    notes: AI document processing; SF + NYC
+  - name: 1Password
+    careers_url: https://jobs.ashbyhq.com/1password
+    tier: 3
+    notes: Security/identity; remote-first
+  - name: Stitch Fix
+    careers_url: https://job-boards.greenhouse.io/stitchfix
+    tier: 3
+    notes: Retail-tech; SF + remote
+  - name: Wikimedia
+    careers_url: https://job-boards.greenhouse.io/wikimedia
+    tier: 3
+    notes: Non-profit; remote-first; mission-driven
+  - name: Mozilla
+    careers_url: https://job-boards.greenhouse.io/mozilla
+    tier: 3
+    notes: Non-profit; remote-first; Firefox/web platform

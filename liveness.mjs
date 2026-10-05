@@ -56,6 +56,14 @@ async function checkLiveness(url) {
       const r = await head(`https://${m[1]}.${m[2]}.myworkdayjobs.com/wday/cxs/${m[1]}/${m[3]}${m[4]}`);
       return r.status === 200 ? 'live' : (r.status === 404 || r.status === 400) ? 'closed' : 'unknown';
     }
+    // Indeed — the real posting (www.indeed.com) 403s Node (Cloudflare), but
+    // the to.indeed.com shortlink answers without a browser: 404/410 means the
+    // link is dead; a redirect only proves the shortlink exists, not that the
+    // job is still open → unknown (lands in the "verify manually" bucket).
+    if (/indeed\.com\//.test(url)) {
+      const r = await head(url, { method: 'HEAD', headers: { 'user-agent': 'Mozilla/5.0' } });
+      return (r.status === 404 || r.status === 410) ? 'closed' : 'unknown';
+    }
     // LinkedIn — guest posting page: look for closed markers
     if (/linkedin\.com\/jobs\/view\/(\d+)/.test(url)) {
       const id = url.match(/\/jobs\/view\/(\d+)/)[1];
@@ -86,14 +94,23 @@ if (arg) {
 function parseRows(path) {
   if (!existsSync(path)) return [];
   const rows = [];
-  for (const mm of readFileSync(path, 'utf-8').matchAll(/\| *(?:\d+ *\| *)?(?:\*\*\d+\*\*|\d+|—) *\| *\d+ *\| *([^|]+?) *\| *\[([^\]]+)\]\((https?:[^)]+)\) *\|/g))
-    rows.push({ company: mm[1].trim(), role: mm[2].trim(), url: mm[3] });
+  const pattern = /^\| *(?:\d+ *\| *)?(?:\*\*\d+\*\*|\d+|—) *\| *\d+ *\| *(?:(🟢|🟡|🔴|🚯)[^|]*\| *)?([^|]+?) *\| *\[([^\]]+)\]\((https?:[^)]+)\) *\|/gm;
+  for (const mm of readFileSync(path, 'utf-8').matchAll(pattern)) {
+    if (mm[1] === '🔴' || mm[1] === '🚯') continue;
+    rows.push({ company: mm[2].trim(), role: mm[3].trim(), url: mm[4] });
+  }
   return rows;
 }
 
 const seen = new Set();
 const targets = [];
-for (const path of ['data/top-openings.md', 'data/linkedin-openings.md']) {
+const leaderboardPaths = [
+  existsSync('data/ats-recent.md') ? 'data/ats-recent.md' : 'data/ats-openings.md',
+  existsSync('data/aggregator-recent.md') ? 'data/aggregator-recent.md' : 'data/aggregator-openings.md',
+  existsSync('data/linkedin-recent.md') ? 'data/linkedin-recent.md' : 'data/linkedin-openings.md',
+  'data/indeed-openings.md',
+];
+for (const path of leaderboardPaths) {
   for (const r of parseRows(path).slice(0, TOP)) {
     if (!seen.has(r.url)) { seen.add(r.url); targets.push(r); }
   }

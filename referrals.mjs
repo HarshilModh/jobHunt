@@ -29,8 +29,12 @@ import { readFileSync, writeFileSync, existsSync } from 'fs';
 import yaml from 'js-yaml';
 
 const CONFIG_PATH = 'config.yml';
-const BOARD_PATH = 'data/top-openings.md';
-const LINKEDIN_PATH = 'data/linkedin-openings.md';
+const BOARD_PATHS = [
+  existsSync('data/ats-recent.md') ? 'data/ats-recent.md' : 'data/ats-openings.md',
+  existsSync('data/aggregator-recent.md') ? 'data/aggregator-recent.md' : 'data/aggregator-openings.md',
+];
+const LINKEDIN_PATH = existsSync('data/linkedin-recent.md') ? 'data/linkedin-recent.md' : 'data/linkedin-openings.md';
+const INDEED_PATH = 'data/indeed-openings.md';
 const OUT_PATH = 'data/referral-targets.md';
 
 const argTop = (() => { const i = process.argv.indexOf('--top'); return i !== -1 ? parseInt(process.argv[i + 1], 10) || 15 : 15; })();
@@ -143,17 +147,17 @@ if (EMAIL_IDX !== -1) {
 function parseLeaderboard(path) {
   if (!existsSync(path)) return [];
   const rows = [];
-  for (const m of readFileSync(path, 'utf-8').matchAll(
-    /^\| *\d+ *\| *(?:\*\*)?(\d+|—)(?:\*\*)? *\| *(\d+) *\| *([^|]+?) *\| *\[([^\]]+)\]\(([^)]+)\) *\|/gm
-  )) {
-    rows.push({ ai: m[1] === '—' ? null : +m[1], heur: +m[2], company: m[3].trim(), role: m[4].trim(), url: m[5] });
+  const pattern = /^\| *(?:\d+ *\| *)?(?:\*\*)?(\d+|—)(?:\*\*)? *\| *(\d+) *\| *(?:(🟢|🟡|🔴|🚯)[^|]*\| *)?([^|]+?) *\| *\[([^\]]+)\]\(([^)]+)\) *\|/gm;
+  for (const m of readFileSync(path, 'utf-8').matchAll(pattern)) {
+    if (m[3] === '🔴' || m[3] === '🚯') continue;
+    rows.push({ ai: m[1] === '—' ? null : +m[1], heur: +m[2], company: m[4].trim(), role: m[5].trim(), url: m[6] });
   }
   return rows;
 }
 
-const all = [...parseLeaderboard(BOARD_PATH), ...parseLeaderboard(LINKEDIN_PATH)];
+const all = [...BOARD_PATHS.flatMap(parseLeaderboard), ...parseLeaderboard(LINKEDIN_PATH), ...parseLeaderboard(INDEED_PATH)];
 if (!all.length) {
-  console.log('No leaderboard found — run node jobs.mjs first.');
+  console.log('No leaderboard found — run node scan.mjs and node rank.mjs first.');
   process.exit(0);
 }
 

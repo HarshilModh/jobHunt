@@ -26,7 +26,7 @@ if (!company) {
 // ── Find the role from the leaderboards ─────────────────────────────
 
 function findRole(name) {
-  for (const path of ['data/top-openings.md', 'data/linkedin-openings.md']) {
+  for (const path of ['data/ats-openings.md', 'data/aggregator-openings.md', 'data/linkedin-openings.md', 'data/indeed-openings.md']) {
     if (!existsSync(path)) continue;
     for (const m of readFileSync(path, 'utf-8').matchAll(/\| *(?:\*\*)?(\d+|—)(?:\*\*)? *\| *(\d+) *\| *([^|]+?) *\| *\[([^\]]+)\]\(([^)]+)\) *\|/g)) {
       if (m[3].trim().toLowerCase().includes(name.toLowerCase()))

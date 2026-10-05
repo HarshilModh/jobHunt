@@ -5,11 +5,12 @@
 **CLI-first job search toolkit that scans 90+ company boards & LinkedIn,<br>dual-scores every opening against your résumé, and finds referral paths.**
 
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Dependencies](https://img.shields.io/badge/deps-1%20(js--yaml)-blue?style=flat-square)](package.json)
+[![Dependencies](https://img.shields.io/badge/deps-2%20(express%2C%20js--yaml)-blue?style=flat-square)](package.json)
+[![UI](https://img.shields.io/badge/UI-Local%20Web%20Dashboard-00d4ff?style=flat-square)](#-web-dashboard)
 [![AI](https://img.shields.io/badge/AI-Gemini%20Free%20Tier-8E75B2?style=flat-square&logo=google&logoColor=white)](https://ai.google.dev/)
 [![License](https://img.shields.io/badge/license-personal--use-lightgrey?style=flat-square)](#license)
 
-`No CV generation` · `No auto-apply` · `No bloat` · `~10 files, one config`
+`No CV generation` · `No auto-apply` · `No bloat` · `CLI + Web Dashboard` · `One config`
 
 ---
 
@@ -20,7 +21,7 @@
 ```bash
 git clone https://github.com/HarshilModh/jobHunt.git
 cd jobHunt
-npm install                                    # js-yaml — the only dependency
+npm install                                    # dependencies (express, js-yaml)
 npm i -g @google/gemini-cli && gemini          # optional: free AI scoring (log in once)
 ```
 
@@ -30,6 +31,7 @@ npm i -g @google/gemini-cli && gemini          # optional: free AI scoring (log 
 
 ```bash
 node jobhunt.mjs     # → pick "Everything" → scan + LinkedIn + rank → done
+npm start            # → optional web dashboard at http://localhost:3005 (see below)
 ```
 
 ---
@@ -42,6 +44,7 @@ node jobhunt.mjs     # → pick "Everything" → scan + LinkedIn + rank → done
 - [Why This Exists](#-why-this-exists)
 - [Quick Start](#-quick-start)
 - [Daily Workflow](#-daily-workflow)
+- [Web Dashboard](#-web-dashboard)
 - [Features at a Glance](#-features-at-a-glance)
 - [Architecture](#-architecture)
 - [Command Reference](#-command-reference)
@@ -52,6 +55,8 @@ node jobhunt.mjs     # → pick "Everything" → scan + LinkedIn + rank → done
 - [Company Coverage](#-company-coverage)
 - [AI Agent Integration](#-ai-agent-integration)
 - [Honest Caveats](#-honest-caveats)
+- [Customize for Your Profile](#-customize-for-your-profile)
+- [Tech Stack](#-tech-stack)
 
 </details>
 
@@ -71,29 +76,32 @@ New-grad SWE roles fill in **48 hours**. By the time you manually check 90 compa
 ┌─ MORNING ──────────────────────────────────────────────────┐
 │                                                            │
 │  ① node jobhunt.mjs          scan + rank (pick "24 hours") │
+│     OR npm start             browser workstation UI        │
 │  ② node today.mjs            one-screen daily briefing     │
 │  ③ Apply to top matches      🎓 + ✅ + 🆕 = highest priority│
 │                                                            │
 ├─ BEFORE APPLYING ──────────────────────────────────────────┤
 │                                                            │
 │  ④ node keywords.mjs <url>   check skill gaps for a JD    │
+│  ⑤ node liveness.mjs <url>   verify posting is still live │
 │                                                            │
 ├─ NETWORKING ───────────────────────────────────────────────┤
 │                                                            │
-│  ⑤ node referrals.mjs        search links + message drafts│
-│  ⑥ node referrals.mjs --followups   who to nudge today    │
+│  ⑥ node referrals.mjs        search links + message drafts│
+│  ⑦ node referrals.mjs --followups   who to nudge today    │
 │                                                            │
 ├─ INTERVIEW PREP ──────────────────────────────────────────┤
 │                                                            │
-│  ⑦ node prep.mjs <company>   zero-token scaffold          │
-│  ⑧ claude → "prep me for X"  deep version (web research)  │
+│  ⑧ node dsa.mjs <company>    most-asked LeetCode problems  │
+│  ⑨ node prep.mjs <company>   zero-token scaffold          │
+│  ⑩ claude/gemini → "prep me" deep version (web research)  │
 │                                                            │
 └────────────────────────────────────────────────────────────┘
 ```
 
 ### Reading the Leaderboard
 
-Open `data/top-openings.md` or `data/linkedin-openings.md`:
+For daily applications, open `data/ats-recent.md`, `data/aggregator-recent.md`, and `data/linkedin-recent.md`—or browse them in the [web dashboard](#-web-dashboard). The corresponding `*-openings.md` files are complete archives, not freshness views.
 
 | # | AI | Score | Company | Role | Posted | Signals |
 |---|:--:|:-----:|---------|------|--------|---------|
@@ -107,6 +115,30 @@ Open `data/top-openings.md` or `data/linkedin-openings.md`:
 
 ---
 
+## 🖥 Web Dashboard
+
+A local browser UI over the same data the CLI produces — no separate setup, no separate data.
+
+```bash
+npm start                 # → http://localhost:3005
+```
+
+Bound to `127.0.0.1` only (not reachable from other machines on your network). Opens your browser automatically — set `JOBHUNT_NO_OPEN=1 npm start` to skip that (e.g. over SSH). Custom port: `PORT=4000 npm start`.
+
+| Tab | What it does |
+|-----|---------------|
+| **Leaderboard** | All openings (ATS + aggregators + LinkedIn + Indeed + pipeline inbox + LinkedIn Recent) in one sortable, filterable, 60 FPS paginated table. Quick Scan toggles (`Visa Friendly` / `New Grad`), list switcher pills, search, JobRight match reasoning callouts, and one-click **Apply** (opens posting + logs to tracker). |
+| **Tracker** | `data/applications.md` as a live table — change status inline, add applications by hand. |
+| **Referrals** | Pick a target (recruiter / hiring manager / peer), fill in name/company/role, generate a ready-to-send outreach draft. |
+| **Interview Prep** | Browse every `interview-prep/{company}.md` file and your `data/story-bank.md` STAR+R stories. |
+| **Workstation** | Run `scan.mjs` / `aggregators.mjs` / `rank.mjs` / `today.mjs` / `liveness.mjs` from a button, with live streamed console output — no terminal needed. |
+| **Setup & Docs** | Built-in interactive help center & documentation — 3-step quick setup, CLI cheat sheet, workflows overview, and F-1/OPT sponsorship rules. |
+
+The dashboard only *reads and appends to* the same `data/*.md` / `data/*.json` files the CLI uses — running `node jobhunt.mjs` and refreshing the dashboard (or running tasks inside the **Workstation**) both work seamlessly and stay in sync.
+
+
+---
+
 ## 🎯 Features at a Glance
 
 <table>
@@ -115,7 +147,7 @@ Open `data/top-openings.md` or `data/linkedin-openings.md`:
 
 ### 📡 Discovery
 - **Board scanner** — 90+ ATS APIs in parallel (zero tokens)
-- **Aggregators** — SimplifyJobs new-grad + intern feeds (beyond the company list)
+- **Aggregators** — SimplifyJobs + speedyapply new-grad & intern feeds (beyond the company list)
 - **LinkedIn scanner** — 13+ search queries, full JD fetch
 - **Dedup** — never shows the same job twice
 
@@ -164,24 +196,46 @@ Open `data/top-openings.md` or `data/linkedin-openings.md`:
               ┌───────────────┘     │    └───────────────┐
               ▼                     ▼                    ▼
      ┌────────────────┐  ┌─────────────────┐  ┌─────────────────┐
-     │   scan.mjs     │  │  linkedin.mjs   │  │    rank.mjs     │
-     │ 5 ATS providers│  │ guest endpoint  │  │ heuristic + AI  │
-     │ 90+ companies  │  │ 13+ queries     │  │ dual scoring    │
+     │ scan.mjs + agg │  │  linkedin.mjs   │  │    rank.mjs     │
+     │ ATS + Simplify │  │ guest endpoint  │  │ heuristic + AI  │
+     │ board-store    │  │ 13+ queries     │  │ dual scoring    │
      └───────┬────────┘  └───────┬─────────┘  └───────┬─────────┘
              │                   │                     │
              ▼                   ▼                     ▼
-      data/pipeline.md    data/linkedin-       data/top-openings.md
-      data/scan-          jds.json             data/linkedin-openings.md
-      history.tsv                              data/ai-scores.json
+      data/pipeline.md    data/linkedin-       data/ats-openings.md
+      data/board-jobs.    jds.json             data/aggregator-openings.md
+      json + scan-hist                         data/linkedin-openings.md
+                                               data/ai-scores.json
+
+  ┌────────────────────────────────────────────────────────────────┐
+  │  INDEED LANE (Claude Code / Antigravity MCP connector)         │
+  │                                                                │
+  │  indeed skill → Indeed MCP → indeed.mjs --import               │
+  │  → data/indeed-jds.json → rank.mjs → data/indeed-openings.md   │
+  └────────────────────────────────────────────────────────────────┘
+
+  ┌────────────────────────────────────────────────────────────────┐
+  │  DECISION VIEWS (rolling windowed & deduplicated slices)       │
+  │                                                                │
+  │  board-recent.mjs ───► data/ats-recent.md, aggregator-recent.md│
+  │  linkedin-recent.mjs ─► data/linkedin-recent.md                │
+  └────────────────────────────────────────────────────────────────┘
 
   ┌────────────────────────────────────────────────────────────────┐
   │  DOWNSTREAM TOOLS (read the leaderboards)                     │
   │                                                                │
   │  today.mjs ··········· daily briefing (4 sections)            │
   │  keywords.mjs ········ JD vs cv.md skill gap                  │
+  │  liveness.mjs ········ posting live / closed verification     │
   │  referrals.mjs ······· referral targets + message drafts      │
-  │  linkedin-recent.mjs · windowed LinkedIn slice                │
+  │  dsa.mjs ············· company LeetCode problem frequency     │
   │  prep.mjs ············ interview prep scaffold                │
+  └────────────────────────────────────────────────────────────────┘
+
+  ┌────────────────────────────────────────────────────────────────┐
+  │  WEB DASHBOARD (server.mjs → http://localhost:3005)            │
+  │                                                                │
+  │  Leaderboard · Live Tracker · Referrals · Prep · Workstation   │
   └────────────────────────────────────────────────────────────────┘
 
   Config:  config.yml          (single source of truth)
@@ -193,6 +247,8 @@ Open `data/top-openings.md` or `data/linkedin-openings.md`:
 
 ## 🛠 Command Reference
 
+> Shortcuts: `npm run hunt` / `scan` / `aggregators` / `rank` / `rank:ai` / `recent` / `today` / `referrals` / `liveness` map to the `node *.mjs` commands below — use either. Run `npm start` for the web dashboard.
+
 ### `jobhunt.mjs` — Interactive CLI
 
 > The main entry point. Orchestrates scanning, LinkedIn discovery, and ranking.
@@ -203,7 +259,10 @@ node jobhunt.mjs
 
 Interactive prompts let you choose freshness window (24h/4d/7d/14d/everything), LinkedIn scan (Y/n), and Gemini AI scores (Y/n).
 
-**Outputs:** `data/top-openings.md` · `data/linkedin-openings.md` · `data/linkedin-recent.md`
+**Decision views:** `data/ats-recent.md` · `data/aggregator-recent.md` · `data/linkedin-recent.md`
+**Complete archives:** `data/ats-openings.md` · `data/aggregator-openings.md` · `data/linkedin-openings.md` · `data/indeed-openings.md` (when `/indeed` has been run)
+
+The selected freshness window is passed to both aggregator discovery and AI-scoring. A run lock prevents accidentally starting a second pipeline while the first is still active.
 
 ---
 
@@ -221,16 +280,28 @@ node scan.mjs --company nvidia     # scan one company (substring match)
 **How it works:**
 1. Detects ATS provider from each company's `careers_url`
 2. Hits public API (Greenhouse, Ashby, Lever, Workable, Workday)
-3. Applies `title_filter` (positive + negative) and `location_filter`
-4. Deduplicates against `data/scan-history.tsv` + `data/pipeline.md`
-5. Runs 10 companies in parallel
+3. Applies `title_filter` (positive + negative) and `location_filter` — shared with
+   every other lane via `board-store.mjs`, so one config edit changes them all. Negative
+   terms match whole words and are ignored inside a matched positive phrase, so
+   `Member of Technical Staff` survives the `Staff` negative while
+   `Staff Software Engineer` does not
+4. Saves native posting time/JD text when the provider exposes them
+5. Canonicalizes Workday/Greenhouse/Ashby/Lever/Amazon URLs and deduplicates under a writer lock
+6. Preserves exact discovery/last-seen timestamps in `data/board-jobs.json`
+7. Runs 10 companies in parallel
 
 </details>
 
 <details>
 <summary><strong><code>aggregators.mjs</code> — Open-Ended Aggregators</strong></summary>
 
-`scan.mjs` only checks companies in `config.yml`. This pulls community job aggregators (**SimplifyJobs New-Grad + Internships** by default), applies the **same** `title_filter` + `location_filter`, dedups, and appends to `data/pipeline.md` — so they get ranked exactly like board results. **Zero tokens.**
+`scan.mjs` only checks companies in `config.yml`. This pulls community feeds (**SimplifyJobs**, **speedyapply**, Jobright and others), applies the **same** discovery filters, canonical-dedups, and preserves each feed's posting date and sponsorship metadata in `data/board-jobs.json`. **Zero tokens.** Jobright remains enabled for breadth but its rows are quarantined by source/URL and lose to a direct employer copy.
+
+**Adding a source** — under `aggregators.sources:` in `config.yml`:
+- **JSON feeds** (SimplifyJobs schema: `url`, `title`, `company_name`, `locations`, `date_posted`, `sponsorship`, `active`) — just add the raw URL.
+- **Markdown README tables** (e.g. speedyapply) — add `format: markdown`. A header-driven parser maps the `Company` / `Position`(or `Role`/`Title`) / `Location` / `Posting`(or `Apply`) / `Age`(or `Posted`/`Date`) columns into the same listing shape, so they rank identically. Date cells understand `17d`, `1 day ago`, `Today`, ISO dates, and `Jun 22`.
+
+> Check the feed is still **actively maintained** before adding it — repo commit activity ≠ data freshness, and a repo's `jobs.json` can be a stale artifact while its README is live. Verify the newest **posting date** in whatever file you point at, not the last push.
 
 ```bash
 node aggregators.mjs                 # all enabled sources, last 30 days
@@ -240,7 +311,7 @@ node aggregators.mjs --dry-run       # preview — write nothing
 node aggregators.mjs --source intern # one source (substring match on id)
 ```
 
-**F-1 aware:** each listing's `sponsorship` field is used — `"U.S. Citizenship is Required"` postings are dropped (ineligible), `"Does Not Offer Sponsorship"` ones are kept but counted + flagged ⚠️ in the summary.
+**F-1 aware:** each listing's `sponsorship` field is persisted — `"U.S. Citizenship is Required"` postings are dropped (ineligible), while explicit no-sponsorship roles remain archived but are forced to Skip.
 
 Configure sources / window in `config.yml` under `aggregators:`.
 
@@ -252,16 +323,49 @@ Configure sources / window in `config.yml` under `aggregators:`.
 Port of the n8n "Job search ultimate workflow." Hits LinkedIn's guest search endpoint for all queries in `config.yml`.
 
 ```bash
-node linkedin.mjs                  # default: last 96 hours
-node linkedin.mjs --hours 48       # last 48 hours
+node linkedin.mjs                  # incremental since last successful scan (+ overlap)
+node linkedin.mjs --hours 48       # explicit manual 48-hour scan
+node linkedin.mjs --force          # bypass the frequent-run cooldown
 node linkedin.mjs --dry-run        # preview — write nothing
 ```
 
 **No title filter on purpose** — LinkedIn's level metadata is unreliable, so Gemini scores every job from the actual JD text.
 
-- Paginates each query (6 pages × ~10 results)
-- Fetches full JD text for new jobs (capped at `max_new_per_run`)
+- First run searches 24 hours; later runs search since the last success plus a one-hour overlap
+- Runs each query unfiltered, then again with Internship + Entry level + Associate filters; URL dedup keeps one archive record
+- Archives every discovered card; `max_new_per_run` caps JD detail fetches, not discovery
+- A run discovers far more cards than the JD budget describes, so the fetch queue is ordered
+  by `title_filter` fit (freshness breaks ties), not by recency alone — the undescribed
+  remainder is the junk tail rather than whatever happened to be oldest
+- Skips JD fetches for reposts of a role already described, known reposters, and anything
+  older than `detail_max_age_days`
+- Paginates up to `max_pages` and stops after consecutive pages with nothing this run
+  hasn't already seen
+- Saves exact discovery time and the most precise posting time LinkedIn exposes
+  (a re-observed card never overwrites a sharper timestamp with a coarser one)
+- Records which search mode first surfaced each card, so the second pass's cost is measurable
+- Uses a 90-minute cooldown by default, making 4–5 daily pipeline runs safe
 - Polite delays (2.5–5s jitter); backs off on rate-limit
+
+</details>
+
+<details>
+<summary><strong><code>indeed.mjs</code> + <code>/indeed</code> — Indeed Scanner (Claude Code)</strong></summary>
+
+Indeed blocks plain-Node scraping (Cloudflare 403) and killed its RSS feed, so this lane fetches through the **Indeed MCP connector** inside Claude Code.
+
+```bash
+claude                              # then type: /indeed
+node indeed.mjs --import jobs.json  # (what the skill runs for you)
+node indeed.mjs --import jobs.json --dry-run
+```
+
+**Prerequisite:** enable the Indeed connector (claude.ai → Settings → Connectors).
+
+- `/indeed` reads `config.yml → indeed.queries`, searches via MCP, filters by `title_filter` / `location_filter` / `company_blocklist` (hard exclude — same filters as `scan.mjs`/`aggregators.mjs`) and dedups against `scan-history.tsv` *before* fetching JDs, then hands a JSON to `indeed.mjs`
+- `indeed.mjs` re-enforces the same filters + dedup authoritatively, then owns all writes: `data/indeed-jds.json` + `scan-history.tsv` (portal `indeed`); never touches `pipeline.md`
+- Unlike LinkedIn, Indeed **is** title/location/blocklist-filtered — its MCP connector returns a fixed ~10 results/query with no pagination, so noise is too costly to leave for Gemini to sort out after the fact. Survivors still get Gemini-judged for experience-level/sponsorship fit
+- Bonus over LinkedIn: Indeed results include posted **salary**, which flows into the leaderboard's Salary column
 
 </details>
 
@@ -273,28 +377,47 @@ Scores all openings with deterministic heuristic + optional Gemini AI.
 ```bash
 node rank.mjs                      # heuristic only
 node rank.mjs --ai                 # + Gemini AI scores (free, cached)
-node rank.mjs --days 7             # only last 7 days
+node rank.mjs --days 7             # AI-score the 7-day decision window; archives stay complete
 node rank.mjs --top 30             # apply-first table size (default: 30)
 ```
 
-- Board openings → `data/top-openings.md`
+- ATS complete archive → `data/ats-openings.md` + `data/ats-ranked.json`
+- Aggregator complete archive → `data/aggregator-openings.md` + `data/aggregator-ranked.json`
 - LinkedIn openings → `data/linkedin-openings.md`
-- AI results cached in `data/ai-scores.json` (never re-scores)
+- Structured LinkedIn ranking → `data/linkedin-ranked.json`
+- Indeed openings → `data/indeed-openings.md`
+- AI results cached in `data/ai-scores.json`; cached scores remain visible only while JD text is available
 - Batches 5 jobs per Gemini call; only scores heuristic ≥ 65 (boards) or all (LinkedIn)
+- Canonical duplicates are removed before scoring; broad-discovery non-SWE titles, 2027 cohorts, no-sponsor roles and reposter sources receive hard decisions before rendering
+
+</details>
+
+<details>
+<summary><strong><code>board-recent.mjs</code> — ATS + Aggregator Windowed Views</strong></summary>
+
+Builds the accurate decision views from the structured ATS/aggregator archives.
+
+```bash
+node board-recent.mjs --days 1      # rolling 24 hours
+node board-recent.mjs --days 4      # four-day view
+npm run recent                      # rolling 24 hours
+```
+
+Exact provider timestamps use a true rolling cutoff. Date-only timestamps are marked `≈`; jobs with no native posting time are labeled `found … (posted unknown)` rather than falsely called newly posted. Direct employer URLs beat Jobright/reposter copies, and duplicate suppression never deletes archive records.
 
 </details>
 
 <details>
 <summary><strong><code>linkedin-recent.mjs</code> — Windowed LinkedIn View</strong></summary>
 
-Filters the full LinkedIn list to your chosen freshness window. **Overwrites** `data/linkedin-recent.md` on every run.
+Builds an eligibility-aware decision view from the structured LinkedIn archive. The normal pipeline always uses a rolling 24-hour window and **overwrites** `data/linkedin-recent.md` on every run.
 
 ```bash
 node linkedin-recent.mjs             # last 24 hours
 node linkedin-recent.mjs --days 4    # last 4 days
 ```
 
-The full list stays in `data/linkedin-openings.md` — this is just the windowed slice.
+The view leads with AI fit, keeps the heuristic beside it, applies hard F-1/OPT and level gates, separates Apply/Review/Skip/Quarantine, and suppresses semantic duplicates. Date-only LinkedIn timestamps are labeled approximate. Every suppressed or skipped record remains in the full archive.
 
 </details>
 
@@ -381,6 +504,40 @@ node prep.mjs "Hudson River Trading"
 4. F-1/OPT sponsorship talking points
 
 For the deep version → `claude → "prep me for Notion"`
+
+</details>
+
+<details>
+<summary><strong><code>liveness.mjs</code> — Posting Liveness Checker</strong></summary>
+
+Checks whether a posting is still live or closed by verifying directly against the source ATS API or page (Greenhouse, Ashby, Lever, Workday, LinkedIn). **Zero tokens.**
+
+```bash
+node liveness.mjs <url>          # check one posting → live / closed / unknown
+node liveness.mjs --top 20       # check the top 20 of each leaderboard → data/liveness-report.md
+npm run liveness                 # shortcut for top openings
+```
+
+- Returns `live` (accepting applications), `closed` (404 / no longer accepting), or `unknown`
+- Protects against applying to or chasing referrals for dead/ghost postings
+- When run with `--top N`, writes a full summary report to `data/liveness-report.md`
+
+</details>
+
+<details>
+<summary><strong><code>dsa.mjs</code> — Company LeetCode Frequency</strong></summary>
+
+Pulls company-wise LeetCode question frequency from a community mirror and writes a ranked study list to `data/dsa-{company}.md`. **Zero tokens.**
+
+```bash
+node dsa.mjs Stripe
+node dsa.mjs "Hudson River Trading" --window all   # 30d | 3m | 6m | more | all (default: 6m)
+node dsa.mjs Datadog --top 40
+```
+
+- Shows problem name, difficulty, frequency, acceptance rate, and LeetCode link
+- Helps focus coding prep on the exact patterns and problems a company historically favors
+- Used by the AI prep workflow to weight DSA recommendations
 
 </details>
 
@@ -485,7 +642,7 @@ profile:
 
 title_filter:
   positive: [Software Engineer, Backend, New Grad, Intern, ...]
-  negative: [Senior, Staff, Lead, Principal, Manager, ...]
+  negative: [Senior, Staff, Lead, Principal, Manager, ...]   # whole-word match
 
 location_filter:
   always_allow: [United States, New York, NYC, Remote, ...]
@@ -531,17 +688,30 @@ companies:
 | File | Purpose | Generated By |
 |------|---------|:------------:|
 | `data/pipeline.md` | All board openings (checklist) | `scan.mjs` |
-| `data/scan-history.tsv` | Dedup ledger (URL, date, provider, title) | `scan.mjs` · `linkedin.mjs` |
-| `data/top-openings.md` | **Board leaderboard** — ranked, dual-scored | `rank.mjs` |
-| `data/linkedin-openings.md` | **LinkedIn leaderboard** — full, AI-scored | `rank.mjs` |
-| `data/linkedin-recent.md` | LinkedIn windowed slice (replaced each run) | `linkedin-recent.mjs` |
-| `data/linkedin-jds.json` | LinkedIn JD text cache | `linkedin.mjs` |
+| `data/scan-history.tsv` | Dedup ledger (URL, date, provider, title) | `scan.mjs` · `linkedin.mjs` · `indeed.mjs` |
+| `data/board-jobs.json` | Structured ATS/aggregator source metadata: posted/discovered/last-seen/JD/sponsorship | `scan.mjs` · `aggregators.mjs` |
+| `data/ats-openings.md` | **ATS complete scored archive** | `rank.mjs` |
+| `data/ats-ranked.json` | Structured ATS ranking used by the recent view | `rank.mjs` |
+| `data/ats-recent.md` | Deduplicated ATS Apply/Review/Skip view (replaced each run) | `board-recent.mjs` |
+| `data/aggregator-openings.md` | **Aggregator complete scored archive** | `rank.mjs` |
+| `data/aggregator-ranked.json` | Structured aggregator ranking used by the recent view | `rank.mjs` |
+| `data/aggregator-recent.md` | Deduplicated aggregator Apply/Review/Skip view (replaced each run) | `board-recent.mjs` |
+| `data/linkedin-openings.md` | **LinkedIn scored archive** — every retained discovery | `rank.mjs` |
+| `data/linkedin-ranked.json` | Structured LinkedIn ranking used by the recent view | `rank.mjs` |
+| `data/linkedin-recent.md` | 24-hour deduplicated Apply/Review/Skip view (replaced each run) | `linkedin-recent.mjs` |
+| `data/linkedin-jds.json` | Permanent raw LinkedIn discovery + JD archive | `linkedin.mjs` |
+| `data/linkedin-scan-state.json` | Last successful incremental scan metadata | `linkedin.mjs` |
+| `data/indeed-openings.md` | **Indeed leaderboard** — full, AI-scored | `rank.mjs` |
+| `data/indeed-jds.json` | Indeed JD text cache (+ salary) | `indeed.mjs` (via `/indeed`) |
 | `data/ai-scores.json` | Gemini score cache (keyed by URL) | `rank.mjs` |
 | `data/story-bank.md` | 8 STAR+R interview stories | Manual |
 | `data/applications.md` | Application tracker | Manual |
 | `data/referral-targets.md` | Referral worksheet (search links + drafts) | `referrals.mjs` |
 | `data/referrals.md` | Outreach tracker (contacts + status) | Manual |
-| `interview-prep/{company}.md` | Interview prep scaffold | `prep.mjs` |
+| `data/liveness-report.md` | Liveness verification report (live vs closed) | `liveness.mjs` |
+| `data/dsa-{company}.md` | Company-specific LeetCode frequency list | `dsa.mjs` |
+| `interview-prep/{company}.md` | Interview prep scaffold | `prep.mjs` · AI Agent |
+| `reports/{n}-{company}.md` | Role fit & ghost-job legitimacy evaluation reports | AI Agent (`evaluate top N`) |
 
 ---
 
@@ -554,8 +724,9 @@ companies:
 | **Lever** | `jobs.lever.co/{slug}` | `api.lever.co/v0/postings/{slug}` |
 | **Workable** | `apply.workable.com/{slug}` | `apply.workable.com/{slug}/jobs.md` |
 | **Workday** | `{tenant}.wd{N}.myworkdayjobs.com/{site}` | CXS POST API with targeted search |
+| **Amazon** | `amazon.jobs` | `amazon.jobs/en/search.json` with targeted new-grad/intern search terms |
 
-> Companies with custom ATS (Google, Meta, Amazon, Apple, Netflix, Microsoft) are `enabled: false` — included as bookmark URLs and surface via LinkedIn.
+> Companies with custom ATS (Google, Meta, Apple, Netflix, Microsoft) are `enabled: false` — included as bookmark URLs and surface via LinkedIn. **Amazon is now API-scannable** via its `search.json` endpoint.
 
 ---
 
@@ -604,7 +775,7 @@ companies:
 | **Scores ≠ truth** | High score = "read this posting." ⚠️ = check sponsorship yourself. When AI and heuristic diverge, that's signal — look at both. |
 | **No auto-anything** | Discovery + ranking + drafting only. Applying, networking, and interviewing are yours. |
 | **Email guesses** | Always check LinkedIn "Contact info" first. Guessed patterns are guesses. |
-| **FAANG custom ATS** | Google, Meta, Amazon, Apple, Netflix, Microsoft can't be API-scanned. Bookmark URLs + LinkedIn discovery. |
+| **FAANG custom ATS** | Google, Meta, Apple, Netflix, Microsoft can't be API-scanned. Bookmark URLs + LinkedIn discovery. (Amazon *is* scanned via `search.json`.) |
 
 ---
 
@@ -797,7 +968,8 @@ node jobhunt.mjs
 | Component | Technology |
 |-----------|-----------|
 | Runtime | Node.js ≥ 18 (ESM modules, native `fetch`) |
-| Dependencies | **1** — `js-yaml` |
+| Dependencies | **2** — `express`, `js-yaml` |
+| Web UI | Express + Vanilla HTML5/CSS3/ES6+ (no build step, 60 FPS) |
 | AI | Google Gemini CLI (optional, free tier) |
 | Data | Markdown tables · JSON caches · TSV history |
 | Config | YAML (single file) |

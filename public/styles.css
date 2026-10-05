@@ -1,0 +1,232 @@
+/* ==========================================================================
+   JobHunt Modern Styling & Theme System (Dark + Light Mode Engine)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   DARK MODE (Default - Cyberpunk Midnight)
+   -------------------------------------------------------------------------- */
+:root {
+  --bg-main: #0b0f19;
+  --bg-gradient: radial-gradient(ellipse at top, #151d30 0%, #090d15 100%);
+  --bg-nav: rgba(11, 15, 25, 0.92);
+  
+  --surface-lowest: #05080e;
+  --surface-low: #0f1522;
+  --surface-card: #151c2d;
+  --surface-hover: #1b2438;
+  --surface-high: #222d46;
+  
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-accent: rgba(0, 230, 57, 0.4);
+  
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+  
+  --accent-green: #00e639;
+  --accent-green-bg: rgba(0, 230, 57, 0.12);
+  --accent-green-border: rgba(0, 230, 57, 0.35);
+  
+  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --glow-shadow: 0 0 20px rgba(0, 230, 57, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   LIGHT MODE OVERRIDES (Vercel / Apple Studio Style)
+   -------------------------------------------------------------------------- */
+html.light {
+  --bg-main: #f8fafc;
+  --bg-gradient: radial-gradient(ellipse at top, #ffffff 0%, #f1f5f9 100%);
+  --bg-nav: rgba(255, 255, 255, 0.95);
+  
+  --surface-lowest: #ffffff;
+  --surface-low: #ffffff;
+  --surface-card: #ffffff;
+  --surface-hover: #f8fafc;
+  --surface-high: #f1f5f9;
+  
+  --border-color: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  --border-accent: rgba(4, 120, 87, 0.4);
+  
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-subtle: #94a3b8;
+  
+  --accent-green: #047857;
+  --accent-green-bg: #ecfdf5;
+  --accent-green-border: #a7f3d0;
+  
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --glow-shadow: 0 0 15px rgba(4, 120, 87, 0.08);
+}
+
+/* Base Body */
+body {
+  background-color: var(--bg-main);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-main);
+  transition: background 0.25s ease, color 0.25s ease;
+  font-family: 'Geist', sans-serif;
+  min-height: 100vh;
+}
+
+/* Header Navbar */
+nav {
+  background-color: var(--bg-nav) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* --------------------------------------------------------------------------
+   HTML.LIGHT SPECIFIC CLASS MAPPER
+   -------------------------------------------------------------------------- */
+html.light .bg-background { background-color: #f8fafc !important; }
+html.light .text-on-background { color: #0f172a !important; }
+html.light .text-on-surface { color: #0f172a !important; }
+html.light .text-on-surface-variant { color: #475569 !important; }
+
+html.light .bg-surface-container-low,
+html.light .bg-surface-container-lowest,
+html.light .bg-surface-container {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+}
+
+html.light .bg-surface-container-high,
+html.light .bg-surface-container-highest {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html.light .border-outline-variant {
+  border-color: #e2e8f0 !important;
+}
+
+html.light .text-primary-fixed-dim {
+  color: #047857 !important; /* Deep Emerald Green on white */
+}
+
+html.light .bg-primary-fixed-dim {
+  background-color: #047857 !important;
+  color: #ffffff !important;
+}
+
+html.light .bg-primary-fixed-dim\/20 {
+  background-color: #ecfdf5 !important;
+  color: #047857 !important;
+  border-color: #a7f3d0 !important;
+}
+
+html.light .border-primary-fixed-dim\/40,
+html.light .border-primary-fixed-dim\/30 {
+  border-color: #a7f3d0 !important;
+}
+
+/* Table Specific Overrides in Light Mode */
+html.light table th {
+  background-color: #f8fafc !important;
+  color: #475569 !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+}
+
+html.light table tbody tr {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+}
+
+html.light table tbody tr:hover {
+  background-color: #f8fafc !important;
+}
+
+html.light select,
+html.light input[type="text"] {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light select:focus,
+html.light input[type="text"]:focus {
+  border-color: #047857 !important;
+  box-shadow: 0 0 0 2px rgba(4, 120, 87, 0.15) !important;
+}
+
+/* Status Badges in Light Mode */
+html.light .bg-sky-500\/20 {
+  background-color: #e0f2fe !important;
+  color: #0369a1 !important;
+  border-color: #7dd3fc !important;
+}
+
+html.light .bg-emerald-500\/20 {
+  background-color: #dcfce7 !important;
+  color: #15803d !important;
+  border-color: #86efac !important;
+}
+
+html.light .bg-rose-500\/20 {
+  background-color: #ffe4e6 !important;
+  color: #be123c !important;
+  border-color: #fca5a5 !important;
+}
+
+html.light .bg-amber-400\/20 {
+  background-color: #fffbeb !important;
+  color: #b45309 !important;
+  border-color: #fde68a !important;
+}
+
+/* List Switcher Pills in Light Mode */
+html.light .src-pill {
+  background-color: #ffffff !important;
+  color: #475569 !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light .src-pill:hover {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html.light .src-pill.active {
+  background-color: #ecfdf5 !important;
+  color: #047857 !important;
+  border-color: #a7f3d0 !important;
+  font-weight: 600;
+}
+
+/* Material Icons */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface-lowest);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-high);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-green);
+}
+
+/* Micro-animations and Elevation */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow);
+}

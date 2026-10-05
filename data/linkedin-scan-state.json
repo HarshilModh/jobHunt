@@ -1,0 +1,12 @@
+{
+  "last_completed_at": "2026-09-28T15:15:14.053Z",
+  "hours_queried": 120,
+  "base_queries": 23,
+  "search_modes": [
+    "broad",
+    "early-career"
+  ],
+  "searches": 46,
+  "discoveries": 559,
+  "descriptions_attempted": 300
+}

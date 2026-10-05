@@ -39,24 +39,43 @@ function appliedKeys() {
 function applyList() {
   const applied = appliedKeys();
   const rows = [];
-  for (const path of ['data/top-openings.md', 'data/linkedin-openings.md']) {
+  // Read the structured archives, not the rendered markdown. The old regex
+  // scrape only honoured the Decision column when a file happened to have one,
+  // so 🟡 review rows leaked into "APPLY FIRST".
+  const lanes = [
+    ['ATS', 'data/ats-ranked.json'],
+    ['AGG', 'data/aggregator-ranked.json'],
+    ['LI', 'data/linkedin-ranked.json'],
+  ];
+  for (const [src, path] of lanes) {
     if (!existsSync(path)) continue;
-    const src = path.includes('linkedin') ? 'LI' : '';
-    for (const m of readFileSync(path, 'utf-8').matchAll(/\| *\d+ *\| *(?:\*\*)?(\d+|—)(?:\*\*)? *\| *(\d+) *\| *([^|]+?) *\| *\[([^\]]+)\]\(([^)]+)\) *\| *([^|]*?) *\| *([^|]*?) *\| *([^|]*?) *\| *([^|]*?) *\|/g)) {
-      const score = m[1] === '—' ? +m[2] : +m[1];
-      const signals = m[9] || '';
+    let parsed;
+    try { parsed = JSON.parse(readFileSync(path, 'utf-8')); } catch { continue; }
+    for (const r of parsed.rows || []) {
+      if (r.decision !== 'apply') continue;
+      if (r.sponsorshipRisk === 'high') continue;
+      if (NEW_ONLY && !(Number.isFinite(r.daysAgo) && r.daysAgo <= 7)) continue;
+      const score = r.ai ?? r.heuristic ?? 0;
       if (score < MIN) continue;
-      if (NEW_ONLY && !signals.includes('🆕')) continue;
-      if (signals.includes('no-sponsor')) continue;
-      const key = `${m[3].trim().toLowerCase()}::${m[4].trim().toLowerCase()}`;
+      const key = `${String(r.company).toLowerCase()}::${String(r.title).toLowerCase()}`;
       if (applied.has(key)) continue;
-      rows.push({ score, company: m[3].trim(), role: m[4].trim(), url: m[5], posted: m[7] || '', signals, src });
+      rows.push({
+        score, ai: r.ai, heuristic: r.heuristic,
+        company: r.company, role: r.title, url: r.url,
+        daysAgo: r.daysAgo, flags: (r.flags || []).join(' '), src,
+      });
     }
   }
-  // de-dupe by url, keep highest score
+  // De-dupe the same posting across lanes, then again on company+role so a
+  // reposted listing doesn't occupy two slots.
   const byUrl = new Map();
   for (const r of rows) if (!byUrl.has(r.url) || r.score > byUrl.get(r.url).score) byUrl.set(r.url, r);
-  return [...byUrl.values()].sort((a, b) => b.score - a.score).slice(0, 12);
+  const byRole = new Map();
+  for (const r of byUrl.values()) {
+    const k = `${r.company.toLowerCase()}::${r.role.toLowerCase()}`;
+    if (!byRole.has(k) || r.score > byRole.get(k).score) byRole.set(k, r);
+  }
+  return [...byRole.values()].sort((a, b) => b.score - a.score).slice(0, 12);
 }
 
 // ── 2. Referral nudges due ──────────────────────────────────────────
@@ -104,7 +123,11 @@ console.log(`\n📅  jobhunt — ${today.toISOString().slice(0, 10)}\n`);
 const apply = applyList();
 console.log(`① APPLY FIRST  (score ≥ ${MIN}${NEW_ONLY ? ', 🆕 only' : ''}, not yet applied)`);
 if (!apply.length) console.log('   nothing new — run node jobhunt.mjs to refresh, or lower --min');
-for (const r of apply) console.log(`   ${String(r.score).padStart(3)}  ${r.company} — ${r.role}  ${r.signals.replace(/💬.*/, '').trim()}`);
+for (const r of apply) {
+  const age = Number.isFinite(r.daysAgo) ? `${r.daysAgo}d` : '—';
+  const both = r.ai == null ? `heur ${r.heuristic}` : `AI ${r.ai} / heur ${r.heuristic}`;
+  console.log(`   ${String(r.score).padStart(3)}  [${r.src}] ${r.company} — ${r.role}  (${both}, ${age}) ${r.flags}`.trimEnd());
+}
 
 const nudges = referralNudges();
 console.log(`\n② REFERRAL NUDGES DUE  (${nudges.length})`);

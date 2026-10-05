@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Outer Rounded Terminal Badge Container (Zero Wasted Margin) -->
+  <rect x="3" y="3" width="94" height="94" rx="18" 
+        stroke="#00e639" stroke-width="7" fill="none"/>
+  
+  <!-- Terminal Prompt '>' -->
+  <path d="M 20 34 L 38 50 L 20 66" 
+        stroke="#00e639" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Terminal Cursor '_' -->
+  <line x1="44" y1="66" x2="56" y2="66" 
+        stroke="#00e639" stroke-width="7" stroke-linecap="round"/>
+  
+  <!-- Magnifying Lens Circle -->
+  <circle cx="70" cy="48" r="15" 
+          stroke="#00e639" stroke-width="7" fill="none"/>
+  
+  <!-- Magnifying Lens Handle -->
+  <line x1="80" y1="58" x2="90" y2="68" 
+        stroke="#00e639" stroke-width="7" stroke-linecap="round"/>
+</svg>

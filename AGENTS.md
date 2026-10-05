@@ -13,8 +13,10 @@ against the profile, finds referrals. **No CV/PDF generation, no auto-apply.**
 | `jobhunt.mjs` | Interactive CLI: scan + LinkedIn + rank |
 | `scan.mjs` | Board scanner (greenhouse/ashby/lever/workable/workday) → `data/pipeline.md` |
 | `aggregators.mjs` | Open-ended discovery beyond the company list (SimplifyJobs new-grad + intern); same filters, F-1 citizenship-required drop → `data/pipeline.md` |
+| `board-store.mjs` | Canonical ATS/aggregator persistence with exact discovery time, source posting time, JD/sponsorship metadata, and writer lock → `data/board-jobs.json` |
+| `board-recent.mjs` | Windowed, semantic-deduplicated ATS/aggregator decisions → `data/ats-recent.md`, `data/aggregator-recent.md` |
 | `linkedin.mjs` | LinkedIn discovery → `data/linkedin-jds.json` |
-| `rank.mjs` | Heuristic + optional Gemini scoring → `data/top-openings.md`, `data/linkedin-openings.md` (full) |
+| `rank.mjs` | Heuristic + optional Gemini scoring → full ATS/aggregator/LinkedIn archives + structured `*-ranked.json`, and `data/indeed-openings.md` |
 | `linkedin-recent.mjs` | Windowed LinkedIn slice → `data/linkedin-recent.md` (chosen freshness, replaced each run) |
 | `referrals.mjs` | Referral worksheet (`--followups`, `--email`) → `data/referral-targets.md`, `data/referrals.md` |
 | `prep.mjs` | Interview-prep scaffold → `interview-prep/{company}.md` (maps `data/story-bank.md` to question buckets) |
@@ -52,8 +54,11 @@ let it reflect a holistic JD read, informed by both numbers.
 
 ## "evaluate top N" — condensed A–G evaluation
 
-When the user says "evaluate top 3" (any N, default 3): read `data/top-openings.md`, take the
-top N rows from the Apply-first table, **skip any flagged ⚠️ no-sponsor**, fetch each posting,
+When the user says "evaluate top 3" (any N, default 3): read `data/ats-recent.md` (plus
+`data/aggregator-recent.md`, `data/linkedin-recent.md`, `data/indeed-openings.md` if present;
+fall back to the corresponding `*-openings.md` archive only when a recent view is absent),
+take the top N rows across them by AI score (fall back to heuristic where AI is missing), **skip
+any flagged ⚠️ no-sponsor**, fetch each posting,
 and write each to `reports/{n}-{company}.md`. Header: `**Score:** X.X/5 (NN/100)`,
 `**Legitimacy:** {tier}`, and a sponsorship-risk line at the top. Then cover these blocks
 (tight — a few lines each, not an essay):

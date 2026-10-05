@@ -3,10 +3,13 @@
  * aggregators.mjs — open-ended discovery beyond the company list (zero tokens).
  *
  * scan.mjs is limited to companies in config.yml. This pulls from community
- * job aggregators (SimplifyJobs New-Grad + Internships by default), applies the
- * SAME title + location filters, dedups against data/scan-history.tsv +
- * pipeline.md, and appends new openings to data/pipeline.md — so they get ranked
+ * job aggregators (SimplifyJobs + speedyapply, new-grad + intern, by default),
+ * applies the SAME title + location filters, dedups against data/scan-history.tsv
+ * + pipeline.md, and appends new openings to data/pipeline.md — so they get ranked
  * by rank.mjs exactly like board/LinkedIn results.
+ *
+ * Sources are JSON (SimplifyJobs listings.json schema) or, with `format: markdown`,
+ * a README markdown table (speedyapply) parsed into the same listing shape.
  *
  * Each SimplifyJobs listing carries a `sponsorship` field. For an F-1 search:
  *   "U.S. Citizenship is Required"  → dropped (ineligible)
@@ -21,13 +24,11 @@
  *   node aggregators.mjs --source intern # one source (substring match on id)
  */
 
-import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync } from 'fs';
+import { readFileSync, mkdirSync } from 'fs';
 import yaml from 'js-yaml';
+import { buildLocationFilter, buildTitleFilter, persistBoardOffers } from './board-store.mjs';
 
 const CONFIG_PATH = 'config.yml';
-const HISTORY_PATH = 'data/scan-history.tsv';
-const PIPELINE_PATH = 'data/pipeline.md';
-
 mkdirSync('data', { recursive: true });
 
 // Defaults if config.yml has no `aggregators:` block.
@@ -39,78 +40,145 @@ const DEFAULT_DAYS = 30;
 
 // ── HTTP ────────────────────────────────────────────────────────────
 
-async function fetchJson(url, timeoutMs = 20000) {
+async function fetchHttp(url, timeoutMs = 20000) {
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
     const res = await fetch(url, { signal: ctrl.signal, headers: { 'user-agent': 'jobhunt/1.0' } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return res.json();
+    return res;
   } finally {
     clearTimeout(t);
   }
 }
+const fetchJson = (url, timeoutMs) => fetchHttp(url, timeoutMs).then((r) => r.json());
+const fetchText = (url, timeoutMs) => fetchHttp(url, timeoutMs).then((r) => r.text());
 
-// ── Filters (identical semantics to scan.mjs) ───────────────────────
+// ── Markdown-table feeds (speedyapply, jobright, …) ─────────────────
+// Some community boards publish only a README markdown table, not a JSON
+// listings file. We parse those tables into the SAME listing shape the JSON
+// path produces (url, title, company_name, locations, date_posted, active),
+// so the rest of the pipeline treats them identically.
 
-function buildTitleFilter(tf) {
-  const pos = (tf?.positive || []).map((k) => k.toLowerCase());
-  const neg = (tf?.negative || []).map((k) => k.toLowerCase());
-  return (title) => {
-    const s = (title || '').toLowerCase();
-    return (pos.length === 0 || pos.some((k) => s.includes(k))) && !neg.some((k) => s.includes(k));
-  };
-}
-
-function buildLocationFilter(lf) {
-  if (!lf) return () => true;
-  const norm = (v) => (v == null ? [] : (Array.isArray(v) ? v : [v])).filter((x) => typeof x === 'string').map((x) => x.toLowerCase().trim()).filter(Boolean);
-  const always = norm(lf.always_allow), allow = norm(lf.allow), block = norm(lf.block);
-  return (loc) => {
-    if (typeof loc !== 'string' || !loc.trim()) return true;
-    const s = loc.toLowerCase();
-    if (always.length && always.some((k) => s.includes(k))) return true;
-    if (block.length && block.some((k) => s.includes(k))) return false;
-    if (allow.length === 0) return true;
-    return allow.some((k) => s.includes(k));
-  };
-}
-
-// "U.S. Citizenship is Required" → ineligible on F-1. Match loosely.
-const isCitizenshipRequired = (s) => /citizen/i.test(s || '');
-const isNoSponsorship = (s) => /does not offer sponsorship|no sponsorship/i.test(s || '');
-
-// ── Dedup + writers (same files/format as scan.mjs) ─────────────────
-
-function loadSeen() {
-  const seen = new Set();
-  if (existsSync(HISTORY_PATH))
-    for (const line of readFileSync(HISTORY_PATH, 'utf-8').split('\n').slice(1)) {
-      const url = line.split('\t')[0];
-      if (url) seen.add(url);
-    }
-  if (existsSync(PIPELINE_PATH))
-    for (const m of readFileSync(PIPELINE_PATH, 'utf-8').matchAll(/- \[[ x]\] (https?:\/\/\S+)/g)) seen.add(m[1]);
-  return seen;
-}
-
-function appendToPipeline(offers) {
-  let text = existsSync(PIPELINE_PATH) ? readFileSync(PIPELINE_PATH, 'utf-8') : '# Pipeline — pending offers inbox\n\n## Pendientes\n';
-  const lines = offers.map((o) => `- [ ] ${o.url} | ${o.company} | ${o.title}`).join('\n');
-  const idx = text.indexOf('## Pendientes');
-  if (idx === -1) { text += `\n## Pendientes\n\n${lines}\n`; }
-  else {
-    const insertAt = text.indexOf('\n', idx) + 1;
-    text = `${text.slice(0, insertAt)}\n${lines}${text.slice(insertAt)}`;
+const stripTags = (s) => (s || '').replace(/<[^>]+>/g, '').trim();
+// Cell → human company/title text: prefer <strong>…</strong>, then [label](url), else
+// plain. Strips a leading status emoji (e.g. "🚀 Affirm", "🔥 NVIDIA" → "Affirm"/"NVIDIA").
+const cellText = (s) => {
+  const strong = (s || '').match(/<strong>(.*?)<\/strong>/is);
+  let v = strong ? stripTags(strong[1]) : null;
+  if (v == null) {
+    const link = (s || '').match(/\[([^\]]+)\]\([^)]*\)/);
+    v = link ? stripTags(link[1]) : stripTags(s);
   }
-  writeFileSync(PIPELINE_PATH, text, 'utf-8');
+  // Strip markdown bold (vanshb03 uses **Company**) — leftover ** breaks tier lookup.
+  return v.replace(/\*\*/g, '').replace(/^[^\p{L}\p{N}(]+/u, '').trim();
+};
+// Cell → first hyperlink target (HTML href or markdown link).
+const cellHref = (s) => {
+  const html = (s || '').match(/href="([^"]+)"/i);
+  if (html) return html[1];
+  const md = (s || '').match(/\]\(([^)]+)\)/);
+  return md ? md[1] : '';
+};
+// Relative ("17d", "1 day ago", "Today", "yesterday"), ISO ("2026-02-26"), or
+// "Jun 22" → epoch seconds (approx). 0 if unparseable.
+function parsePostedAt(s, now = Date.now()) {
+  const v = (s || '').trim();
+  if (!v) return 0;
+  const low = v.toLowerCase();
+  if (/^(today|just posted|new)$/.test(low)) return Math.floor(now / 1000);
+  if (low === 'yesterday') return Math.floor(now / 1000 - 86400);
+  // "17d", "3w", "2mo", or "N hours/days/weeks/months/years ago"
+  const rel = low.match(/(\d+)\s*(hour|hr|h|day|d|week|w|month|mo|year|yr|y)s?\b/);
+  if (rel) {
+    const n = Number(rel[1]);
+    const u = rel[2];
+    const days = /^(hour|hr|h)$/.test(u) ? n / 24 : /^(day|d)$/.test(u) ? n
+      : /^(week|w)$/.test(u) ? n * 7 : /^(month|mo)$/.test(u) ? n * 30 : n * 365;
+    return Math.floor(now / 1000 - days * 86400);
+  }
+  // Absolute dates. ISO/full dates (with a 4-digit year) parse directly; for
+  // year-less forms ("Jun 22") V8's Date.parse silently defaults to year 2001,
+  // so append the current year before parsing. A source board posts month/day
+  // only — a listing from last September, parsed against this year's Sept,
+  // must be pulled back a year rather than left dated in the future.
+  const hasYear = /\d{4}/.test(v);
+  let abs = hasYear ? Date.parse(v) : Date.parse(`${v} ${new Date(now).getUTCFullYear()}`);
+  if (!hasYear && Number.isFinite(abs) && abs > now + 86400000) abs = Date.parse(`${v} ${new Date(now).getUTCFullYear() - 1}`);
+  if (!Number.isFinite(abs)) abs = Date.parse(v);
+  return Number.isFinite(abs) ? Math.floor(abs / 1000) : 0;
 }
 
-function appendToHistory(offers, date) {
-  if (!existsSync(HISTORY_PATH))
-    writeFileSync(HISTORY_PATH, 'url\tfirst_seen\tportal\ttitle\tcompany\tstatus\tlocation\n', 'utf-8');
-  appendFileSync(HISTORY_PATH, offers.map((o) => `${o.url}\t${date}\t${o.source}\t${o.title}\t${o.company}\tadded\t${o.location || ''}`).join('\n') + '\n', 'utf-8');
+function splitRow(line) {
+  const body = line.replace(/^\||\|$/g, '');
+  const cells = [];
+  let cell = '';
+  for (let i = 0; i < body.length; i++) {
+    if (body[i] === '|' && body[i - 1] !== '\\') { cells.push(cell.trim()); cell = ''; }
+    else cell += body[i];
+  }
+  cells.push(cell.trim());
+  return cells.map((value) => value.replace(/\\\|/g, '|'));
 }
+const isSeparator = (line) => /^\|?\s*:?-{2,}/.test(line) && /-\s*\|/.test(`${line}|`);
+
+function postedPrecision(value) {
+  const text = String(value || '').trim().toLowerCase();
+  if (!text) return 'unknown';
+  if (/\b(?:hour|hr|h)s?\b/.test(text) || /t\d{2}:\d{2}/i.test(text)) return 'timestamp';
+  if (/today|yesterday|\bday|\bweek|\bmonth|\byear|\b\d+d\b|\b\d+w\b|\b\d+mo\b/.test(text)) return 'relative-day';
+  return 'date';
+}
+
+function parseMarkdownListings(text) {
+  const lines = text.split('\n');
+  const out = [];
+  let cols = null; // current header → column index map
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line.startsWith('|')) { cols = null; continue; }
+    // A header row is one immediately followed by a |---|---| separator.
+    if (lines[i + 1] && isSeparator(lines[i + 1].trim())) {
+      const names = splitRow(line).map((c) => c.toLowerCase());
+      const find = (...keys) => names.findIndex((n) => keys.some((k) => n.includes(k)));
+      cols = {
+        company: find('company'),
+        title: find('position', 'title', 'role'),
+        location: find('location'),
+        posting: find('posting', 'apply', 'link'),
+        age: find('age'),
+        date: find('date', 'posted'),
+      };
+      i++; // skip the separator
+      continue;
+    }
+    if (!cols || isSeparator(line)) continue;
+    const c = splitRow(line);
+    const at = (idx) => (idx >= 0 ? c[idx] || '' : '');
+    const company = cellText(at(cols.company));
+    const title = cellText(at(cols.title));
+    // Apply URL: dedicated posting column if present, else the title link.
+    const url = cellHref(at(cols.posting)) || cellHref(at(cols.title));
+    if (!company || !title || !url) continue;
+    const postedText = cols.age >= 0 ? at(cols.age) : cols.date >= 0 ? at(cols.date) : '';
+    const when = parsePostedAt(postedText);
+    out.push({
+      title, url, company_name: company, active: true,
+      locations: [stripTags(at(cols.location))], date_posted: when, sponsorship: '',
+      posted_raw: stripTags(postedText), posted_precision: postedPrecision(postedText),
+    });
+  }
+  return out;
+}
+
+// Preserve explicit source eligibility metadata. Avoid treating phrases such
+// as "citizenship not required" as a rejection.
+const isCitizenshipRequired = (s) => {
+  const text = String(s || '').toLowerCase();
+  if (/citizenship (?:is )?not required|no citizenship requirement/.test(text)) return false;
+  return /(?:u\.?s\.? |united states )?citizenship (?:is )?required|must be (?:a )?u\.?s\.? citizen|u\.?s\.? citizens? only/.test(text);
+};
+const isNoSponsorship = (s) => /does not offer sponsorship|no sponsorship|will not sponsor|cannot sponsor|sponsorship (?:is )?not available/i.test(s || '');
 
 // ── Main ────────────────────────────────────────────────────────────
 
@@ -134,8 +202,7 @@ async function main() {
   console.log(`Aggregators: ${sources.map((s) => s.id).join(', ')}`);
   console.log(`Window: ${days > 0 ? `last ${days} days` : 'all active'}${dryRun ? '  (dry run)' : ''}\n`);
 
-  const seen = loadSeen();
-  const date = new Date().toISOString().slice(0, 10);
+  const observedAt = new Date().toISOString();
   let total = 0, fInactive = 0, fDate = 0, fTitle = 0, fLoc = 0, fCitizen = 0, dupes = 0, noSponsor = 0;
   const newOffers = [];
   const errors = [];
@@ -143,7 +210,8 @@ async function main() {
   for (const src of sources) {
     let listings;
     try {
-      listings = await fetchJson(src.url);
+      const isMd = src.format === 'markdown' || /\.md($|\?)/i.test(src.url) || /readme/i.test(src.url);
+      listings = isMd ? parseMarkdownListings(await fetchText(src.url)) : await fetchJson(src.url);
     } catch (e) { errors.push({ source: src.id, error: e.message }); continue; }
     if (!Array.isArray(listings)) { errors.push({ source: src.id, error: 'not a JSON array' }); continue; }
     total += listings.length;
@@ -156,22 +224,33 @@ async function main() {
       if (!titleOk(j.title)) { fTitle++; continue; }
       const location = Array.isArray(j.locations) ? j.locations.join(', ') : (j.location || '');
       if (!locOk(location)) { fLoc++; continue; }
-      if (seen.has(j.url)) { dupes++; continue; }
-      seen.add(j.url);
+      const company = (j.company_name || '').trim() || 'Unknown';
       const flagged = isNoSponsorship(j.sponsorship);
       if (flagged) noSponsor++;
       newOffers.push({
         title: (j.title || '').trim(),
         url: j.url,
-        company: (j.company_name || '').trim() || 'Unknown',
+        company,
         location,
         source: src.id,
+        postedAt: j.date_posted || j.date_updated || null,
+        postedPrecision: j.posted_precision || ((j.date_posted || j.date_updated) ? 'timestamp' : 'unknown'),
+        postedRaw: j.posted_raw || '',
+        sponsorship: j.sponsorship || '',
         noSponsor: flagged,
       });
     }
   }
 
-  if (!dryRun && newOffers.length) { appendToPipeline(newOffers); appendToHistory(newOffers, date); }
+  const persisted = await persistBoardOffers(newOffers, {
+    lane: 'aggregator',
+    blocklist: config.company_blocklist || [],
+    staffing: config.staffing_agencies || [],
+    dryRun,
+    observedAt,
+  });
+  dupes = persisted.duplicateCount;
+  const addedOffers = persisted.added;
 
   console.log('━'.repeat(45));
   console.log(`Listings pulled:        ${total}`);
@@ -181,16 +260,16 @@ async function main() {
   console.log(`Filtered by title:      ${fTitle}`);
   console.log(`Filtered by location:   ${fLoc}`);
   console.log(`Duplicates:             ${dupes}`);
-  console.log(`New offers added:       ${newOffers.length}  (${noSponsor} flagged "no sponsorship")`);
+  console.log(`New offers added:       ${addedOffers.length}  (${noSponsor} flagged "no sponsorship")`);
   if (errors.length) {
     console.log(`\nErrors (${errors.length}):`);
     for (const e of errors) console.log(`  ✗ ${e.source}: ${e.error}`);
   }
-  if (newOffers.length) {
+  if (addedOffers.length) {
     console.log('\nNew offers:');
-    for (const o of newOffers) console.log(`  + ${o.company} | ${o.title} | ${o.location || 'N/A'}${o.noSponsor ? '  ⚠️ no-sponsor' : ''}`);
+    for (const o of addedOffers) console.log(`  + ${o.company} | ${o.title} | ${o.location || 'N/A'}${o.no_sponsor ? '  ⚠️ no-sponsor' : ''}`);
     if (dryRun) console.log('\n(dry run — nothing written)');
-    else console.log(`\n→ run node rank.mjs --ai to score → data/top-openings.md`);
+    else console.log(`\n→ run node rank.mjs --ai to score → data/aggregator-openings.md`);
   }
 }
 

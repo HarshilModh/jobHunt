@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 305 64" fill="none">
+  <!-- Tight Bounding Badge Container -->
+  <rect x="2" y="2" width="92" height="60" rx="12" 
+        stroke="#00e639" stroke-width="4.5" fill="none"/>
+  
+  <!-- Terminal Prompt '>' -->
+  <path d="M 18 20 L 32 32 L 18 44" 
+        stroke="#00e639" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Terminal Cursor '_' -->
+  <line x1="38" y1="44" x2="48" y2="44" 
+        stroke="#00e639" stroke-width="4.5" stroke-linecap="round"/>
+  
+  <!-- Magnifying Lens Circle -->
+  <circle cx="68" cy="32" r="12" 
+          stroke="#00e639" stroke-width="4.5" fill="none"/>
+  
+  <!-- Magnifying Lens Handle -->
+  <line x1="76" y1="40" x2="86" y2="50" 
+        stroke="#00e639" stroke-width="4.5" stroke-linecap="round"/>
+  
+  <!-- Brand Typography: 'Jobhunt' -->
+  <text x="108" y="44" 
+        font-family="JetBrains Mono, Geist, sans-serif" 
+        font-weight="700" 
+        font-size="38" 
+        fill="#00e639" 
+        letter-spacing="-0.5">Jobhunt</text>
+</svg>

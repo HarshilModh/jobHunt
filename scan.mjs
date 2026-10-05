@@ -19,12 +19,11 @@
  *   node scan.mjs --company nvidia # one company (substring match)
  */
 
-import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync } from 'fs';
+import { readFileSync, mkdirSync } from 'fs';
 import yaml from 'js-yaml';
+import { buildLocationFilter, buildTitleFilter, persistBoardOffers } from './board-store.mjs';
 
 const CONFIG_PATH = 'config.yml';
-const HISTORY_PATH = 'data/scan-history.tsv';
-const PIPELINE_PATH = 'data/pipeline.md';
 const CONCURRENCY = 10;
 
 mkdirSync('data', { recursive: true });
@@ -48,6 +47,8 @@ async function http(url, { timeoutMs = 10000, method = 'GET', headers = {}, body
 const fetchJson = (url, opts) => http(url, opts).then((r) => r.json());
 const fetchText = (url, opts) => http(url, opts).then((r) => r.text());
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const decode = (s) => String(s || '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ');
+const stripHtml = (s) => decode(s).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 
 // ── Providers (detect from careers_url → fetch normalized jobs) ──────
 
@@ -61,7 +62,7 @@ const providers = [
     id: 'greenhouse',
     detect(url) {
       const m = url.match(/job-boards(?:\.eu)?\.greenhouse\.io\/([^/?#]+)/);
-      return m ? `https://boards-api.greenhouse.io/v1/boards/${m[1]}/jobs` : null;
+      return m ? `https://boards-api.greenhouse.io/v1/boards/${m[1]}/jobs?content=true` : null;
     },
     async fetch(api, name) {
       const host = new URL(api).hostname;
@@ -69,6 +70,8 @@ const providers = [
       const json = await fetchJson(api, { redirect: 'error' });
       return (json?.jobs || []).filter((j) => j.absolute_url).map((j) => ({
         title: j.title || '', url: j.absolute_url, company: name, location: j.location?.name || '',
+        description: stripHtml(j.content || ''), postedAt: j.first_published || null,
+        postedPrecision: j.first_published ? 'timestamp' : 'unknown',
       }));
     },
   },
@@ -87,6 +90,9 @@ const providers = [
           const json = await fetchJson(api, { timeoutMs: 30000 });
           return (json?.jobs || []).map((j) => ({
             title: j.title || '', url: j.jobUrl || '', company: name, location: j.location || '',
+            description: stripHtml(j.descriptionHtml || j.description || ''),
+            compensation: j.compensation?.compensationTierSummary || null,
+            postedAt: j.publishedAt || null, postedPrecision: j.publishedAt ? 'timestamp' : 'unknown',
           }));
         } catch (e) { lastErr = e; }
       }
@@ -104,6 +110,8 @@ const providers = [
       if (!Array.isArray(json)) return [];
       return json.map((j) => ({
         title: j.text || '', url: j.hostedUrl || '', company: name, location: j.categories?.location || '',
+        description: stripHtml(j.descriptionPlain || ''), postedAt: j.createdAt || null,
+        postedPrecision: j.createdAt ? 'timestamp' : 'unknown',
       }));
     },
   },
@@ -144,6 +152,25 @@ const providers = [
       const { tenant, wd, site } = JSON.parse(api);
       const host = `${tenant}.${wd}.myworkdayjobs.com`;
       const cxs = `https://${host}/wday/cxs/${tenant}/${site}/jobs`;
+      const post = (body) => fetchJson(cxs, {
+        method: 'POST', timeoutMs: 20000,
+        headers: { 'content-type': 'application/json', accept: 'application/json' },
+        body: JSON.stringify(body),
+      });
+      // Multi-location postings return locationsText like "2 Locations", which the
+      // location filter can't see through (India roles were leaking into the top
+      // list). Restrict server-side to US via the tenant's country facet — the
+      // facet parameter NAME varies per tenant, so discover it with a probe.
+      let usFacets = {};
+      try {
+        const probe = await post({ appliedFacets: {}, limit: 1, offset: 0, searchText: '' });
+        outer: for (const f of probe?.facets || [])
+          for (const v of f?.values || [])
+            if (f.facetParameter && /^united states/i.test(v?.descriptor || '')) {
+              usFacets = { [f.facetParameter]: [v.id] };
+              break outer;
+            }
+      } catch { /* no country facet — scan unrestricted */ }
       const terms = entry.search_terms?.length ? entry.search_terms
         : ['software engineer new grad', 'software engineer intern', 'software engineer early career'];
       const maxResults = Number.isFinite(entry.max_results) ? entry.max_results : 100;
@@ -152,20 +179,66 @@ const providers = [
       for (const term of terms) {
         let offset = 0, total = Infinity;
         while (offset < Math.min(total, maxResults)) {
-          const json = await fetchJson(cxs, {
-            method: 'POST', timeoutMs: 20000,
-            headers: { 'content-type': 'application/json', accept: 'application/json' },
-            body: JSON.stringify({ appliedFacets: {}, limit: 20, offset, searchText: term }),
-          });
+          const json = await post({ appliedFacets: usFacets, limit: 20, offset, searchText: term });
           total = Number(json?.total) || 0;
           const page = json?.jobPostings || [];
           if (!page.length) break;
           for (const jp of page) {
             if (!jp?.externalPath || seen.has(jp.externalPath)) continue;
             seen.add(jp.externalPath);
-            jobs.push({ title: (jp.title || '').trim(), url: `https://${host}/en-US/${site}${jp.externalPath}`, company: name, location: (jp.locationsText || '').trim() });
+            jobs.push({
+              title: (jp.title || '').trim(), url: `https://${host}/en-US/${site}${jp.externalPath}`,
+              company: name, location: (jp.locationsText || '').trim(), postedRaw: jp.postedOn || '',
+              postedPrecision: jp.postedOn ? 'relative-day' : 'unknown',
+            });
           }
           offset += 20;
+        }
+      }
+      return jobs.filter((j) => j.title && j.url);
+    },
+  },
+  {
+    id: 'amazonjobs',
+    // Amazon's public search.json — run targeted new-grad/intern searches (like Workday).
+    detect(url) {
+      return /(?:^|\/\/)(?:www\.)?amazon\.jobs\b/.test(url) ? 'amazon' : null;
+    },
+    async fetch(_api, name, entry) {
+      const terms = entry.search_terms?.length ? entry.search_terms
+        : ['software development engineer 2026', 'software development engineer new grad',
+           'software dev engineer university graduate', 'software development engineer intern'];
+      const maxResults = Number.isFinite(entry.max_results) ? entry.max_results : 100;
+      const seen = new Set();
+      const jobs = [];
+      for (const term of terms) {
+        let offset = 0, total = Infinity;
+        while (offset < Math.min(total, maxResults)) {
+          const u = new URL('https://www.amazon.jobs/en/search.json');
+          u.searchParams.set('base_query', term);
+          u.searchParams.append('normalized_country_code[]', 'USA');
+          u.searchParams.set('result_limit', '100');
+          u.searchParams.set('offset', String(offset));
+          u.searchParams.set('sort', 'recent');
+          const json = await fetchJson(u.href, { timeoutMs: 20000 });
+          total = Number(json?.hits) || 0;
+          const page = json?.jobs || [];
+          if (!page.length) break;
+          for (const jp of page) {
+            const key = jp?.id_icims || jp?.job_path;
+            if (!jp?.job_path || seen.has(key)) continue;
+            seen.add(key);
+            jobs.push({
+              title: (jp.title || '').trim(),
+              url: `https://www.amazon.jobs${jp.job_path}`,
+              company: name,
+              location: jp.normalized_location || jp.location || '',
+              description: stripHtml(jp.description || ''),
+              postedAt: jp.posted_date || jp.updated_at || null,
+              postedPrecision: jp.posted_date || jp.updated_at ? 'date' : 'unknown',
+            });
+          }
+          offset += 100;
         }
       }
       return jobs.filter((j) => j.title && j.url);
@@ -180,63 +253,6 @@ function resolveProvider(entry) {
     if (api) return { provider: p, api };
   }
   return null;
-}
-
-// ── Filters ─────────────────────────────────────────────────────────
-
-function buildTitleFilter(tf) {
-  const pos = (tf?.positive || []).map((k) => k.toLowerCase());
-  const neg = (tf?.negative || []).map((k) => k.toLowerCase());
-  return (title) => {
-    const s = (title || '').toLowerCase();
-    return (pos.length === 0 || pos.some((k) => s.includes(k))) && !neg.some((k) => s.includes(k));
-  };
-}
-
-function buildLocationFilter(lf) {
-  if (!lf) return () => true;
-  const norm = (v) => (v == null ? [] : (Array.isArray(v) ? v : [v])).filter((x) => typeof x === 'string').map((x) => x.toLowerCase().trim()).filter(Boolean);
-  const always = norm(lf.always_allow), allow = norm(lf.allow), block = norm(lf.block);
-  return (loc) => {
-    if (typeof loc !== 'string' || !loc.trim()) return true;
-    const s = loc.toLowerCase();
-    if (always.length && always.some((k) => s.includes(k))) return true;
-    if (block.length && block.some((k) => s.includes(k))) return false;
-    if (allow.length === 0) return true;
-    return allow.some((k) => s.includes(k));
-  };
-}
-
-// ── Dedup + writers ─────────────────────────────────────────────────
-
-function loadSeen() {
-  const seen = new Set();
-  if (existsSync(HISTORY_PATH))
-    for (const line of readFileSync(HISTORY_PATH, 'utf-8').split('\n').slice(1)) {
-      const url = line.split('\t')[0];
-      if (url) seen.add(url);
-    }
-  if (existsSync(PIPELINE_PATH))
-    for (const m of readFileSync(PIPELINE_PATH, 'utf-8').matchAll(/- \[[ x]\] (https?:\/\/\S+)/g)) seen.add(m[1]);
-  return seen;
-}
-
-function appendToPipeline(offers) {
-  let text = readFileSync(PIPELINE_PATH, 'utf-8');
-  const lines = offers.map((o) => `- [ ] ${o.url} | ${o.company} | ${o.title}`).join('\n');
-  const idx = text.indexOf('## Pendientes');
-  if (idx === -1) { text += `\n## Pendientes\n\n${lines}\n`; }
-  else {
-    const insertAt = text.indexOf('\n', idx) + 1;
-    text = `${text.slice(0, insertAt)}\n${lines}${text.slice(insertAt)}`;
-  }
-  writeFileSync(PIPELINE_PATH, text, 'utf-8');
-}
-
-function appendToHistory(offers, date) {
-  if (!existsSync(HISTORY_PATH))
-    writeFileSync(HISTORY_PATH, 'url\tfirst_seen\tportal\ttitle\tcompany\tstatus\tlocation\n', 'utf-8');
-  appendFileSync(HISTORY_PATH, offers.map((o) => `${o.url}\t${date}\t${o.source}\t${o.title}\t${o.company}\tadded\t${o.location || ''}`).join('\n') + '\n', 'utf-8');
 }
 
 async function parallel(tasks, limit) {
@@ -267,28 +283,39 @@ async function main() {
 
   console.log(`Scanning ${targets.length} companies…${dryRun ? ' (dry run)' : ''}\n`);
 
-  const seen = loadSeen();
-  const date = new Date().toISOString().slice(0, 10);
+  const observedAt = new Date().toISOString();
   let found = 0, fTitle = 0, fLoc = 0, dupes = 0;
   const newOffers = [];
   const errors = [];
+  const emptyBoards = [];
 
   const tasks = targets.map((c) => async () => {
     try {
       const jobs = await c._p.provider.fetch(c._p.api, c.name, c);
+      // A board that moved returns HTTP 200 with an empty list, which is
+      // otherwise indistinguishable from a board with nothing open — that is
+      // how two tier-1 companies sat dead in the config without a single
+      // error. Zero postings is worth a look even though it is not an error.
+      if (!jobs.length) emptyBoards.push(`${c.name} (${c._p.provider.id})`);
       found += jobs.length;
       for (const j of jobs) {
         if (!titleOk(j.title)) { fTitle++; continue; }
         if (!locOk(j.location)) { fLoc++; continue; }
-        if (seen.has(j.url)) { dupes++; continue; }
-        seen.add(j.url);
         newOffers.push({ ...j, source: `${c._p.provider.id}-api` });
       }
     } catch (e) { errors.push({ company: c.name, error: e.message }); }
   });
   await parallel(tasks, CONCURRENCY);
 
-  if (!dryRun && newOffers.length) { appendToPipeline(newOffers); appendToHistory(newOffers, date); }
+  const persisted = await persistBoardOffers(newOffers, {
+    lane: 'ats',
+    blocklist: config.company_blocklist || [],
+    staffing: config.staffing_agencies || [],
+    dryRun,
+    observedAt,
+  });
+  dupes = persisted.duplicateCount;
+  const addedOffers = persisted.added;
 
   console.log('━'.repeat(45));
   console.log(`Companies scanned:    ${targets.length}`);
@@ -296,16 +323,20 @@ async function main() {
   console.log(`Filtered by title:    ${fTitle}`);
   console.log(`Filtered by location: ${fLoc}`);
   console.log(`Duplicates:           ${dupes}`);
-  console.log(`New offers added:     ${newOffers.length}`);
+  console.log(`New offers added:     ${addedOffers.length}`);
   if (errors.length) {
     console.log(`\nErrors (${errors.length}):`);
     for (const e of errors) console.log(`  ✗ ${e.company}: ${e.error}`);
   }
-  if (newOffers.length) {
+  if (emptyBoards.length) {
+    console.log(`\nBoards returning zero postings (${emptyBoards.length}) — check the slug if a company should be hiring:`);
+    for (const name of emptyBoards) console.log(`  ? ${name}`);
+  }
+  if (addedOffers.length) {
     console.log('\nNew offers:');
-    for (const o of newOffers) console.log(`  + ${o.company} | ${o.title} | ${o.location || 'N/A'}`);
+    for (const o of addedOffers) console.log(`  + ${o.company} | ${o.title} | ${o.location || 'N/A'}`);
     if (dryRun) console.log('\n(dry run — nothing written)');
-    else console.log(`\n→ run node rank.mjs --ai to score → data/top-openings.md`);
+    else console.log(`\n→ run node rank.mjs --ai to score → data/ats-openings.md`);
   }
 }
 

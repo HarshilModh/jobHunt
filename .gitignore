@@ -11,3 +11,18 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Runtime locks
+data/.jobhunt.lock
+data/.board-write.lock
+
+# Local agent / codex configs & secrets
+.claude/settings.local.json
+*.local.json
+.codex/
+
+# Local backup archives & mockups
+data/archive/
+/stitch_*
+*.bak
+*.bak-*
